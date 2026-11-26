@@ -68,7 +68,17 @@ h1 svg{height:40px;width:auto;display:block}
 /* ---------- área de trabajo ---------- */
 .app{flex:1;min-height:0;display:grid;grid-template-columns:236px minmax(0,1fr) 316px;grid-template-rows:minmax(0,1fr)}
 .paleta{grid-column:1;grid-row:1;background:var(--panel);border-right:1px solid var(--linea);overflow-y:auto;min-height:0;padding:12px 10px 20px max(10px,env(safe-area-inset-left,0px))}
-.escena{grid-column:2;grid-row:1;position:relative;min-height:0;min-width:0;background:var(--fuera);overflow:hidden}
+.vistas{grid-column:2;grid-row:1;min-height:0;min-width:0;display:grid;grid-template-columns:minmax(0,1fr);grid-template-rows:minmax(0,1fr)}
+.vistas.mix{grid-template-columns:minmax(0,1fr) minmax(0,1fr);gap:1px;background:var(--linea)}
+.escena{position:relative;min-height:0;min-width:0;background:var(--fuera);overflow:hidden}
+#etq3d{position:absolute;inset:0;pointer-events:none;overflow:hidden}
+.lbl3{position:absolute;left:0;top:0;background:rgba(26,26,26,.9);color:#fff;font:600 12.5px/1.15 var(--texto);padding:4px 8px;border-radius:5px;white-space:nowrap;will-change:transform;letter-spacing:.02em}
+.lbl3::after{content:"";position:absolute;left:50%;top:100%;width:2px;height:10px;margin-left:-1px;background:rgba(26,26,26,.9)}
+.lbl3.pa{background:rgba(177,30,34,.92)} .lbl3.pa::after{background:rgba(177,30,34,.92)}
+.lbl3.sel{background:#d4161c;outline:2px solid #fff}
+.pista3d{font-size:12.5px;color:var(--tinta2);background:color-mix(in srgb,var(--panel) 85%,transparent);padding:4px 8px;border-radius:6px}
+#vista-3d .hud button{background:rgba(255,255,255,.94);color:#1a1a1a;border-color:#d9d6d1}
+#vista-3d .hud button[aria-pressed="true"]{background:#1a1a1a;color:#fff;border-color:#1a1a1a}
 .inspector{grid-column:3;grid-row:1;background:var(--panel);border-left:1px solid var(--linea);overflow-y:auto;min-height:0;padding:16px 16px 26px;padding-right:max(16px,env(safe-area-inset-right,0px))}
 
 /* paleta */
@@ -141,7 +151,7 @@ h1 svg{height:40px;width:auto;display:block}
 .muestra[aria-pressed="true"]{box-shadow:0 0 0 2px var(--tinta)}
 .muestras input[type=color]{width:30px;height:26px;padding:0;border:1px solid var(--linea);border-radius:6px;background:none}
 .datos{background:var(--suave);border-radius:10px;display:grid;grid-template-columns:auto minmax(0,1fr);gap:4px 14px;margin:12px 0 0;padding:10px 12px;font-variant-numeric:tabular-nums;font-size:14px}
-.datos dt{color:var(--tinta2)} .datos dd{margin:0;font-weight:600;text-align:right}
+.datos dt{color:var(--tinta2)} .datos dd{margin:0;font-weight:600;text-align:right;white-space:nowrap}
 .ampliar{display:grid;grid-template-columns:repeat(3,1fr);gap:5px;margin-top:8px}
 .ampliar .btn{padding:6px 4px;font-size:13px}
 .ampliar .c{grid-column:2}
@@ -179,7 +189,9 @@ dialog::backdrop{background:rgba(20,18,17,.55)}
 @media (max-width:900px){
   html,body{height:auto;min-height:100%}
   .app{grid-template-columns:minmax(0,1fr);grid-template-rows:auto auto auto}
-  .escena{grid-column:1;grid-row:1;height:62vh;min-height:420px}
+  .vistas{grid-column:1;grid-row:1;height:62vh;min-height:420px}
+  .vistas.mix{grid-template-columns:minmax(0,1fr);grid-template-rows:minmax(0,1fr) minmax(0,1fr);height:112vh}
+  .pista3d{display:none}
   .paleta{grid-column:1;grid-row:2;border-right:0;border-top:1px solid var(--linea);padding-left:max(16px,env(safe-area-inset-left,0px));padding-right:max(16px,env(safe-area-inset-right,0px));overflow:visible}
   .items{grid-template-columns:repeat(auto-fill,minmax(96px,1fr))}
   .inspector{grid-column:1;grid-row:3;border-left:0;border-top:1px solid var(--linea);padding-left:max(16px,env(safe-area-inset-left,0px));overflow:visible}
@@ -203,8 +215,9 @@ dialog::backdrop{background:rgba(20,18,17,.55)}
   </div>
   <input id="nombreDiseno" class="nombre" aria-label="Nombre del diseño" value="Ampliación de planta">
   <div class="tabs" role="tablist" aria-label="Vistas">
-    <button role="tab" id="tab-plano" aria-selected="true">Plano 2D</button>
-    <button role="tab" id="tab-3d" aria-selected="false" tabindex="-1">Vista 3D</button>
+    <button role="tab" id="tab-plano" data-v="2d" aria-selected="true">Plano 2D</button>
+    <button role="tab" id="tab-mix" data-v="mix" aria-selected="false" tabindex="-1">2D + 3D</button>
+    <button role="tab" id="tab-3d" data-v="3d" aria-selected="false" tabindex="-1">Vista 3D</button>
   </div>
   <div class="acc">
     <button id="b-nuevo">Nuevo</button>
@@ -224,6 +237,7 @@ dialog::backdrop{background:rgba(20,18,17,.55)}
     <div id="cats"></div>
   </aside>
 
+  <div class="vistas" id="vistas">
   <section class="escena" id="vista-plano" aria-label="Plano editable">
     <svg id="svg" xmlns="http://www.w3.org/2000/svg" role="application" aria-label="Plano en planta, editable"></svg>
     <div class="hud hud-sup">
@@ -239,18 +253,25 @@ dialog::backdrop{background:rgba(20,18,17,.55)}
     <div class="coords" id="coords"></div>
     <div class="escala" id="escala"></div>
     <div class="hud hud-zoom">
-      <button id="z-mas" aria-label="Acercar">+</button><button id="z-menos" aria-label="Alejar">−</button><button id="z-todo">Encuadrar</button>
+      <button id="z-mas" aria-label="Acercar">+</button><button id="z-menos" aria-label="Alejar">−</button><button id="z-todo">Encuadrar</button><button id="z-predio">Predio</button>
     </div>
     <div class="toast" id="toast" role="status"></div>
   </section>
 
   <section class="escena" id="vista-3d" aria-label="Vista 3D" hidden>
     <div id="gl"></div>
+    <div id="etq3d" aria-hidden="true"></div>
+    <div class="hud hud-sup">
+      <button id="v-techos" aria-pressed="false">Techos</button>
+      <button id="v-rotulos" aria-pressed="true">Rótulos</button>
+      <span class="pista3d">Arrastrá para girar · rueda para acercar · clic para seleccionar</span>
+    </div>
     <div class="hud hud-zoom">
-      <button id="v-persp">Perspectiva</button><button id="v-arriba">Desde arriba</button><button id="v-frente">Desde el playón</button>
+      <button id="v-persp">General</button><button id="v-faena">Faena</button><button id="v-frente">Playón</button><button id="v-arriba">Planta</button>
     </div>
     <p class="aviso" id="aviso3d">Cargando modelo…</p>
   </section>
+  </div>
 
   <aside class="inspector" id="insp" aria-live="polite"></aside>
 </main>
@@ -345,6 +366,7 @@ const TIPOS = {
   cerco:       { n: 'Cerco perimetral', cat: 'exterior', w: 20, h: .15, alto: 2, c: '--fino', capa: 2, d3: 'caja' },
   arbol:       { n: 'Árbol', cat: 'exterior', w: 2.4, h: 2.4, alto: 6, c: '--arbol', capa: 2, d3: 'arbol' },
   alameda:     { n: 'Hilera de álamos', cat: 'exterior', w: 26, h: 2.4, alto: 9, c: '--arbol', capa: 2, d3: 'alameda' },
+  cartel:      { n: 'Cartel El Pollito Casero', cat: 'exterior', w: 10, h: .3, alto: 1.6, z0: 5, c: '--rojo', capa: 2, d3: 'cartel' },
   subestacion: { n: 'Subestación', cat: 'exterior', w: 3.6, h: 3.5, alto: 2.4, c: '--mob', capa: 2, d3: 'caja', et: 1 },
 
   camion:      { n: 'Camión refrigerado', cat: 'vehiculos', w: 8.2, h: 2.5, alto: 3.8, c: '--z-frio', capa: 2, d3: 'camion' },
@@ -362,7 +384,9 @@ const TIPOS = {
   cota:        { n: 'Cota (medida)', cat: 'notas', w: 10, h: 1, alto: 0, c: '--tinta2', capa: 3, d3: 'nada', et: 1 }
 };
 const MUESTRAS = ['--z-frio', '--z-bal', '--z-carga', '--z-ofi', '--z-lav', '--z-acc', '--z-play', '--f2', '--guia', '--asfalto', '--hormigon', '--arbol'];
-const NPT_PA = 5.6; /* nivel de piso de la planta alta, en metros */
+const NPT_PA = 5.6;
+/* Diseño ordenado a partir del plano enviado por el usuario (mismos sectores y flujo) */
+const DISENO_V2 = {"v": 1, "nombre": "Ampliación de planta", "predio": {"x0": -18, "y0": -20, "x1": 117, "y1": 93}, "objs": [{"id": "v2-001", "tipo": "playon", "x": 96.55, "y": 23.35, "w": 14.1, "h": 23.2, "rot": 0, "nivel": "PB", "alto": 0.05, "nombre": "Playón de maniobras"}, {"id": "v2-002", "tipo": "asfalto", "x": 92.675, "y": 42.85, "w": 6.35, "h": 15.8, "rot": 0, "nivel": "PB", "alto": 0.05, "nombre": "Explanada del portón general"}, {"id": "v2-003", "tipo": "calle", "x": 105.975, "y": 16.85, "w": 36.2, "h": 4.75, "rot": 90, "nivel": "PB", "alto": 0.05, "nombre": "Calle Nueva · egreso"}, {"id": "v2-004", "tipo": "calle", "x": 111.35, "y": 29.75, "w": 62.0, "h": 5.0, "rot": 90, "nivel": "PB", "alto": 0.05, "nombre": "Calle Nueva · ingreso"}, {"id": "v2-005", "tipo": "calle", "x": 98.35, "y": 47.85, "w": 25.8, "h": 5.0, "rot": 90, "nivel": "PB", "alto": 0.05, "nombre": "Ramal al playón"}, {"id": "v2-006", "tipo": "retorno", "x": 104.85, "y": 65.25, "w": 18, "h": 9, "rot": 0, "nivel": "PB", "alto": 0.05, "nombre": "Retorno"}, {"id": "v2-007", "tipo": "cesped", "x": 108.6, "y": 16.85, "w": 36.2, "h": 0.5, "rot": 90, "nivel": "PB", "alto": 0.05, "nombre": "Cantero central"}, {"id": "v2-008", "tipo": "subestacion", "x": 99.4, "y": 3.0, "w": 3.6, "h": 3.5, "rot": 0, "nivel": "PB", "alto": 2.4, "nombre": "Subestación existente"}, {"id": "v2-009", "tipo": "tinglado", "x": -6.5, "y": 40.75, "w": 13, "h": 33.5, "rot": 0, "nivel": "PB", "alto": 5, "nombre": "Recepción de jaulas", "c": "--z-bal"}, {"id": "v2-010", "tipo": "sala", "x": 11.75, "y": 36.75, "w": 23.5, "h": 25.5, "rot": 0, "nivel": "PB", "alto": 6, "nombre": "Faena · Zona sucia", "c": "--z-ofi", "notas": "Escaldado y desplume."}, {"id": "v2-011", "tipo": "sala", "x": 36.25, "y": 36.75, "w": 25.5, "h": 25.5, "rot": 0, "nivel": "PB", "alto": 6, "nombre": "Faena · Zona limpia", "c": "--z-lav", "notas": "Eviscerado y enfriado por inmersión."}, {"id": "v2-012", "tipo": "sala", "x": 40.75, "y": 18.5, "w": 16.5, "h": 11, "rot": 0, "nivel": "PB", "alto": 5, "nombre": "Trozado y envasado", "c": "--z-frio"}, {"id": "v2-013", "tipo": "camara", "x": 54.0, "y": 16.25, "w": 10, "h": 6.5, "rot": 0, "nivel": "PB", "alto": 5, "nombre": "Cámara Frigorífica 3"}, {"id": "v2-014", "tipo": "sala", "x": 54.0, "y": 24.5, "w": 10, "h": 10.0, "rot": 0, "nivel": "PB", "alto": 5, "nombre": "Antecámara de frío", "c": "--z-frio"}, {"id": "v2-015", "tipo": "camara", "x": 54.0, "y": 34.5, "w": 10, "h": 10.0, "rot": 0, "nivel": "PB", "alto": 5, "nombre": "Cámara Frigorífica 4"}, {"id": "v2-016", "tipo": "camara", "x": 54.0, "y": 44.5, "w": 10, "h": 10.0, "rot": 0, "nivel": "PB", "alto": 5, "nombre": "Cámara Frigorífica 5"}, {"id": "v2-017", "tipo": "sala", "x": 70.5, "y": 31.5, "w": 23, "h": 37, "rot": 0, "nivel": "PB", "alto": 6, "nombre": "Balanzas y Preparación", "c": "--z-bal"}, {"id": "v2-018", "tipo": "sala", "x": 85.75, "y": 31.5, "w": 7.5, "h": 37, "rot": 0, "nivel": "PB", "alto": 6, "nombre": "Zona de Carga", "c": "--z-carga"}, {"id": "v2-019", "tipo": "camara", "x": 64.75, "y": 59.25, "w": 11.5, "h": 18.5, "rot": 0, "nivel": "PB", "alto": 5, "nombre": "Cámara Frigorífica 2"}, {"id": "v2-020", "tipo": "camara", "x": 76.25, "y": 59.25, "w": 11.5, "h": 18.5, "rot": 0, "nivel": "PB", "alto": 5, "nombre": "Cámara Frigorífica 1"}, {"id": "v2-021", "tipo": "sala", "x": 11.75, "y": 53.5, "w": 23.5, "h": 8.0, "rot": 0, "nivel": "PB", "alto": 5, "nombre": "Sala de máquinas y caldera", "c": "--z-play"}, {"id": "v2-022", "tipo": "vestuario", "x": 26.5, "y": 51.5, "w": 6.0, "h": 4.0, "rot": 0, "nivel": "PB", "alto": 3, "nombre": "Vestuario y baños"}, {"id": "v2-023", "tipo": "tinglado", "x": 44.25, "y": 59.0, "w": 29.5, "h": 19.0, "rot": 0, "nivel": "PB", "alto": 5.4, "nombre": "Lavado y Acopio de Cajones"}, {"id": "v2-024", "tipo": "tinglado", "x": 8.25, "y": 63.0, "w": 42.5, "h": 11.0, "rot": 0, "nivel": "PB", "alto": 5, "nombre": "Lavado de jaulas", "c": "--z-lav"}, {"id": "v2-025", "tipo": "tinglado", "x": 96.55, "y": 31.5, "w": 14.1, "h": 37, "rot": 0, "nivel": "PB", "alto": 5.6, "nombre": "Alero de carga", "c": "--z-play", "verNombre": false}, {"id": "v2-026", "tipo": "oficina", "x": 45.75, "y": 6.0, "w": 26.5, "h": 10, "rot": 0, "nivel": "PB", "alto": 3.2, "nombre": "Administración"}, {"id": "v2-027", "tipo": "oficina", "x": 70.5, "y": 18.0, "w": 23, "h": 10, "rot": 0, "nivel": "PA", "alto": 3.2, "nombre": "Oficinas · control logístico"}, {"id": "v2-028", "tipo": "sala", "x": 60.5, "y": 23.0, "w": 3, "h": 3.0, "rot": 0, "nivel": "PB", "alto": 3, "nombre": "Acceso de personal", "c": "--z-acc"}, {"id": "v2-029", "tipo": "sala", "x": 60.5, "y": 44.75, "w": 3, "h": 2.5, "rot": 0, "nivel": "PB", "alto": 3, "nombre": "Ingreso de cajones limpios", "c": "--z-acc"}, {"id": "v2-030", "tipo": "escalera", "x": 77.75, "y": 14.0, "w": 8.5, "h": 1.4, "rot": 0, "nivel": "PB", "alto": 2.8, "nombre": "Escalera a oficinas"}, {"id": "v2-031", "tipo": "columna", "x": 59, "y": 13, "w": 0.4, "h": 0.4, "rot": 0, "nivel": "PB", "alto": 6, "nombre": "Columna"}, {"id": "v2-032", "tipo": "columna", "x": 59, "y": 31.5, "w": 0.4, "h": 0.4, "rot": 0, "nivel": "PB", "alto": 6, "nombre": "Columna"}, {"id": "v2-033", "tipo": "columna", "x": 59, "y": 50, "w": 0.4, "h": 0.4, "rot": 0, "nivel": "PB", "alto": 6, "nombre": "Columna"}, {"id": "v2-034", "tipo": "columna", "x": 65.5, "y": 13, "w": 0.4, "h": 0.4, "rot": 0, "nivel": "PB", "alto": 6, "nombre": "Columna"}, {"id": "v2-035", "tipo": "columna", "x": 65.5, "y": 31.5, "w": 0.4, "h": 0.4, "rot": 0, "nivel": "PB", "alto": 6, "nombre": "Columna"}, {"id": "v2-036", "tipo": "columna", "x": 65.5, "y": 50, "w": 0.4, "h": 0.4, "rot": 0, "nivel": "PB", "alto": 6, "nombre": "Columna"}, {"id": "v2-037", "tipo": "columna", "x": 72, "y": 13, "w": 0.4, "h": 0.4, "rot": 0, "nivel": "PB", "alto": 6, "nombre": "Columna"}, {"id": "v2-038", "tipo": "columna", "x": 72, "y": 31.5, "w": 0.4, "h": 0.4, "rot": 0, "nivel": "PB", "alto": 6, "nombre": "Columna"}, {"id": "v2-039", "tipo": "columna", "x": 72, "y": 50, "w": 0.4, "h": 0.4, "rot": 0, "nivel": "PB", "alto": 6, "nombre": "Columna"}, {"id": "v2-040", "tipo": "columna", "x": 78.5, "y": 13, "w": 0.4, "h": 0.4, "rot": 0, "nivel": "PB", "alto": 6, "nombre": "Columna"}, {"id": "v2-041", "tipo": "columna", "x": 78.5, "y": 31.5, "w": 0.4, "h": 0.4, "rot": 0, "nivel": "PB", "alto": 6, "nombre": "Columna"}, {"id": "v2-042", "tipo": "columna", "x": 78.5, "y": 50, "w": 0.4, "h": 0.4, "rot": 0, "nivel": "PB", "alto": 6, "nombre": "Columna"}, {"id": "v2-043", "tipo": "columna", "x": 82, "y": 13, "w": 0.4, "h": 0.4, "rot": 0, "nivel": "PB", "alto": 6, "nombre": "Columna"}, {"id": "v2-044", "tipo": "columna", "x": 82, "y": 31.5, "w": 0.4, "h": 0.4, "rot": 0, "nivel": "PB", "alto": 6, "nombre": "Columna"}, {"id": "v2-045", "tipo": "columna", "x": 82, "y": 50, "w": 0.4, "h": 0.4, "rot": 0, "nivel": "PB", "alto": 6, "nombre": "Columna"}, {"id": "v2-046", "tipo": "columna", "x": 89.5, "y": 13, "w": 0.4, "h": 0.4, "rot": 0, "nivel": "PB", "alto": 6, "nombre": "Columna"}, {"id": "v2-047", "tipo": "columna", "x": 89.5, "y": 31.5, "w": 0.4, "h": 0.4, "rot": 0, "nivel": "PB", "alto": 6, "nombre": "Columna"}, {"id": "v2-048", "tipo": "columna", "x": 89.5, "y": 50, "w": 0.4, "h": 0.4, "rot": 0, "nivel": "PB", "alto": 6, "nombre": "Columna"}, {"id": "v2-049", "tipo": "porton", "x": 89.5, "y": 19.25, "w": 2.6, "h": 0.4, "rot": 90, "nivel": "PB", "alto": 3.5, "nombre": "Portón 1"}, {"id": "v2-050", "tipo": "porton", "x": 89.5, "y": 23.25, "w": 2.6, "h": 0.4, "rot": 90, "nivel": "PB", "alto": 3.5, "nombre": "Portón 2"}, {"id": "v2-051", "tipo": "porton", "x": 89.5, "y": 27.25, "w": 2.6, "h": 0.4, "rot": 90, "nivel": "PB", "alto": 3.5, "nombre": "Portón 3"}, {"id": "v2-052", "tipo": "porton", "x": 89.5, "y": 31.25, "w": 2.6, "h": 0.4, "rot": 90, "nivel": "PB", "alto": 3.5, "nombre": "Portón 4"}, {"id": "v2-053", "tipo": "porton", "x": 89.5, "y": 45.5, "w": 6.6, "h": 0.4, "rot": 90, "nivel": "PB", "alto": 3.5, "nombre": "Portón General", "c": "--z-acc"}, {"id": "v2-054", "tipo": "porton", "x": 64.75, "y": 50, "w": 2.4, "h": 0.35, "rot": 0, "nivel": "PB", "alto": 3.5, "nombre": "Puerta Cámara 2", "c": "--z-frio"}, {"id": "v2-055", "tipo": "porton", "x": 76.25, "y": 50, "w": 2.4, "h": 0.35, "rot": 0, "nivel": "PB", "alto": 3.5, "nombre": "Puerta Cámara 1", "c": "--z-frio"}, {"id": "v2-056", "tipo": "porton", "x": 59, "y": 16.25, "w": 2.4, "h": 0.35, "rot": 90, "nivel": "PB", "alto": 3.5, "nombre": "Puerta Cámara 3", "c": "--z-frio"}, {"id": "v2-057", "tipo": "porton", "x": 59, "y": 27, "w": 2.4, "h": 0.35, "rot": 90, "nivel": "PB", "alto": 3.5, "nombre": "Puerta antecámara", "c": "--z-frio"}, {"id": "v2-058", "tipo": "porton", "x": 59, "y": 34.5, "w": 2.4, "h": 0.35, "rot": 90, "nivel": "PB", "alto": 3.5, "nombre": "Puerta Cámara 4", "c": "--z-frio"}, {"id": "v2-059", "tipo": "porton", "x": 59, "y": 40.75, "w": 2.4, "h": 0.35, "rot": 90, "nivel": "PB", "alto": 3.5, "nombre": "Puerta Cámara 5", "c": "--z-frio"}, {"id": "v2-060", "tipo": "porton", "x": 49, "y": 46.5, "w": 2.4, "h": 0.35, "rot": 90, "nivel": "PB", "alto": 3.5, "nombre": "Paso faena → frío", "c": "--z-lav"}, {"id": "v2-061", "tipo": "porton", "x": 23.5, "y": 36.75, "w": 2.4, "h": 0.35, "rot": 90, "nivel": "PB", "alto": 3.5, "nombre": "Paso zona sucia → limpia", "c": "--z-ofi"}, {"id": "v2-062", "tipo": "porton", "x": 0, "y": 41, "w": 2.4, "h": 0.35, "rot": 90, "nivel": "PB", "alto": 3.5, "nombre": "Ingreso de aves", "c": "--z-bal"}, {"id": "v2-063", "tipo": "porton", "x": 40.75, "y": 24, "w": 2.4, "h": 0.35, "rot": 0, "nivel": "PB", "alto": 3.5, "nombre": "Paso a trozado", "c": "--z-lav"}, {"id": "v2-064", "tipo": "jaulas", "x": -8, "y": 40.75, "w": 9, "h": 32.5, "rot": 0, "nivel": "PB", "alto": 1.4, "nombre": "Recepción de jaulas", "verNombre": false}, {"id": "v2-065", "tipo": "aturdidor", "x": -1.5, "y": 41, "w": 1.6, "h": 2.4, "rot": 0, "nivel": "PB", "alto": 1.6, "nombre": "Aturdidor"}, {"id": "v2-066", "tipo": "desangrado", "x": -1.5, "y": 35.5, "w": 5, "h": 1.4, "rot": -90, "nivel": "PB", "alto": 2, "nombre": "Túnel de desangrado"}, {"id": "v2-067", "tipo": "escaldador", "x": 3.5, "y": 40.5, "w": 8.2, "h": 4.1, "rot": -90, "nivel": "PB", "alto": 1.4, "nombre": "Escaldador"}, {"id": "v2-068", "tipo": "desplumadora", "x": 10, "y": 43.5, "w": 3, "h": 1.8, "rot": 0, "nivel": "PB", "alto": 1.8, "nombre": "Desplumadora 1"}, {"id": "v2-069", "tipo": "desplumadora", "x": 15, "y": 43.5, "w": 3, "h": 1.8, "rot": 0, "nivel": "PB", "alto": 1.8, "nombre": "Desplumadora 2"}, {"id": "v2-070", "tipo": "noria", "x": 14.75, "y": 46, "w": 13, "h": 0.6, "rot": 0, "nivel": "PB", "alto": 0.15, "nombre": "Noria · zona sucia"}, {"id": "v2-071", "tipo": "noria", "x": 26, "y": 37, "w": 10, "h": 0.6, "rot": 90, "nivel": "PB", "alto": 0.15, "nombre": "Noria · eviscerado"}, {"id": "v2-072", "tipo": "noria", "x": 31, "y": 42.5, "w": 10, "h": 0.6, "rot": 0, "nivel": "PB", "alto": 0.15, "nombre": "Noria · enfriado"}, {"id": "v2-073", "tipo": "chiller", "x": 29, "y": 31.5, "w": 6, "h": 2.2, "rot": 0, "nivel": "PB", "alto": 1.8, "nombre": "Chiller 1"}, {"id": "v2-074", "tipo": "chiller", "x": 36.5, "y": 31.5, "w": 6, "h": 2.2, "rot": 0, "nivel": "PB", "alto": 1.8, "nombre": "Chiller 2"}, {"id": "v2-075", "tipo": "mesa", "x": 30.5, "y": 44.5, "w": 7.7, "h": 1.6, "rot": 0, "nivel": "PB", "alto": 0.9, "nombre": "Mesa de eviscerado"}, {"id": "v2-076", "tipo": "lavamanos", "x": 22.6, "y": 27, "w": 1.2, "h": 0.5, "rot": 90, "nivel": "PB", "alto": 0.9, "nombre": "Lavamanos"}, {"id": "v2-077", "tipo": "lavamanos", "x": 24.4, "y": 27, "w": 1.2, "h": 0.5, "rot": 90, "nivel": "PB", "alto": 0.9, "nombre": "Lavamanos"}, {"id": "v2-078", "tipo": "mesa", "x": 40.75, "y": 18.5, "w": 7, "h": 1.4, "rot": 0, "nivel": "PB", "alto": 0.9, "nombre": "Mesa de trozado"}, {"id": "v2-079", "tipo": "mesa", "x": 40.75, "y": 21, "w": 7, "h": 1.4, "rot": 0, "nivel": "PB", "alto": 0.9, "nombre": "Mesa de envasado"}, {"id": "v2-080", "tipo": "caldera", "x": 3.5, "y": 53.5, "w": 5.8, "h": 3.7, "rot": 90, "nivel": "PB", "alto": 2.4, "nombre": "Caldera"}, {"id": "v2-081", "tipo": "tunel_lavado", "x": 8, "y": 63, "w": 14, "h": 2.5, "rot": 0, "nivel": "PB", "alto": 2.2, "nombre": "Túnel de lavado de jaulas"}, {"id": "v2-082", "tipo": "rack", "x": 49.6, "y": 16.25, "w": 5.5, "h": 1.1, "rot": 90, "nivel": "PB", "alto": 3, "nombre": "Racks Cámara 3"}, {"id": "v2-083", "tipo": "rack", "x": 49.6, "y": 34.5, "w": 8, "h": 1.1, "rot": 90, "nivel": "PB", "alto": 3, "nombre": "Racks Cámara 4"}, {"id": "v2-084", "tipo": "rack", "x": 49.6, "y": 44.5, "w": 8, "h": 1.1, "rot": 90, "nivel": "PB", "alto": 3, "nombre": "Racks Cámara 5"}, {"id": "v2-085", "tipo": "rack", "x": 60.1, "y": 59.25, "w": 15, "h": 1.1, "rot": 90, "nivel": "PB", "alto": 3, "nombre": "Racks Cámara 2"}, {"id": "v2-086", "tipo": "rack", "x": 81, "y": 59.25, "w": 15, "h": 1.1, "rot": 90, "nivel": "PB", "alto": 3, "nombre": "Racks Cámara 1"}, {"id": "v2-087", "tipo": "evaporador", "x": 76.25, "y": 67.8, "w": 2.4, "h": 0.7, "rot": 0, "nivel": "PB", "alto": 0.6, "nombre": "Evaporador Cámara 1"}, {"id": "v2-088", "tipo": "evaporador", "x": 64.75, "y": 67.8, "w": 2.4, "h": 0.7, "rot": 0, "nivel": "PB", "alto": 0.6, "nombre": "Evaporador Cámara 2"}, {"id": "v2-089", "tipo": "evaporador", "x": 54, "y": 13.6, "w": 2.4, "h": 0.7, "rot": 0, "nivel": "PB", "alto": 0.6, "nombre": "Evaporador Cámara 3"}, {"id": "v2-090", "tipo": "evaporador", "x": 54, "y": 30.1, "w": 2.4, "h": 0.7, "rot": 0, "nivel": "PB", "alto": 0.6, "nombre": "Evaporador Cámara 4"}, {"id": "v2-091", "tipo": "evaporador", "x": 54, "y": 40.1, "w": 2.4, "h": 0.7, "rot": 0, "nivel": "PB", "alto": 0.6, "nombre": "Evaporador Cámara 5"}, {"id": "v2-092", "tipo": "balanza", "x": 68.2, "y": 20.15, "w": 1.5, "h": 1.5, "rot": 0, "nivel": "PB", "alto": 0.12, "nombre": "Balanza 1"}, {"id": "v2-093", "tipo": "balanza", "x": 67.4, "y": 27.35, "w": 1.5, "h": 1.5, "rot": 0, "nivel": "PB", "alto": 0.12, "nombre": "Balanza 2"}, {"id": "v2-094", "tipo": "mesa", "x": 64, "y": 20.15, "w": 2.4, "h": 0.9, "rot": 90, "nivel": "PB", "alto": 0.9, "nombre": "Mesa de armado 1"}, {"id": "v2-095", "tipo": "mesa", "x": 63.2, "y": 27.35, "w": 2.4, "h": 0.9, "rot": 90, "nivel": "PB", "alto": 0.9, "nombre": "Mesa de armado 2"}, {"id": "v2-096", "tipo": "zorra", "x": 73.8, "y": 18.75, "w": 0.7, "h": 1.6, "rot": 90, "nivel": "PB", "alto": 1.2, "nombre": "Zorra 1"}, {"id": "v2-097", "tipo": "zorra", "x": 73, "y": 25.15, "w": 0.7, "h": 1.6, "rot": 90, "nivel": "PB", "alto": 1.2, "nombre": "Zorra 2"}, {"id": "v2-098", "tipo": "pallet", "x": 84, "y": 18.55, "w": 1, "h": 1.2, "rot": 0, "nivel": "PB", "alto": 1.3, "nombre": "Pallet portón 1"}, {"id": "v2-099", "tipo": "pallet", "x": 84, "y": 19.95, "w": 1, "h": 1.2, "rot": 0, "nivel": "PB", "alto": 1.3, "nombre": "Pallet portón 1"}, {"id": "v2-100", "tipo": "pallet", "x": 84, "y": 22.55, "w": 1, "h": 1.2, "rot": 0, "nivel": "PB", "alto": 1.3, "nombre": "Pallet portón 2"}, {"id": "v2-101", "tipo": "pallet", "x": 84, "y": 23.95, "w": 1, "h": 1.2, "rot": 0, "nivel": "PB", "alto": 1.3, "nombre": "Pallet portón 2"}, {"id": "v2-102", "tipo": "pallet", "x": 84, "y": 26.55, "w": 1, "h": 1.2, "rot": 0, "nivel": "PB", "alto": 1.3, "nombre": "Pallet portón 3"}, {"id": "v2-103", "tipo": "pallet", "x": 84, "y": 27.95, "w": 1, "h": 1.2, "rot": 0, "nivel": "PB", "alto": 1.3, "nombre": "Pallet portón 3"}, {"id": "v2-104", "tipo": "pallet", "x": 84, "y": 30.55, "w": 1, "h": 1.2, "rot": 0, "nivel": "PB", "alto": 1.3, "nombre": "Pallet portón 4"}, {"id": "v2-105", "tipo": "pallet", "x": 84, "y": 31.95, "w": 1, "h": 1.2, "rot": 0, "nivel": "PB", "alto": 1.3, "nombre": "Pallet portón 4"}, {"id": "v2-106", "tipo": "cajones", "x": 84, "y": 42.95, "w": 0.6, "h": 0.4, "rot": 0, "nivel": "PB", "alto": 1.6, "nombre": "Cajones sucios"}, {"id": "v2-107", "tipo": "cajones", "x": 84.8, "y": 42.95, "w": 0.6, "h": 0.4, "rot": 0, "nivel": "PB", "alto": 1.6, "nombre": "Cajones sucios"}, {"id": "v2-108", "tipo": "cajones", "x": 85.6, "y": 42.95, "w": 0.6, "h": 0.4, "rot": 0, "nivel": "PB", "alto": 1.6, "nombre": "Cajones sucios"}, {"id": "v2-109", "tipo": "cajones", "x": 84, "y": 43.55, "w": 0.6, "h": 0.4, "rot": 0, "nivel": "PB", "alto": 1.6, "nombre": "Cajones sucios"}, {"id": "v2-110", "tipo": "cajones", "x": 84.8, "y": 43.55, "w": 0.6, "h": 0.4, "rot": 0, "nivel": "PB", "alto": 1.6, "nombre": "Cajones sucios"}, {"id": "v2-111", "tipo": "cajones", "x": 62.9, "y": 44, "w": 0.6, "h": 0.4, "rot": 0, "nivel": "PB", "alto": 1.6, "nombre": "Cajones limpios", "c": "--z-frio"}, {"id": "v2-112", "tipo": "cajones", "x": 63.7, "y": 44, "w": 0.6, "h": 0.4, "rot": 0, "nivel": "PB", "alto": 1.6, "nombre": "Cajones limpios", "c": "--z-frio"}, {"id": "v2-113", "tipo": "cajones", "x": 64.5, "y": 44, "w": 0.6, "h": 0.4, "rot": 0, "nivel": "PB", "alto": 1.6, "nombre": "Cajones limpios", "c": "--z-frio"}, {"id": "v2-114", "tipo": "cajones", "x": 62.9, "y": 44.6, "w": 0.6, "h": 0.4, "rot": 0, "nivel": "PB", "alto": 1.6, "nombre": "Cajones limpios", "c": "--z-frio"}, {"id": "v2-115", "tipo": "cajones", "x": 63.7, "y": 44.6, "w": 0.6, "h": 0.4, "rot": 0, "nivel": "PB", "alto": 1.6, "nombre": "Cajones limpios", "c": "--z-frio"}, {"id": "v2-116", "tipo": "cajones", "x": 64.5, "y": 44.6, "w": 0.6, "h": 0.4, "rot": 0, "nivel": "PB", "alto": 1.6, "nombre": "Cajones limpios", "c": "--z-frio"}, {"id": "v2-117", "tipo": "rack", "x": 48.75, "y": 52.5, "w": 17.5, "h": 1.1, "rot": 0, "nivel": "PB", "alto": 3, "nombre": "Acopio de cajones sucios", "c": "--ci"}, {"id": "v2-118", "tipo": "tunel_lavado", "x": 48.75, "y": 58.25, "w": 8, "h": 2, "rot": 0, "nivel": "PB", "alto": 2.2, "nombre": "Túnel de lavado de cajones"}, {"id": "v2-119", "tipo": "rack", "x": 48.75, "y": 64, "w": 17.5, "h": 1.1, "rot": 0, "nivel": "PB", "alto": 3, "nombre": "Acopio de cajones limpios"}, {"id": "v2-120", "tipo": "camion", "x": 95, "y": 19.25, "w": 8.2, "h": 2.5, "rot": 0, "nivel": "PB", "alto": 3.8, "nombre": "Camión en portón 1"}, {"id": "v2-121", "tipo": "camion", "x": 95, "y": 23.25, "w": 8.2, "h": 2.5, "rot": 0, "nivel": "PB", "alto": 3.8, "nombre": "Camión en portón 2"}, {"id": "v2-122", "tipo": "camion", "x": 95, "y": 27.25, "w": 8.2, "h": 2.5, "rot": 0, "nivel": "PB", "alto": 3.8, "nombre": "Camión en portón 3"}, {"id": "v2-123", "tipo": "camion", "x": 111.35, "y": 8.75, "w": 8.2, "h": 2.5, "rot": 90, "nivel": "PB", "alto": 3.8, "nombre": "Camión ingresando"}, {"id": "v2-124", "tipo": "autoelevador", "x": 86.4, "y": 36, "w": 1.2, "h": 2.6, "rot": 0, "nivel": "PB", "alto": 2.1, "nombre": "Autoelevador"}, {"id": "v2-125", "tipo": "operario", "x": 69.5, "y": 20.15, "w": 0.6, "h": 0.45, "rot": 0, "nivel": "PB", "alto": 1.75, "nombre": "Operario balanza 1"}, {"id": "v2-126", "tipo": "operario", "x": 68.7, "y": 27.35, "w": 0.6, "h": 0.45, "rot": 0, "nivel": "PB", "alto": 1.75, "nombre": "Operario balanza 2"}, {"id": "v2-127", "tipo": "operario", "x": 86, "y": 21.35, "w": 0.6, "h": 0.45, "rot": 0, "nivel": "PB", "alto": 1.75, "nombre": "Operario de carga"}, {"id": "v2-128", "tipo": "operario", "x": 86, "y": 27.35, "w": 0.6, "h": 0.45, "rot": 0, "nivel": "PB", "alto": 1.75, "nombre": "Operario de carga"}, {"id": "v2-129", "tipo": "operario", "x": -1.5, "y": 44, "w": 0.6, "h": 0.45, "rot": 0, "nivel": "PB", "alto": 1.75, "nombre": "Operario de colgado"}, {"id": "v2-130", "tipo": "operario", "x": 6.6, "y": 40.5, "w": 0.6, "h": 0.45, "rot": 0, "nivel": "PB", "alto": 1.75, "nombre": "Operario de escaldado"}, {"id": "v2-131", "tipo": "operario", "x": 12.5, "y": 42, "w": 0.6, "h": 0.45, "rot": 0, "nivel": "PB", "alto": 1.75, "nombre": "Operario de desplume"}, {"id": "v2-132", "tipo": "operario", "x": 30.5, "y": 43.3, "w": 0.6, "h": 0.45, "rot": 0, "nivel": "PB", "alto": 1.75, "nombre": "Operario de eviscerado"}, {"id": "v2-133", "tipo": "operario", "x": 32.5, "y": 43.3, "w": 0.6, "h": 0.45, "rot": 0, "nivel": "PB", "alto": 1.75, "nombre": "Operario de eviscerado"}, {"id": "v2-134", "tipo": "operario", "x": 40.75, "y": 19.6, "w": 0.6, "h": 0.45, "rot": 0, "nivel": "PB", "alto": 1.75, "nombre": "Operario de trozado"}, {"id": "v2-135", "tipo": "operario", "x": 42.5, "y": 19.6, "w": 0.6, "h": 0.45, "rot": 0, "nivel": "PB", "alto": 1.75, "nombre": "Operario de trozado"}, {"id": "v2-136", "tipo": "operario", "x": 48.75, "y": 60, "w": 0.6, "h": 0.45, "rot": 0, "nivel": "PB", "alto": 1.75, "nombre": "Operario de lavado"}, {"id": "v2-137", "tipo": "supervisor", "x": 79.5, "y": 18, "w": 0.6, "h": 0.45, "rot": 0, "nivel": "PA", "alto": 1.75, "nombre": "Control logístico"}, {"id": "v2-138", "tipo": "flecha", "x": 64.75, "y": 44.5, "w": 7, "h": 0.9, "rot": -90, "nivel": "PB", "alto": 0.05, "nombre": "Cámara 2 → Balanza 1", "c": "--f1"}, {"id": "v2-139", "tipo": "flecha", "x": 76.25, "y": 45, "w": 6, "h": 0.9, "rot": -90, "nivel": "PB", "alto": 0.05, "nombre": "Cámara 1 → Balanza 2", "c": "--f1"}, {"id": "v2-140", "tipo": "flecha", "x": 75.75, "y": 21.2, "w": 10, "h": 0.9, "rot": 0, "nivel": "PB", "alto": 0.05, "nombre": "Balanzas → carga", "c": "--f2"}, {"id": "v2-141", "tipo": "flecha", "x": 75.75, "y": 28.4, "w": 10, "h": 0.9, "rot": 0, "nivel": "PB", "alto": 0.05, "nombre": "Balanzas → carga", "c": "--f2"}, {"id": "v2-142", "tipo": "flecha", "x": 87.6, "y": 19.25, "w": 2.4, "h": 0.8, "rot": 0, "nivel": "PB", "alto": 0.05, "nombre": "Carga → camión", "c": "--f3"}, {"id": "v2-143", "tipo": "flecha", "x": 87.6, "y": 23.25, "w": 2.4, "h": 0.8, "rot": 0, "nivel": "PB", "alto": 0.05, "nombre": "Carga → camión", "c": "--f3"}, {"id": "v2-144", "tipo": "flecha", "x": 87.6, "y": 27.25, "w": 2.4, "h": 0.8, "rot": 0, "nivel": "PB", "alto": 0.05, "nombre": "Carga → camión", "c": "--f3"}, {"id": "v2-145", "tipo": "flecha", "x": 87.6, "y": 31.25, "w": 2.4, "h": 0.8, "rot": 0, "nivel": "PB", "alto": 0.05, "nombre": "Carga → camión", "c": "--f3"}, {"id": "v2-146", "tipo": "flecha", "x": 37.5, "y": 58.25, "w": 7, "h": 0.9, "rot": 90, "nivel": "PB", "alto": 0.05, "nombre": "Cajones: sucios → limpios", "c": "--f4"}, {"id": "v2-147", "tipo": "flecha", "x": 19.5, "y": 38, "w": 6, "h": 0.9, "rot": 0, "nivel": "PB", "alto": 0.05, "nombre": "Aves: zona sucia → limpia", "c": "--f2"}, {"id": "v2-148", "tipo": "flecha", "x": 44.5, "y": 46.5, "w": 6, "h": 0.9, "rot": 0, "nivel": "PB", "alto": 0.05, "nombre": "Producto → frío", "c": "--f1"}, {"id": "v2-149", "tipo": "cartel", "x": 89.5, "y": 25.25, "w": 12, "h": 0.3, "rot": 90, "nivel": "PB", "alto": 1.8, "nombre": "Cartel de fachada", "z0": 6.4, "adosado": true}, {"id": "v2-150", "tipo": "cartel", "x": 45.75, "y": 1, "w": 10, "h": 0.3, "rot": 0, "nivel": "PB", "alto": 1.4, "nombre": "Cartel de administración", "z0": 3.4, "adosado": true}, {"id": "v2-151", "tipo": "cota", "x": 38.25, "y": 71.5, "w": 102.5, "h": 1, "rot": 0, "nivel": "PB", "alto": 0, "nombre": "Largo de la planta"}, {"id": "v2-152", "tipo": "cota", "x": -16.0, "y": 40.75, "w": 55.5, "h": 1.0, "rot": 90, "nivel": "PB", "alto": 0, "nombre": "Fondo de la planta"}]}; /* nivel de piso de la planta alta, en metros */
 
 /* ============================================================
    Dibujo 2D de cada tipo, en coordenadas locales (metros),
@@ -381,28 +405,31 @@ const D = (() => {
     RC(w, h, 'fill:var(--piso)', ex) + RC(w, h, `fill:${c};fill-opacity:${op};stroke:${trazo};stroke-width:${sw}`, ex);
   const ventilador = (x, y, r) => Ci(x, y, r, 'fill:none;stroke:var(--muro);stroke-width:1') + Ln(x - r * .7, y - r * .7, x + r * .7, y + r * .7, FINO) + Ln(x - r * .7, y + r * .7, x + r * .7, y - r * .7, FINO);
   const rayo = (x, y, s) => P(`M${f3(x + .15 * s)} ${f3(y - .5 * s)}L${f3(x - .25 * s)} ${f3(y + .05 * s)}H${f3(x + .02 * s)}L${f3(x - .12 * s)} ${f3(y + .5 * s)}L${f3(x + .28 * s)} ${f3(y - .08 * s)}H${f3(x + .02 * s)}Z`, 'fill:var(--guia);stroke:var(--muro);stroke-width:.8');
+  const muros = (w, h, e = .25) => RC(w, h, `fill:none;stroke:var(--muro);stroke-width:${e};vector-effect:none`);
+  const losa = (w, h, c, op) => RC(w, h, 'fill:var(--piso)') + RC(w, h, `fill:${c};fill-opacity:${op}`);
   const ventanas = (w, h) => RC(Math.max(w - .36, 0), Math.max(h - .36, 0), 'fill:none;stroke:var(--vidrio);stroke-width:2');
   const ruedasDe = (x0, x1, y, paso) => { let s = ''; for (let x = x0; x <= x1 + 1e-6; x += paso) s += R(x - .25, y - .1, .5, .2, 'fill:var(--muro)'); return s; };
 
   const d = {
-    sala: (w, h, c) => tinte(w, h, c, .16, 2.6),
+    sala: (w, h, c) => losa(w, h, c, .13) + muros(w, h),
     camara: (w, h, c) => {
-      let s = tinte(w, h, c, .2, 2.2, '', c) + RC(Math.max(w - .5, 0), Math.max(h - .5, 0), `fill:none;stroke:${c};stroke-width:1`);
+      let s = losa(w, h, c, .17) + muros(w, h, .3) + RC(Math.max(w - .7, 0), Math.max(h - .7, 0), `fill:none;stroke:${c};stroke-width:1.2`);
       if (Math.min(w, h) > 2.2) {
         const x = -w / 2 + 1, y = -h / 2 + 1, r = .45;
         for (let a = 0; a < 3; a++) { const t = a * Math.PI / 3; s += Ln(x - r * Math.cos(t), y - r * Math.sin(t), x + r * Math.cos(t), y + r * Math.sin(t), `stroke:${c};stroke-width:1.6`); }
       }
       return s;
     },
-    oficina: (w, h, c) => tinte(w, h, c, .14, 2.6) + ventanas(w, h),
-    garita: (w, h, c) => tinte(w, h, c, .2, 2.2) + ventanas(w, h),
+    oficina: (w, h, c) => losa(w, h, c, .12) + ventanas(w, h) + muros(w, h, .2),
+    garita: (w, h, c) => losa(w, h, c, .16) + ventanas(w, h) + muros(w, h, .2),
     vestuario: (w, h, c) => {
-      let s = tinte(w, h, c, .16, 2.6); const n = clamp(Math.floor((w - .6) / 1.1), 0, 8);
+      let s = losa(w, h, c, .14) + muros(w, h, .2); const n = clamp(Math.floor((w - .6) / 1.1), 0, 8);
       for (let i = 0; i < n; i++) s += El(-w / 2 + .9 + i * 1.1, -h / 2 + .55, .22, .3, 'fill:var(--piso);stroke:var(--muro);stroke-width:1');
       return s;
     },
-    sala_maq: (w, h, c) => { const r = Math.min(w, h) * .16; return tinte(w, h, c, .2, 2.6) + ventilador(-w / 4, h / 5, r) + ventilador(w / 4, h / 5, r); },
-    tinglado: (w, h, c) => R(-w / 2, -h / 2, w, h, `fill:${c};fill-opacity:.08;stroke:var(--tinta2);stroke-width:1.3;stroke-dasharray:8 5`) +
+    sala_maq: (w, h, c) => { const r = Math.min(w, h) * .16; return losa(w, h, c, .16) + ventilador(-w / 4, h / 5, r) + ventilador(w / 4, h / 5, r) + muros(w, h); },
+    tinglado: (w, h, c) => R(-w / 2, -h / 2, w, h, `fill:${c};fill-opacity:.09;stroke:var(--tinta2);stroke-width:1.4;stroke-dasharray:10 4 2 4`) +
+      [[-1, -1], [1, -1], [1, 1], [-1, 1]].map(([a, b]) => R(a * w / 2 - .2, b * h / 2 - .2, .4, .4, 'fill:var(--muro)')).join('') +
       Ln(-w / 2, -h / 2, w / 2, h / 2, 'stroke:var(--fino);stroke-width:.8;stroke-dasharray:3 6') + Ln(-w / 2, h / 2, w / 2, -h / 2, 'stroke:var(--fino);stroke-width:.8;stroke-dasharray:3 6'),
     muro: (w, h, c) => RC(w, h, `fill:${c}`),
     columna: (w, h, c) => RC(w, h, `fill:${c}`),
@@ -525,6 +552,7 @@ const D = (() => {
       for (let x = -w / 2 + r; x <= w / 2 - r + 1e-6; x += paso) s += Ci(x, 0, r, 'fill:var(--arbol);stroke:var(--arbol2);stroke-width:1') + Ci(x, 0, r * .35, 'fill:var(--arbol2)');
       return s;
     },
+    cartel: (w, h) => RC(w, Math.max(h, .2), 'fill:#1a1a1a') + R(-w / 2, -Math.max(h, .2) / 2, w, Math.max(h, .2) * .4, 'fill:#b11e22'),
     subestacion: (w, h) => RC(w, h, `fill:var(--mob);${MURO};stroke-width:1.4`) + rayo(0, 0, Math.min(w, h) * .8),
 
     camion: (w, h, c) => `<g transform="scale(${f3(w / 8.2)} ${f3(h / 2.5)}) translate(-4.1 0)">` +
@@ -662,17 +690,17 @@ function confirmar() { /* registra el estado actual como un paso */
   if (f === H.ultimo) return;
   if (H.ultimo) { H.pila.push(H.ultimo); if (H.pila.length > 120) H.pila.shift(); }
   H.ultimo = f; H.futuro = [];
-  sucio(); botonesHist();
+  sucio(); botonesHist(); Vista3D.cambio();
 }
 function reiniciarHist() { H.pila = []; H.futuro = []; H.ultimo = foto(); botonesHist(); }
-function deshacer() { if (!H.pila.length) return; H.futuro.push(foto()); H.ultimo = H.pila.pop(); aplicarFoto(H.ultimo); sucio(); todo(); botonesHist(); }
-function rehacer() { if (!H.futuro.length) return; H.pila.push(foto()); H.ultimo = H.futuro.pop(); aplicarFoto(H.ultimo); sucio(); todo(); botonesHist(); }
+function deshacer() { if (!H.pila.length) return; H.futuro.push(foto()); H.ultimo = H.pila.pop(); aplicarFoto(H.ultimo); sucio(); todo(); botonesHist(); Vista3D.cambio(); }
+function rehacer() { if (!H.futuro.length) return; H.pila.push(foto()); H.ultimo = H.futuro.pop(); aplicarFoto(H.ultimo); sucio(); todo(); botonesHist(); Vista3D.cambio(); }
 function botonesHist() { $('#b-deshacer').disabled = !H.pila.length; $('#b-rehacer').disabled = !H.futuro.length; }
 let tBorrador = 0;
 function sucio() {
   $('#estado').textContent = S.guardadoEn ? 'Cambios sin guardar' : 'Sin guardar';
   clearTimeout(tBorrador);
-  tBorrador = setTimeout(() => lsSet('planta-borrador', { nombre: S.nombre, predio: S.predio, objs: S.objs, docId: S.docId }), 400);
+  tBorrador = setTimeout(() => lsSet('planta-borrador-v2', { nombre: S.nombre, predio: S.predio, objs: S.objs, docId: S.docId }), 400);
 }
 
 /* ============================================================
@@ -698,11 +726,35 @@ function textoEtiqueta(o) {
   if (o.tipo === 'cota') return (o.nombre ? o.nombre + ' · ' : '') + nf(o.w) + ' m';
   return o.nombre || t.n;
 }
+const SALAS = new Set(['sala', 'camara', 'oficina', 'vestuario', 'sala_maq', 'garita', 'tinglado']);
+const halo = 'paint-order:stroke;stroke:var(--hoja);stroke-width:3px;stroke-linejoin:round';
+function etiquetaSala(o, txt) {
+  const a = rad(o.rot), cs = Math.abs(Math.cos(a)), sn = Math.abs(Math.sin(a));
+  const W = o.w * cs + o.h * sn, Hh = o.w * sn + o.h * cs, up = txt.toUpperCase(), k = .62;
+  const fh = Math.min(1.3, Hh * .2, W * .84 / (up.length * k)), fv = Math.min(1.3, W * .2, Hh * .84 / (up.length * k));
+  let ang = 0, fs = fh; if (fv > fh * 1.4) { ang = -90; fs = fv; }
+  if (fs < .28) return '';
+  /* buscar un lugar libre de equipos dentro de la sala */
+  const lw = ang ? fs * 2.2 : up.length * k * fs, lh = ang ? up.length * k * fs : fs * 2.2;
+  const cajaDe = q => { const r2 = rad(q.rot), c2 = Math.abs(Math.cos(r2)), s2 = Math.abs(Math.sin(r2)), ww = q.w * c2 + q.h * s2, hh = q.w * s2 + q.h * c2; return [q.x - ww / 2, q.y - hh / 2, q.x + ww / 2, q.y + hh / 2]; };
+  const obst = S.objs.filter(q => q !== o && TIPOS[q.tipo].capa === 2 && q.tipo !== 'columna' && visible(q) && (q.nivel || 'PB') === (o.nivel || 'PB')).map(cajaDe).filter(b => b[0] < o.x + W / 2 && b[2] > o.x - W / 2 && b[1] < o.y + Hh / 2 && b[3] > o.y - Hh / 2);
+  const libre = (cx, cy) => !obst.some(b => b[0] < cx + lw / 2 && b[2] > cx - lw / 2 && b[1] < cy + lh / 2 && b[3] > cy - lh / 2);
+  const dy = Math.max(0, Hh / 2 - lh / 2 - .6), dx = Math.max(0, W / 2 - lw / 2 - .6);
+  let px = o.x, py = o.y;
+  const cand = [];
+  [0, .5, -.5, 1, -1].forEach(fx => [0, -.5, .5, -.25, .25, -.75, .75, -1, 1].forEach(fy => cand.push([o.x + fx * dx, o.y + fy * dy])));
+  const hall = cand.find(([cx, cy]) => libre(cx, cy)); if (hall) [px, py] = hall;
+  const fs2 = fs * .66, sub = fs >= .42, area = Math.round(o.w * o.h).toLocaleString('es-AR') + ' m²' + (o.nivel === 'PA' ? ' · planta alta' : '');
+  const ital = o.tipo === 'tinglado' ? 'italic ' : '';
+  return `<g transform="translate(${f3(px)} ${f3(py)}) rotate(${ang})"><text y="${f3(sub ? -fs2 * .55 : 0)}" text-anchor="middle" dominant-baseline="central" style="font:${ital}700 ${f3(fs)}px 'Source Sans 3',sans-serif;letter-spacing:.05em;fill:var(--tinta);${halo}">${esc(up)}</text>` +
+    (sub ? `<text y="${f3(fs * .7)}" text-anchor="middle" dominant-baseline="central" style="font:600 ${f3(fs2)}px 'Source Sans 3',sans-serif;fill:var(--tinta2);font-variant-numeric:tabular-nums;${halo}">${area}</text>` : '') + `</g>`;
+}
 function etiqueta(o) {
   const t = TIPOS[o.tipo];
   const ver = o.verNombre ?? !!t.et;
   if (!ver || tenue(o)) return '';
   const txt = textoEtiqueta(o);
+  if (SALAS.has(o.tipo)) return etiquetaSala(o, txt);
   const largo = o.w >= o.h, L = largo ? o.w : o.h, C = largo ? o.h : o.w;
   let ang = normRot(o.rot + (largo ? 0 : 90));
   if (ang > 90) ang -= 180; if (ang <= -90) ang += 180;
@@ -729,7 +781,7 @@ function terreno(exportar) {
     s += `<rect x="${p.x0}" y="${p.y0}" width="${w}" height="${h}" fill="url(#g5)"/>`;
   }
   s += `<rect x="${p.x0}" y="${p.y0}" width="${w}" height="${h}" style="fill:none;stroke:var(--tinta2);stroke-width:1.6;stroke-dasharray:14 6 3 6"/>`;
-  const fs = clamp(14 * pxm(), .8, 3);
+  const fs = exportar ? 1.6 : clamp(14 * pxm(), .8, 3);
   s += `<text x="${f3(p.x0 + w / 2)}" y="${f3(p.y0 - fs * .9)}" text-anchor="middle" style="font:600 ${f3(fs)}px 'Source Sans 3',sans-serif;fill:var(--tinta2)">Predio · ${nf(w, 1)} m</text>`;
   s += `<text x="${f3(p.x0 - fs * .9)}" y="${f3(p.y0 + h / 2)}" text-anchor="middle" transform="rotate(-90 ${f3(p.x0 - fs * .9)} ${f3(p.y0 + h / 2)})" style="font:600 ${f3(fs)}px 'Source Sans 3',sans-serif;fill:var(--tinta2)">${nf(h, 1)} m</text>`;
   return s;
@@ -779,9 +831,14 @@ function ajustarVB() {
   const W = svg.clientWidth, Hh = svg.clientHeight; if (!W || !Hh) return;
   const cy = vb.y + vb.h / 2; vb.h = vb.w * Hh / W; vb.y = cy - vb.h / 2;
 }
+function cajaObjs() {
+  if (!S.objs.length) return S.predio;
+  const e = S.objs.reduce((b, q) => { const r2 = rad(q.rot), c2 = Math.abs(Math.cos(r2)), s2 = Math.abs(Math.sin(r2)), ww = (q.w * c2 + q.h * s2) / 2, hh = (q.w * s2 + q.h * c2) / 2; return { x0: Math.min(b.x0, q.x - ww), y0: Math.min(b.y0, q.y - hh), x1: Math.max(b.x1, q.x + ww), y1: Math.max(b.y1, q.y + hh) }; }, { x0: Infinity, y0: Infinity, x1: -Infinity, y1: -Infinity });
+  const p = S.predio; return { x0: Math.max(e.x0, p.x0), y0: Math.max(e.y0, p.y0), x1: Math.min(e.x1, p.x1), y1: Math.min(e.y1, p.y1) };
+}
 function encuadrar(caja) {
   const W = svg.clientWidth || 800, Hh = svg.clientHeight || 600;
-  const b = caja || S.predio, m = 4;
+  const b = caja || cajaObjs(), m = 4;
   const w = b.x1 - b.x0 + 2 * m, h = b.y1 - b.y0 + 2 * m;
   vb.w = Math.max(w, h * W / Hh); vb.h = vb.w * Hh / W;
   vb.x = (b.x0 + b.x1) / 2 - vb.w / 2; vb.y = (b.y0 + b.y1) / 2 - vb.h / 2;
@@ -1005,6 +1062,7 @@ function inspector() {
       ${campoNum('f-h', o.tipo === 'calle' ? 'Ancho de calzada (m)' : 'Profundidad (m)', o.h, .1, 'min="0.1"')}
       ${campoNum('f-rot', 'Rotación (°)', o.rot, 15)}
       ${t.d3 !== 'nada' ? campoNum('f-alto', 'Altura 3D (m)', o.alto ?? t.alto, .1, 'min="0"') : ''}
+      ${['caja', 'cil', 'cartel'].includes(t.d3) ? campoNum('f-z0', 'Elevación (m)', o.z0 ?? t.z0 ?? 0, .1, 'min="0"') : ''}
       <div class="campo"><label for="f-nivel">Nivel</label><select id="f-nivel"><option value="PB" ${o.nivel !== 'PA' ? 'selected' : ''}>Planta baja</option><option value="PA" ${o.nivel === 'PA' ? 'selected' : ''}>Planta alta</option></select></div>
       <div class="campo"><span>Superficie</span><b style="padding:6px 0;font-variant-numeric:tabular-nums">${nf(sup, sup < 10 ? 2 : 1)} m²</b></div>
     </div>
@@ -1083,6 +1141,7 @@ insp.addEventListener('input', e => {
     case 'f-h': if (n > 0) o.h = f3(n); break;
     case 'f-rot': if (isFinite(n)) o.rot = normRot(n); break;
     case 'f-alto': if (n >= 0) o.alto = f3(n); break;
+    case 'f-z0': if (n >= 0) o.z0 = f3(n); break;
     case 'f-notas': o.notas = v; break;
     case 'f-color': o.c = v; break;
     default: return;
@@ -1135,10 +1194,10 @@ function centrarEn(o) {
    ============================================================ */
 let toastT = 0;
 function aviso(t) { const el = $('#toast'); el.textContent = t; el.classList.add('ver'); clearTimeout(toastT); toastT = setTimeout(() => el.classList.remove('ver'), 1800); }
-function todo() { dibujar(); inspector(); }
+function todo() { dibujar(); inspector(); Vista3D.resaltar(); }
 document.addEventListener('keydown', e => {
   if (e.target.closest('input,textarea,select') || $('#dlg').open) return;
-  if ($('#vista-plano').hidden) return;
+  if ($('#vista-plano').hidden && !(e.key === 'Delete' || e.key === 'Escape')) return;
   const k = e.key.toLowerCase(), mod = e.ctrlKey || e.metaKey;
   if (k === ' ') { G.espacio = true; e.preventDefault(); return; }
   if (mod && k === 'z') { e.preventDefault(); e.shiftKey ? rehacer() : deshacer(); return; }
@@ -1160,8 +1219,9 @@ document.addEventListener('keyup', e => { if (e.key === ' ') G.espacio = false; 
 $('#z-mas').onclick = () => zoom(.75);
 $('#z-menos').onclick = () => zoom(1.33);
 $('#z-todo').onclick = () => encuadrar();
+$('#z-predio').onclick = () => encuadrar(S.predio);
 function ponerNivel(n) { S.nivel = n; document.querySelectorAll('#niveles button').forEach(b => b.setAttribute('aria-pressed', b.dataset.n === n)); }
-$('#niveles').onclick = e => { const b = e.target.closest('button'); if (!b) return; ponerNivel(b.dataset.n); S.sel = new Set([...S.sel].filter(id => { const o = buscarObj(id); return visible(o) && !tenue(o); })); todo(); };
+$('#niveles').onclick = e => { const b = e.target.closest('button'); if (!b) return; ponerNivel(b.dataset.n); S.sel = new Set([...S.sel].filter(id => { const o = buscarObj(id); return visible(o) && !tenue(o); })); todo(); Vista3D.cambio(); };
 $('#t-grilla').onclick = e => { S.grilla = !S.grilla; e.currentTarget.setAttribute('aria-pressed', S.grilla); dibujar(); };
 $('#t-iman').onclick = e => { S.iman = !S.iman; e.currentTarget.setAttribute('aria-pressed', S.iman); aviso(S.iman ? 'Imán activado: 0,5 m y 15°' : 'Imán desactivado'); };
 $('#b-deshacer').onclick = deshacer;
@@ -1170,12 +1230,15 @@ $('#nombreDiseno').addEventListener('input', e => { S.nombre = e.target.value ||
 $('#nombreDiseno').addEventListener('change', confirmar);
 new ResizeObserver(() => { ajustarVB(); dibujar(); }).observe($('#vista-plano'));
 
-document.querySelectorAll('.tabs button').forEach(b => b.addEventListener('click', () => {
-  const es3d = b.id === 'tab-3d';
-  document.querySelectorAll('.tabs button').forEach(x => { x.setAttribute('aria-selected', x === b); x.tabIndex = x === b ? 0 : -1; });
-  $('#vista-plano').hidden = es3d; $('#vista-3d').hidden = !es3d;
-  if (es3d) Vista3D.mostrar(); else { ajustarVB(); dibujar(); }
-}));
+function ponerVista(v) {
+  document.querySelectorAll('.tabs button').forEach(x => { const si = x.dataset.v === v; x.setAttribute('aria-selected', si); x.tabIndex = si ? 0 : -1; });
+  $('#vistas').classList.toggle('mix', v === 'mix');
+  $('#vista-plano').hidden = v === '3d'; $('#vista-3d').hidden = v === '2d';
+  if (v !== '2d') Vista3D.mostrar();
+  if (v !== '3d') requestAnimationFrame(() => encuadrar());
+  lsSet('planta-vista', v);
+}
+document.querySelectorAll('.tabs button').forEach(b => b.addEventListener('click', () => ponerVista(b.dataset.v)));
 
 /* ============================================================
    Guardar, abrir, exportar
@@ -1217,7 +1280,7 @@ function cargarDatos(d, docId = null) {
   reiniciarHist(); ponerNivel('todo'); encuadrar(); inspector();
   $('#estado').textContent = docId ? 'Abierto' : 'Sin guardar';
   if (!$('#vista-3d').hidden) Vista3D.mostrar();
-  lsSet('planta-borrador', { nombre: S.nombre, predio: S.predio, objs: S.objs, docId: S.docId });
+  lsSet('planta-borrador-v2', { nombre: S.nombre, predio: S.predio, objs: S.objs, docId: S.docId });
 }
 
 const dlg = $('#dlg');
@@ -1227,13 +1290,15 @@ dlg.addEventListener('click', e => { if (e.target === dlg || e.target.closest('[
 $('#b-nuevo').onclick = () => abrirDialogo(`<div class="dlg">
   <h2>Nuevo diseño</h2>
   <p class="nota">El plano actual se reemplaza. Si querés conservarlo, guardalo antes. Igual podés recuperarlo desde Abrir si ya estaba guardado.</p>
-  <div class="opcion"><b>Planta actual</b><small>La ampliación de El Pollito Casero: nave, cámaras, balanzas, carga, oficinas, playón, Calle Nueva, camiones y personal.</small><button class="btn prim" data-nuevo="actual">Cargar</button></div>
+  <div class="opcion"><b>Ampliación ordenada</b><small>Tu diseño con faena, cámaras, balanzas, carga, lavado, playón y Calle Nueva, alineado en grilla.</small><button class="btn prim" data-nuevo="v2">Cargar</button></div>
+  <div class="opcion"><b>Anteproyecto original</b><small>La primera versión de la ampliación, antes de sumar la línea de faena.</small><button class="btn prim" data-nuevo="actual">Cargar</button></div>
   <div class="opcion"><b>Predio en blanco</b><small>Un terreno vacío para diseñar desde cero.</small><button class="btn prim" data-nuevo="blanco">Crear</button></div>
   <div class="dims">${['Ancho', 'Largo'].map((n, i) => `<div class="campo"><label for="n-${i}">${n} del terreno (m)</label><input id="n-${i}" type="number" min="10" step="1" value="${i ? 60 : 80}"></div>`).join('')}</div>
   <div class="pie"><button class="btn" data-cerrar>Cancelar</button></div></div>`);
 dlg.addEventListener('click', e => {
   const b = e.target.closest('[data-nuevo]'); if (!b) return;
-  if (b.dataset.nuevo === 'actual') cargarDatos({ nombre: 'Ampliación de planta', predio: { x0: -18, y0: -20, x1: 76, y1: 64 }, objs: plantillaActual() });
+  if (b.dataset.nuevo === 'v2') cargarDatos(JSON.parse(JSON.stringify(DISENO_V2)));
+  else if (b.dataset.nuevo === 'actual') cargarDatos({ nombre: 'Ampliación de planta', predio: { x0: -18, y0: -20, x1: 76, y1: 64 }, objs: plantillaActual() });
   else { const w = Math.max(10, +$('#n-0').value || 80), h = Math.max(10, +$('#n-1').value || 60); cargarDatos({ nombre: 'Nuevo diseño', predio: { x0: 0, y0: 0, x1: w, y1: h }, objs: [] }); }
   dlg.close(); aviso('Diseño nuevo listo');
 });
@@ -1306,12 +1371,36 @@ async function descargar(nombre, blob, alternativa) {
   try { await dl.save({ filename: nombre, data: blob }); aviso('Archivo listo'); }
   catch (err) { if (err && err.code === 'declined') aviso('Descarga cancelada'); else alternativa(); }
 }
+function logoAnidado(x, y, alto, g, n, c) {
+  const L = LOGO.h, b = L.b, f = { g, n, c };
+  return `<svg x="${f3(x)}" y="${f3(y)}" width="${f3(alto * b[2] / b[3])}" height="${f3(alto)}" viewBox="${b.join(' ')}" style="vector-effect:none">` + L.p.map(q => `<path d="${q[0]}" fill="${f[q[1]] || g}" style="vector-effect:none"/>`).join('') + '</svg>';
+}
 function png() {
-  const p = S.predio, m = 6, W = p.x1 - p.x0 + 2 * m, Hh = p.y1 - p.y0 + 2 * m;
-  const ancho = 2600, alto = Math.round(ancho * Hh / W);
+  const ext = S.objs.reduce((b, q) => { const r2 = rad(q.rot), c2 = Math.abs(Math.cos(r2)), s2 = Math.abs(Math.sin(r2)), ww = (q.w * c2 + q.h * s2) / 2, hh = (q.w * s2 + q.h * c2) / 2; return { x0: Math.min(b.x0, q.x - ww), y0: Math.min(b.y0, q.y - hh), x1: Math.max(b.x1, q.x + ww), y1: Math.max(b.y1, q.y + hh) }; }, { x0: Infinity, y0: Infinity, x1: -Infinity, y1: -Infinity });
+  const p = S.objs.length ? { x0: Math.max(ext.x0, S.predio.x0), y0: Math.max(ext.y0, S.predio.y0), x1: Math.min(ext.x1, S.predio.x1), y1: Math.min(ext.y1, S.predio.y1) } : S.predio;
+  const m = 8, W = p.x1 - p.x0 + 2 * m, cab = W * .075, x0 = p.x0 - m, y0 = p.y0 - m - cab, Hh = p.y1 - p.y0 + 2 * m + cab;
+  const ancho = 3000, alto = Math.round(ancho * Hh / W);
   const cs = getComputedStyle(document.documentElement);
-  let s = `<svg xmlns="http://www.w3.org/2000/svg" width="${ancho}" height="${alto}" viewBox="${p.x0 - m} ${p.y0 - m} ${W} ${Hh}"><style>*{vector-effect:non-scaling-stroke}</style>` + cuerpoSVG(true) +
-    `<text x="${p.x0 - m + 1}" y="${p.y0 - m + 2.2}" style="font:700 2px 'Source Sans 3',sans-serif;fill:var(--tinta)">${esc(S.nombre)}</text></svg>`;
+  const fecha = new Date().toLocaleDateString('es-AR', { day: 'numeric', month: 'long', year: 'numeric' });
+  const t = (x, y, txt, est) => `<text x="${f3(x)}" y="${f3(y)}" style="${est}">${txt}</text>`;
+  /* encabezado con la marca */
+  let enc = `<rect x="${f3(x0)}" y="${f3(y0)}" width="${f3(W)}" height="${f3(cab)}" fill="#1a1a1a"/>` +
+    `<polygon points="${f3(x0 + W * .78)},${f3(y0)} ${f3(x0 + W)},${f3(y0)} ${f3(x0 + W)},${f3(y0 + cab)} ${f3(x0 + W * .7)},${f3(y0 + cab)}" fill="#b11e22"/>` +
+    logoAnidado(x0 + cab * .3, y0 + cab * .18, cab * .64, '#d3262b', '#ffffff', '#e23a3f');
+  const tx = x0 + cab * .3 + cab * .64 * LOGO.h.b[2] / LOGO.h.b[3] + cab * .4;
+  enc += `<line x1="${f3(tx - cab * .2)}" y1="${f3(y0 + cab * .22)}" x2="${f3(tx - cab * .2)}" y2="${f3(y0 + cab * .78)}" stroke="#55514e" stroke-width="${f3(cab * .012)}" style="vector-effect:none"/>`;
+  enc += t(tx, y0 + cab * .5, esc(S.nombre), `font:400 ${f3(cab * .3)}px 'DM Serif Display',Georgia,serif;fill:#ffffff`);
+  enc += t(tx, y0 + cab * .76, 'PLANTA GENERAL · ANTEPROYECTO', `font:600 ${f3(cab * .13)}px 'Source Sans 3',sans-serif;letter-spacing:.18em;fill:#c9c5c1`);
+  enc += `<text x="${f3(x0 + W - cab * .3)}" y="${f3(y0 + cab * .46)}" text-anchor="end" style="font:700 ${f3(cab * .15)}px 'Source Sans 3',sans-serif;fill:#ffffff">${esc(fecha)}</text>`;
+  enc += `<text x="${f3(x0 + W - cab * .3)}" y="${f3(y0 + cab * .7)}" text-anchor="end" style="font:600 ${f3(cab * .12)}px 'Source Sans 3',sans-serif;fill:#ffffff">Medidas estimadas · no apto para obra</text>`;
+  /* escala gráfica y norte, sobre el margen inferior */
+  const eb = p.x0, ey = p.y1 + m * .4, seg = 5;
+  let esc2 = '';
+  for (let i = 0; i < 4; i++) esc2 += `<rect x="${f3(eb + i * seg)}" y="${f3(ey)}" width="${seg}" height="1" fill="${i % 2 ? '#ffffff' : '#1a1a1a'}" stroke="#1a1a1a" stroke-width=".15" style="vector-effect:none"/>`;
+  esc2 += [0, 10, 20].map(v => t(eb + v, ey + 2.6, v + (v === 20 ? ' m' : ''), `font:600 1.5px 'Source Sans 3',sans-serif;fill:${cs.getPropertyValue('--tinta').trim()};text-anchor:middle`)).join('');
+  const nx = p.x1 + m * .5, ny = p.y1 + m * .3;
+  esc2 += `<path d="M${nx} ${ny - 2.2}L${nx + 1.3} ${ny + 1.4}L${nx} ${ny + .6}L${nx - 1.3} ${ny + 1.4}Z" fill="#b11e22"/>` + t(nx, ny + 3.6, 'N', `font:700 1.6px 'Source Sans 3',sans-serif;fill:${cs.getPropertyValue('--tinta').trim()};text-anchor:middle`);
+  let s = `<svg xmlns="http://www.w3.org/2000/svg" width="${ancho}" height="${alto}" viewBox="${f3(x0)} ${f3(y0)} ${f3(W)} ${f3(Hh)}"><style>*{vector-effect:non-scaling-stroke}</style>` + cuerpoSVG(true) + enc + esc2 + `</svg>`;
   s = s.replace(/var\((--[\w-]+)\)/g, (_, n) => cs.getPropertyValue(n).trim() || '#888');
   return new Promise((ok, mal) => {
     const img = new Image();
@@ -1322,188 +1411,344 @@ function png() {
 }
 
 /* ============================================================
-   VISTA 3D (three.js), generada desde los mismos elementos
+   VISTA 3D (three.js), generada desde los mismos elementos.
+   Estilo de planta industrial El Pollito Casero: panel sándwich
+   blanco, zócalo oscuro, coronamiento rojo, acero inoxidable.
    ============================================================ */
 const Vista3D = (() => {
   let cargando = null, R3, escena, cam, ctl, raiz, centro = { x: 0, y: 0, r: 50 };
-  const host = $('#gl'), aviso3 = $('#aviso3d');
+  let techos = false, rotulos = true, etqs = [], caja3Sel = null, tRef = 0;
+  const grupos = new Map();
+  const host = $('#gl'), aviso3 = $('#aviso3d'), capaEtq = $('#etq3d');
   const script = src => new Promise((ok, mal) => { const s = document.createElement('script'); s.src = src; s.onload = ok; s.onerror = mal; document.head.appendChild(s); });
   const asegurar = () => cargando || (cargando = script('https://cdn.jsdelivr.net/npm/three@0.147.0/build/three.min.js').then(() => script('https://cdn.jsdelivr.net/npm/three@0.147.0/examples/js/controls/OrbitControls.js')));
-  const colorDe = c => c && c.startsWith('--') ? (tok(c) || '#999999') : (c || '#999999');
+  /* paleta realista, independiente del tema claro u oscuro */
+  const REAL = {
+    '--z-frio': '#2f74a8', '--z-bal': '#e8912d', '--z-carga': '#2e8b4f', '--z-ofi': '#b11e22', '--z-lav': '#128a94', '--z-acc': '#8448a0', '--z-play': '#85807c', '--z-calle': '#4d4a48',
+    '--f1': '#1f6ea6', '--f2': '#d07a10', '--f3': '#22793f', '--f4': '#0c7a84', '--ci': '#c0262b', '--ce': '#5b3fa0', '--rojo': '#b11e22', '--guia': '#e0a500',
+    '--mob': '#dcdad6', '--muro': '#2a2826', '--fino': '#96918c', '--tinta': '#1a1a1a', '--tinta2': '#5e5b58', '--vidrio': '#8cc3dc',
+    '--asfalto': '#4d4c49', '--hormigon': '#c7c4be', '--arbol': '#7d9a5a', '--via': '#f2f0ea', '--pasto': '#93ab6c', '--piso': '#e9e7e3', '--veh': '#f4f4f2', '--ripio': '#d8cfbd'
+  };
+  const colorDe = c => !c ? '#999999' : c.startsWith('--') ? (REAL[c] || tok(c) || '#999999') : c;
+  const ROJO = '#b11e22';
   const mats = new Map();
-  function mat(color, op = 1) {
-    const k = color + '|' + op;
-    if (!mats.has(k)) mats.set(k, new THREE.MeshStandardMaterial({ color: new THREE.Color(color), roughness: .82, metalness: 0, transparent: op < 1, opacity: op, side: op < 1 ? THREE.DoubleSide : THREE.FrontSide }));
+  function mat(color, op = 1, extra) {
+    const k = color + '|' + op + '|' + (extra ? JSON.stringify(extra) : '');
+    if (!mats.has(k)) mats.set(k, new THREE.MeshStandardMaterial(Object.assign({ color: new THREE.Color(color), roughness: .8, metalness: 0, transparent: op < 1, opacity: op, side: op < 1 ? THREE.DoubleSide : THREE.FrontSide, depthWrite: op >= 1 }, extra || {})));
     return mats.get(k);
   }
+  const acero = () => mat('#cfd4d8', 1, { metalness: .55, roughness: .3 });
   const mezcla = (c, base, t) => new THREE.Color(base).lerp(new THREE.Color(c), t).getStyle();
+
+  /* texturas dibujadas en canvas */
+  const texs = new Map();
+  function lienzo(clave, w, h, dib) {
+    if (texs.has(clave)) return texs.get(clave);
+    const c = document.createElement('canvas'); c.width = w; c.height = h; dib(c.getContext('2d'), w, h);
+    const t = new THREE.CanvasTexture(c); t.wrapS = t.wrapT = THREE.RepeatWrapping; t.anisotropy = 4; texs.set(clave, t); return t;
+  }
+  const texPanel = () => lienzo('panel', 128, 128, (g, w, h) => { g.fillStyle = '#f3f2ef'; g.fillRect(0, 0, w, h); g.fillStyle = '#dcdad5'; g.fillRect(0, 0, 3, h); g.fillStyle = '#ebe9e5'; g.fillRect(64, 0, 2, h); });
+  const texChapa = () => lienzo('chapa', 64, 64, (g, w, h) => { const gr = g.createLinearGradient(0, 0, w, 0); gr.addColorStop(0, '#c9cbcc'); gr.addColorStop(.5, '#eceeef'); gr.addColorStop(1, '#c9cbcc'); g.fillStyle = gr; g.fillRect(0, 0, w, h); });
+  const texPasto = () => lienzo('pasto', 256, 256, (g, w, h) => { g.fillStyle = '#6f8a4f'; g.fillRect(0, 0, w, h); let a = 11; for (let i = 0; i < 2600; i++) { a = (a * 16807) % 2147483647; const x = a % w; a = (a * 16807) % 2147483647; const y = a % h; g.fillStyle = i % 3 ? 'rgba(70,100,40,.18)' : 'rgba(220,235,180,.2)'; g.fillRect(x, y, 2, 3); } });
+  function texLogo(fondo, cg, cn, cc, aspecto, franja) {
+    const clave = ['logo', fondo, cg, cn, cc, aspecto.toFixed(2), franja || ''].join('|');
+    if (texs.has(clave)) return texs.get(clave);
+    const W = 1024, H = Math.max(64, Math.round(W / aspecto));
+    const c = document.createElement('canvas'); c.width = W; c.height = H;
+    const g = c.getContext('2d'); g.fillStyle = fondo; g.fillRect(0, 0, W, H);
+    if (franja) { g.fillStyle = franja; g.fillRect(0, H * .84, W, H * .16); }
+    const t = new THREE.CanvasTexture(c); t.anisotropy = 4; texs.set(clave, t);
+    const im = new Image();
+    im.onload = () => {
+      const b = LOGO.h.b, ar = b[2] / b[3];
+      let lh = H * (franja ? .58 : .78), lw = lh * ar;
+      if (lw > W * .9) { lw = W * .9; lh = lw / ar; }
+      g.drawImage(im, (W - lw) / 2, (franja ? H * .42 : H / 2) - lh / 2, lw, lh); t.needsUpdate = true; pintar();
+    };
+    im.src = logoURI('h', cg, cn, cc);
+    return t;
+  }
+
   function caja(g, cx, cy, w, h, z0, alto, m, sombra = true) {
     const o = new THREE.Mesh(new THREE.BoxGeometry(Math.max(w, .02), Math.max(alto, .02), Math.max(h, .02)), m);
     o.position.set(cx, z0 + alto / 2, cy); o.castShadow = sombra; o.receiveShadow = true; g.add(o); return o;
   }
-  function cil(g, cx, cy, rx, ry, z0, alto, m) {
-    const r = Math.min(rx, ry), o = new THREE.Mesh(new THREE.CylinderGeometry(r, r, alto, 28), m);
+  function cil(g, cx, cy, rx, ry, z0, alto, m, seg = 28) {
+    const r = Math.min(rx, ry), o = new THREE.Mesh(new THREE.CylinderGeometry(r, r, alto, seg), m);
     o.scale.set(rx / r, 1, ry / r); o.position.set(cx, z0 + alto / 2, cy); o.castShadow = o.receiveShadow = true; g.add(o); return o;
   }
   function esfera(g, x, y, z, r, m, sy = 1) { const o = new THREE.Mesh(new THREE.SphereGeometry(r, 16, 12), m); o.scale.y = sy; o.position.set(x, z, y); o.castShadow = true; g.add(o); return o; }
+  function texRep(base, rx, ry) { const t = base.clone(); t.needsUpdate = true; t.repeat.set(rx, ry); return t; }
+  /* un paño de muro de panel sándwich con zócalo y coronamiento */
+  function pared(g, cx, cy, largo, esp, alto, horizontal, corona) {
+    const w = horizontal ? largo : esp, h = horizontal ? esp : largo;
+    const m = new THREE.MeshStandardMaterial({ map: texRep(texPanel(), Math.max(1, largo / 1.2), 1), roughness: .7 });
+    caja(g, cx, cy, w, h, 0, alto, m);
+    caja(g, cx, cy, w + .04, h + .04, 0, .45, mat('#3a3835'));
+    caja(g, cx, cy, w + .06, h + .06, alto, .22, mat(corona));
+  }
+  function techo(g, w, h, z, op) {
+    const m = new THREE.MeshStandardMaterial({ map: texRep(texChapa(), Math.max(1, w / .9), 1), roughness: .45, metalness: .35, transparent: op < 1, opacity: op, side: THREE.DoubleSide, depthWrite: op >= 1 });
+    return caja(g, 0, 0, w + .3, h + .3, z, .08, m, op >= 1);
+  }
+
   function construirObj(o, i) {
     const t = TIPOS[o.tipo], g = new THREE.Group();
-    const col = colorDe(o.c || t.c), alto = o.alto ?? t.alto, w = o.w, h = o.h, z0 = t.z0 || 0;
+    const col = colorDe(o.c || t.c), alto = o.alto ?? t.alto, w = o.w, h = o.h, z0 = o.z0 ?? t.z0 ?? 0;
     const base = o.nivel === 'PA' ? NPT_PA : 0;
     const eps = t.capa * .004 + (i % 50) * .0004;
     switch (t.d3) {
       case 'piso': {
-        caja(g, 0, 0, w, h, eps, .04 + (alto > .05 ? alto : 0), mat(col), false);
-        if (o.tipo === 'calle') caja(g, 0, 0, w, .14, eps + .04, .01, mat('#f4f2ee'), false);
-        if (o.tipo === 'senda') for (let x = -w / 2 + .3; x < w / 2 - .1; x += .6) caja(g, x, 0, .3, h - .2, eps + .04, .01, mat('#f4f2ee'), false);
-        if (o.tipo === 'estacionamiento') for (let x = -w / 2; x <= w / 2 + .01; x += 2.5) caja(g, x, -.3, .1, h - .6, eps + .04, .01, mat('#f4f2ee'), false);
+        caja(g, 0, 0, w, h, eps, .04, mat(colorDe(o.c || t.c), 1, { roughness: .95 }), false);
+        const raya = mat('#f2f0ea');
+        if (o.tipo === 'calle') for (let x = -w / 2 + 1; x < w / 2 - 2; x += 5) caja(g, x + 1.5, 0, 3, .15, eps + .04, .01, raya, false);
+        if (o.tipo === 'calle') { caja(g, 0, -h / 2 + .3, w, .12, eps + .04, .01, raya, false); caja(g, 0, h / 2 - .3, w, .12, eps + .04, .01, raya, false); }
+        if (o.tipo === 'playon') { const jm = mat('#a9a6a0'); for (let x = -w / 2 + 4; x < w / 2; x += 4) caja(g, x, 0, .05, h, eps + .04, .005, jm, false); for (let y = -h / 2 + 4; y < h / 2; y += 4) caja(g, 0, y, w, .05, eps + .04, .005, jm, false); }
+        if (o.tipo === 'senda') for (let x = -w / 2 + .3; x < w / 2 - .1; x += .6) caja(g, x, 0, .3, h - .2, eps + .04, .01, raya, false);
+        if (o.tipo === 'estacionamiento') for (let x = -w / 2; x <= w / 2 + .01; x += 2.5) caja(g, x, -.3, .1, h - .6, eps + .04, .01, raya, false);
+        if (o.tipo === 'bascula') caja(g, 0, 0, w - .4, h - .4, eps + .04, .03, acero(), false);
         break;
       }
       case 'zona': caja(g, 0, 0, w, h, .02 + eps, .02, mat(col, .35), false); break;
       case 'retorno': {
         const R0 = w / 2, ri = Math.max(R0 - Math.min(5, R0 * .9), .1);
-        const geo = new THREE.RingGeometry(ri, R0, 40, 1, 0, Math.PI); geo.rotateX(Math.PI / 2);
-        const m = new THREE.Mesh(geo, new THREE.MeshStandardMaterial({ color: new THREE.Color(col), roughness: .9, side: THREE.DoubleSide }));
+        const geo = new THREE.RingGeometry(ri, R0, 48, 1, 0, Math.PI); geo.rotateX(Math.PI / 2);
+        const m = new THREE.Mesh(geo, new THREE.MeshStandardMaterial({ color: new THREE.Color(col), roughness: .95, side: THREE.DoubleSide }));
         m.position.set(0, .045 + eps, -h / 2); m.receiveShadow = true; g.add(m); break;
       }
       case 'sala': {
-        const piso = mezcla(col, colorDe('--piso').startsWith('#2') ? '#3a3836' : '#ffffff', .22);
-        const pared = o.tipo === 'camara' ? '#e9f0f5' : '#eceae6', e = .2, aH = Math.max(alto, .1);
+        const camara = o.tipo === 'camara', e = .22, aH = Math.max(alto, .5);
+        const piso = camara ? '#d9e1e7' : mezcla(col, '#e6e4df', .16);
         if (base > 0) {
           caja(g, 0, 0, w, h, -.35, .35, mat('#bdb8b2'));
-          [[-1, -1], [1, -1], [1, 1], [-1, 1]].forEach(([a, b]) => caja(g, a * (w / 2 - .2), b * (h / 2 - .2), .3, .3, -base, base - .35, mat('#77726e')));
+          [[-1, -1], [1, -1], [1, 1], [-1, 1]].forEach(([a, b]) => caja(g, a * (w / 2 - .2), b * (h / 2 - .2), .3, .3, -base, base - .35, mat('#55524f', 1, { metalness: .4, roughness: .5 })));
         }
-        caja(g, 0, 0, w, h, .01, .06, mat(piso), false);
-        const pm = mat(pared);
-        caja(g, 0, -h / 2 + e / 2, w, e, 0, aH, pm); caja(g, 0, h / 2 - e / 2, w, e, 0, aH, pm);
-        caja(g, -w / 2 + e / 2, 0, e, h - 2 * e, 0, aH, pm); caja(g, w / 2 - e / 2, 0, e, h - 2 * e, 0, aH, pm);
-        caja(g, 0, -h / 2 + e / 2, w, e + .02, aH, .12, mat(col)); caja(g, 0, h / 2 - e / 2, w, e + .02, aH, .12, mat(col));
-        caja(g, -w / 2 + e / 2, 0, e + .02, h, aH, .12, mat(col)); caja(g, w / 2 - e / 2, 0, e + .02, h, aH, .12, mat(col));
+        caja(g, 0, 0, w - .05, h - .05, .01, .05, mat(piso, 1, { roughness: .55 }), false);
+        const corona = camara ? '#2f74a8' : ROJO;
+        pared(g, 0, -h / 2 + e / 2, w, e, aH, true, corona); pared(g, 0, h / 2 - e / 2, w, e, aH, true, corona);
+        pared(g, -w / 2 + e / 2, 0, h - 2 * e, e, aH, false, corona); pared(g, w / 2 - e / 2, 0, h - 2 * e, e, aH, false, corona);
+        if (o.tipo === 'oficina' || o.tipo === 'garita') { /* franja vidriada */
+          const v = mat('#7fb3cc', .55, { metalness: .2, roughness: .15 });
+          caja(g, 0, -h / 2 + e / 2, w * .9, e + .04, aH * .35, aH * .45, v); caja(g, 0, h / 2 - e / 2, w * .9, e + .04, aH * .35, aH * .45, v);
+          caja(g, -w / 2 + e / 2, 0, e + .04, h * .85, aH * .35, aH * .45, v); caja(g, w / 2 - e / 2, 0, e + .04, h * .85, aH * .35, aH * .45, v);
+        }
+        if (techos) techo(g, w, h, aH + .22, 1);
         break;
       }
       case 'tinglado': {
-        const pc = mat('#6f6a66'), n = Math.max(1, Math.round(w / 6.5));
-        for (let k = 0; k <= n; k++) { const x = -w / 2 + .15 + k * (w - .3) / n; caja(g, x, -h / 2 + .15, .25, .25, 0, alto, pc); caja(g, x, h / 2 - .15, .25, .25, 0, alto, pc); }
-        caja(g, 0, 0, w + .4, h + .4, alto, .1, mat(mezcla(col, '#d8d6d2', .25), .6));
+        const pc = mat('#4a4744', 1, { metalness: .5, roughness: .45 }), n = Math.max(1, Math.round(w / 6.5)), nm = Math.max(1, Math.round(h / 6.5));
+        for (let k = 0; k <= n; k++) { const x = -w / 2 + .15 + k * (w - .3) / n; caja(g, x, -h / 2 + .15, .28, .28, 0, alto, pc); caja(g, x, h / 2 - .15, .28, .28, 0, alto, pc); }
+        for (let k = 1; k < nm; k++) { const y = -h / 2 + .15 + k * (h - .3) / nm; caja(g, -w / 2 + .15, y, .28, .28, 0, alto, pc); caja(g, w / 2 - .15, y, .28, .28, 0, alto, pc); }
+        caja(g, 0, -h / 2 + .15, w, .25, alto - .45, .45, pc); caja(g, 0, h / 2 - .15, w, .25, alto - .45, .45, pc);
+        techo(g, w, h, alto, techos ? 1 : .42);
+        caja(g, 0, -h / 2 - .1, w + .3, .08, alto - .15, .3, mat(ROJO)); caja(g, 0, h / 2 + .1, w + .3, .08, alto - .15, .3, mat(ROJO));
         break;
       }
       case 'caja': {
-        let c = mezcla(col, '#dcdfe0', .5);
-        if (o.tipo === 'muro' || o.tipo === 'columna') c = '#cfcac4';
-        if (o.tipo === 'puerta') c = '#a7a19b';
-        if (o.tipo === 'cajones' || o.tipo === 'porton' || o.tipo === 'pallet' || o.tipo === 'autoelevador' || o.tipo === 'zorra') c = mezcla(col, '#ffffff', .8);
-        if (o.tipo === 'cerco') { caja(g, 0, 0, w, Math.max(h, .05), z0, alto, mat('#9a958f', .45)); break; }
-        if (o.tipo === 'rack') { const pm = mat(col); for (let x = -w / 2; x <= w / 2 + .01; x += 1.35) { caja(g, x, -h / 2 + .05, .08, .08, 0, alto, pm); caja(g, x, h / 2 - .05, .08, .08, 0, alto, pm); } [.15, alto * .5, alto - .1].forEach(z => caja(g, 0, 0, w, h, z, .06, mat('#c9c6c1'))); break; }
-        if (o.tipo === 'pallet') { caja(g, 0, 0, w, h, 0, .15, mat('#b08a5a')); caja(g, 0, 0, w * .9, h * .9, .15, alto - .15, mat(c)); break; }
-        caja(g, 0, 0, w, h, z0, Math.max(alto, .03), mat(c));
+        const tp = o.tipo;
+        if (tp === 'muro') { caja(g, 0, 0, w, h, z0, alto, new THREE.MeshStandardMaterial({ map: texRep(texPanel(), Math.max(1, w / 1.2), 1), roughness: .7 })); break; }
+        if (tp === 'columna') { caja(g, 0, 0, w, h, z0, alto, mat('#55524f', 1, { metalness: .45, roughness: .45 })); break; }
+        if (tp === 'puerta') { caja(g, 0, 0, w, Math.max(h, .08), 0, alto, mat('#b9b4ae')); break; }
+        if (tp === 'porton') { /* portón seccional con marco de color */
+          caja(g, 0, 0, w, h + .06, 0, alto, mat('#e2e0dc', 1, { roughness: .5 }));
+          for (let z = .5; z < alto - .1; z += .55) caja(g, 0, 0, w * .96, h + .1, z, .03, mat('#bdb9b4'), false);
+          caja(g, -w / 2, 0, .14, h + .14, 0, alto + .14, mat(col)); caja(g, w / 2, 0, .14, h + .14, 0, alto + .14, mat(col)); caja(g, 0, 0, w + .14, h + .14, alto, .14, mat(col));
+          break;
+        }
+        if (tp === 'cerco') { caja(g, 0, 0, w, Math.max(h, .05), z0, alto, mat('#9a958f', .45)); for (let x = -w / 2; x <= w / 2; x += 2.5) cil(g, x, 0, .04, .04, 0, alto, mat('#6f6a66'), 8); break; }
+        if (tp === 'rack') {
+          const um = mat('#1f5f96', 1, { metalness: .3, roughness: .5 }), vm = mat('#e8912d');
+          for (let x = -w / 2; x <= w / 2 + .01; x += Math.max(1.35, w / Math.max(1, Math.round(w / 2.7)))) { caja(g, x, -h / 2 + .05, .08, .08, 0, alto, um); caja(g, x, h / 2 - .05, .08, .08, 0, alto, um); }
+          [.15, alto * .5, alto - .1].forEach(z => { caja(g, 0, -h / 2 + .05, w, .06, z, .1, vm); caja(g, 0, h / 2 - .05, w, .06, z, .1, vm); });
+          const cm = mat(colorDe(o.c || '--z-frio') === '#2f74a8' ? '#e9e7e3' : col);
+          for (let x = -w / 2 + .6; x < w / 2 - .4; x += 1.25) [.25, alto * .5 + .1].forEach(z => caja(g, x, 0, .9, h * .8, z, Math.min(1.1, alto * .4), cm));
+          break;
+        }
+        if (tp === 'pallet') { caja(g, 0, 0, w, h, 0, .15, mat('#b08a5a')); caja(g, 0, 0, w * .92, h * .92, .15, alto - .15, mat(mezcla(col, '#f0ede8', .35))); break; }
+        if (tp === 'cajones') { for (let z = 0; z < alto - .05; z += .2) caja(g, 0, 0, w, h, z, .19, mat(col, 1, { roughness: .6 })); break; }
+        if (tp === 'zorra' || tp === 'autoelevador') { caja(g, 0, 0, w, h, .05, alto * (tp === 'zorra' ? .25 : .5), mat(col, 1, { roughness: .5 })); if (tp === 'autoelevador') { caja(g, 0, -h / 2 + .45, w, .12, 0, alto * 1.4, mat('#2b2a28')); caja(g, 0, h * .1, w * .8, h * .3, alto * .5, alto * .5, mat('#2b2a28', .35)); } else caja(g, 0, h / 2 - .1, .06, .06, 0, 1.1, mat('#2b2a28')); break; }
+        if (tp === 'subestacion') { caja(g, 0, 0, w, h, 0, alto, mat('#9a9690')); caja(g, 0, 0, w + .6, h + .6, 0, 2, mat('#9a958f', .35)); break; }
+        if (tp === 'balanza' || tp === 'balanza_mesa') { caja(g, 0, 0, w, h, 0, alto, acero()); caja(g, w / 2 + .15, 0, .12, .3, 0, 1.2, mat('#3a3835')); caja(g, w / 2 + .15, 0, .1, .45, 1.2, .3, mat('#1a1a1a')); break; }
+        /* máquinas y equipos: acero inoxidable con tapa del color de la zona */
+        caja(g, 0, 0, w, h, z0, Math.max(alto - .06, .03), acero());
+        caja(g, 0, 0, w + .02, h + .02, z0 + Math.max(alto - .06, .03), .06, mat(col, 1, { roughness: .5 }));
+        if (z0 > 0 && tp !== 'evaporador' && tp !== 'noria') for (const [a, b] of [[-1, -1], [1, 1]]) caja(g, a * (w / 2 - .1), b * (h / 2 - .1), .08, .08, 0, z0, acero());
+        if (tp === 'noria') for (let x = -w / 2 + .3; x < w / 2; x += .6) caja(g, x, 0, .03, .03, z0 - .5, .5, acero(), false);
         break;
       }
-      case 'cil': cil(g, 0, 0, w / 2, h / 2, z0, alto, mat(mezcla(col, '#dcdfe0', .5))); break;
+      case 'cil': { cil(g, 0, 0, w / 2, h / 2, z0, alto, acero()); cil(g, 0, 0, w / 2 + .01, h / 2 + .01, z0 + alto, .05, mat(col)); break; }
       case 'rampa': {
-        const L = Math.hypot(w, alto), m = new THREE.Mesh(new THREE.BoxGeometry(L, .15, h), mat(o.tipo === 'escalera' ? '#bdb8b2' : '#d3d0cb'));
-        m.position.set(0, alto / 2, 0); m.rotation.z = Math.atan2(alto, w); m.castShadow = m.receiveShadow = true; g.add(m); break;
+        const L = Math.hypot(w, alto), m = new THREE.Mesh(new THREE.BoxGeometry(L, .15, h), o.tipo === 'escalera' ? mat('#8d8984', 1, { metalness: .4, roughness: .5 }) : mat('#cfccc6'));
+        m.position.set(0, alto / 2, 0); m.rotation.z = Math.atan2(alto, w); m.castShadow = m.receiveShadow = true; g.add(m);
+        if (o.tipo === 'escalera') { caja(g, 0, -h / 2, w, .05, alto, .9, mat(ROJO)); }
+        break;
+      }
+      case 'cartel': {
+        const prof = Math.max(Math.min(h, .3), .08), aC = Math.max(alto, .3), oscuro = mat('#1a1a1a');
+        const frente = new THREE.MeshStandardMaterial({ map: texLogo('#1a1a1a', '#e0262c', '#ffffff', '#e23a3f', w / aC), roughness: .6 });
+        const m = new THREE.Mesh(new THREE.BoxGeometry(w, aC, prof), [oscuro, oscuro, oscuro, oscuro, oscuro, frente]);
+        m.position.set(0, z0 + aC / 2, 0); m.castShadow = true; g.add(m);
+        caja(g, 0, -prof / 2 - .01, w, .02, z0 - .12, .12, mat(ROJO));
+        if (z0 > 1.5 && !o.adosado) { caja(g, -w * .35, 0, .14, .14, 0, z0, mat('#3a3835')); caja(g, w * .35, 0, .14, .14, 0, z0, mat('#3a3835')); }
+        break;
       }
       case 'camion': {
         const semi = o.tipo === 'semi', L = semi ? 16.5 : 8.2, sx = w / L, sy = h / 2.5;
         const caj = semi ? [0, 13.6] : [0, 5.9], cab = semi ? [13.75, 16.5] : [6.05, 8.2];
-        const cx = a => (a - L / 2) * sx;
-        caja(g, cx((caj[0] + caj[1]) / 2), 0, (caj[1] - caj[0]) * sx, 2.44 * sy, 1.05, alto - 1.05, mat('#f3f3f1'));
-        caja(g, cx((caj[0] + caj[1]) / 2), 0, (caj[1] - caj[0]) * sx * .9, .02, 1.6, .5, mat(col)).position.z = 1.23 * sy;
-        caja(g, cx((cab[0] + cab[1]) / 2), 0, (cab[1] - cab[0]) * sx, 2.3 * sy, .7, 2.3, mat(col));
-        caja(g, cx(cab[1] - .1), 0, .1, 2 * sy, 1.9, .9, mat('#2b3640'));
-        caja(g, 0, 0, w * .96, 1.6 * sy, .45, .5, mat('#3a3836'));
-        const rm = mat('#1e1e1e');
+        const cx = a => (a - L / 2) * sx, lc = (caj[1] - caj[0]) * sx, hc = alto - 1.05;
+        const lado = new THREE.MeshStandardMaterial({ map: texLogo('#f6f6f4', ROJO, '#1a1a1a', ROJO, lc / hc, ROJO), roughness: .5 });
+        const blanco = mat('#f6f6f4', 1, { roughness: .5 });
+        const cuerpo = new THREE.Mesh(new THREE.BoxGeometry(lc, hc, 2.44 * sy), [blanco, blanco, blanco, blanco, lado, lado]);
+        cuerpo.position.set(cx((caj[0] + caj[1]) / 2), 1.05 + hc / 2, 0); cuerpo.castShadow = cuerpo.receiveShadow = true; g.add(cuerpo);
+        caja(g, cx(caj[0] + .02), 0, .06, 2.3 * sy, 1.1, hc - .1, mat('#d9d8d4'));
+        caja(g, cx((cab[0] + cab[1]) / 2), 0, (cab[1] - cab[0]) * sx, 2.3 * sy, .7, 2.3, mat(ROJO, 1, { roughness: .35, metalness: .2 }));
+        caja(g, cx(cab[1] - .05), 0, .1, 2 * sy, 1.85, .95, mat('#22303a', 1, { roughness: .1, metalness: .3 }));
+        caja(g, cx((cab[0] + cab[1]) / 2), 0, (cab[1] - cab[0]) * sx * .7, 2.32 * sy, 2.25, .6, mat('#22303a', 1, { roughness: .1, metalness: .3 }));
+        caja(g, cx(caj[0] + (semi ? 12.2 : 4.9)), 0, .9 * sx, 2 * sy, alto - .05, .55, mat('#e8e8e6'));
+        caja(g, 0, 0, w * .96, 1.6 * sy, .45, .5, mat('#2f2d2b'));
+        const rm = mat('#1c1c1c', 1, { roughness: .9 });
         [cab[1] - .9, caj[1] - 1.2, caj[1] - 2.6].concat(semi ? [caj[1] - 10.6, caj[1] - 11.9] : []).forEach(a => [-1, 1].forEach(sg => {
-          const r = new THREE.Mesh(new THREE.CylinderGeometry(.5, .5, .35, 18), rm); r.rotation.x = Math.PI / 2; r.position.set(cx(a), .5, sg * 1.05 * sy); g.add(r);
+          const r = new THREE.Mesh(new THREE.CylinderGeometry(.5, .5, .35, 20), rm); r.rotation.x = Math.PI / 2; r.position.set(cx(a), .5, sg * 1.05 * sy); r.castShadow = true; g.add(r);
         }));
         break;
       }
       case 'auto': {
-        caja(g, 0, 0, w, h, .3, alto * .45, mat(col));
-        caja(g, o.tipo === 'auto' ? -w * .05 : w * .12, 0, w * (o.tipo === 'auto' ? .5 : .32), h * .92, .3 + alto * .45, alto * .5, mat('#4a5a66'));
+        caja(g, 0, 0, w, h, .3, alto * .45, mat(col, 1, { roughness: .35, metalness: .3 }));
+        caja(g, o.tipo === 'auto' ? -w * .05 : w * .12, 0, w * (o.tipo === 'auto' ? .5 : .32), h * .92, .3 + alto * .45, alto * .5, mat('#2c3a44', 1, { roughness: .15 }));
         if (o.tipo === 'camioneta') caja(g, -w * .27, 0, w * .44, h * .9, .3 + alto * .45, .12, mat(col));
-        const rm = mat('#1e1e1e');
+        const rm = mat('#1c1c1c');
         [-w * .32, w * .32].forEach(a => [-1, 1].forEach(sg => { const r = new THREE.Mesh(new THREE.CylinderGeometry(.33, .33, .25, 16), rm); r.rotation.x = Math.PI / 2; r.position.set(a, .33, sg * h * .48); g.add(r); }));
         break;
       }
       case 'persona': {
-        const esc3 = alto / 1.75;
-        cil(g, 0, 0, .19, .14, .85 * esc3, .62 * esc3, mat(col));
-        cil(g, -0.0, -.08, .08, .08, 0, .85 * esc3, mat('#2f2c2a')); cil(g, 0, .08, .08, .08, 0, .85 * esc3, mat('#2f2c2a'));
-        esfera(g, 0, 0, 1.58 * esc3, .12 * esc3, mat('#d9b08c'));
-        esfera(g, 0, 0, 1.66 * esc3, .13 * esc3, mat(o.tipo === 'persona' ? '#3a3836' : '#ffffff'), .6);
+        const k = alto / 1.75, ropa = o.tipo === 'persona' ? '#4d5a66' : '#f4f4f2', casco = o.tipo === 'supervisor' ? ROJO : o.tipo === 'persona' ? '#e0a500' : '#ffffff';
+        cil(g, 0, -.09, .08, .08, 0, .85 * k, mat('#2f2c2a'), 10); cil(g, 0, .09, .08, .08, 0, .85 * k, mat('#2f2c2a'), 10);
+        cil(g, 0, 0, .2, .14, .82 * k, .65 * k, mat(ropa), 14);
+        caja(g, 0, 0, .05, .3, 1.05 * k, .35 * k, mat(col), false);
+        esfera(g, 0, 0, 1.6 * k, .12 * k, mat('#d9b08c'));
+        esfera(g, 0, 0, 1.68 * k, .135 * k, mat(casco), .6);
         break;
       }
-      case 'arbol': { const r = Math.min(w, h) / 2; cil(g, 0, 0, .15, .15, 0, alto * .45, mat('#6b5440')); esfera(g, 0, 0, alto - r, r, mat(mezcla(col, '#4e7a3a', .4))); break; }
+      case 'arbol': { const r = Math.min(w, h) / 2; cil(g, 0, 0, .15, .15, 0, alto * .45, mat('#6b5440'), 10); esfera(g, 0, 0, alto - r, r, mat('#6f9150')); break; }
       case 'alameda': {
         const r = h / 2, paso = Math.max(h * 1.08, .5), cm = mat('#5f8a48'), tm = mat('#6b5440');
-        for (let x = -w / 2 + r; x <= w / 2 - r + 1e-6; x += paso) { cil(g, x, 0, .14, .14, 0, 2.2, tm); esfera(g, x, 0, alto * .55 + 1, r * .85, cm, (alto * .55) / (r * .85)); }
+        for (let x = -w / 2 + r; x <= w / 2 - r + 1e-6; x += paso) { cil(g, x, 0, .14, .14, 0, 2.2, tm, 8); esfera(g, x, 0, alto * .55 + 1, r * .85, cm, (alto * .55) / (r * .85)); }
         break;
       }
       case 'flecha': {
         const hd = Math.min(h * 1.1, w * .45), tt = h * .2, sh = new THREE.Shape();
         sh.moveTo(-w / 2, -tt); sh.lineTo(w / 2 - hd, -tt); sh.lineTo(w / 2 - hd, -h / 2); sh.lineTo(w / 2, 0); sh.lineTo(w / 2 - hd, h / 2); sh.lineTo(w / 2 - hd, tt); sh.lineTo(-w / 2, tt); sh.lineTo(-w / 2, -tt);
         const geo = new THREE.ShapeGeometry(sh); geo.rotateX(Math.PI / 2);
-        const m = new THREE.Mesh(geo, new THREE.MeshBasicMaterial({ color: new THREE.Color(col), side: THREE.DoubleSide })); m.position.y = .14; g.add(m); break;
+        const m = new THREE.Mesh(geo, new THREE.MeshBasicMaterial({ color: new THREE.Color(col), side: THREE.DoubleSide })); m.position.y = .1; g.add(m); break;
       }
       default: return null;
     }
     g.position.set(o.x, base, o.y); g.rotation.y = -rad(o.rot);
+    g.userData.id = o.id;
     return g;
   }
+
   function iniciar() {
-    R3 = new THREE.WebGLRenderer({ antialias: true });
+    R3 = new THREE.WebGLRenderer({ antialias: true, preserveDrawingBuffer: true });
     R3.setPixelRatio(Math.min(devicePixelRatio, 2)); R3.shadowMap.enabled = true; R3.shadowMap.type = THREE.PCFSoftShadowMap;
     host.appendChild(R3.domElement);
     escena = new THREE.Scene();
-    cam = new THREE.PerspectiveCamera(42, 1, .5, 3000);
+    cam = new THREE.PerspectiveCamera(40, 1, .5, 4000);
     ctl = new THREE.OrbitControls(cam, R3.domElement);
     ctl.maxPolarAngle = Math.PI * .495; ctl.addEventListener('change', pintar);
     new ResizeObserver(ajustar).observe(host);
+    let ini = null;
+    R3.domElement.addEventListener('pointerdown', e => { ini = { x: e.clientX, y: e.clientY }; });
+    R3.domElement.addEventListener('pointerup', e => {
+      if (!ini || Math.hypot(e.clientX - ini.x, e.clientY - ini.y) > 5) return;
+      const r = R3.domElement.getBoundingClientRect(), v = new THREE.Vector2((e.clientX - r.left) / r.width * 2 - 1, -(e.clientY - r.top) / r.height * 2 + 1);
+      const rc = new THREE.Raycaster(); rc.setFromCamera(v, cam);
+      const hit = rc.intersectObjects(raiz.children, true).find(h => { let n = h.object; while (n && !n.userData.id) n = n.parent; return n && n.userData.id && !(TIPOS[buscarObj(n.userData.id)?.tipo]?.capa === 0); });
+      if (!hit) { S.sel.clear(); todo(); return; }
+      let n = hit.object; while (!n.userData.id) n = n.parent;
+      S.sel = new Set([n.userData.id]); todo();
+    });
   }
   function ajustar() { const w = host.clientWidth, h = host.clientHeight; if (!w || !h || !R3) return; R3.setSize(w, h); cam.aspect = w / h; cam.updateProjectionMatrix(); pintar(); }
-  function pintar() { if (R3) R3.render(escena, cam); }
-  function liberar(n) { n.traverse(o => { if (o.geometry) o.geometry.dispose(); }); }
+  const v3 = () => new THREE.Vector3();
+  function pintar() {
+    if (!R3) return;
+    R3.render(escena, cam);
+    const W = host.clientWidth, H = host.clientHeight, p = v3();
+    etqs.forEach(e => {
+      p.copy(e.pos).project(cam);
+      const ver = rotulos && p.z < 1 && Math.abs(p.x) < 1.05 && Math.abs(p.y) < 1.05;
+      e.el.hidden = !ver; if (!ver) return;
+      e.el.style.transform = `translate(${((p.x + 1) / 2 * W).toFixed(1)}px,${((1 - p.y) / 2 * H).toFixed(1)}px) translate(-50%,-100%)`;
+      e.el.style.zIndex = String(1000 - Math.round(p.z * 1000));
+    });
+  }
+  function liberar(n) { n.traverse(o => { if (o.geometry) o.geometry.dispose(); if (o.material && !Array.isArray(o.material) && o.material.map && !mats.has(o.material)) o.material.dispose(); }); }
   function construir() {
     if (raiz) liberar(raiz);
-    escena.clear();
+    escena.clear(); grupos.clear();
     mats.forEach(m => m.dispose()); mats.clear();
     raiz = new THREE.Group(); escena.add(raiz);
-    const oscuro = (tok('--bg') || '#fff').toLowerCase() === '#121212';
-    escena.background = new THREE.Color(oscuro ? '#1d2124' : '#dfe8ee');
-    escena.add(new THREE.HemisphereLight(0xffffff, 0x8a8f80, oscuro ? .55 : .85));
+    escena.background = new THREE.Color('#dfe7ec');
+    escena.fog = new THREE.Fog('#dfe7ec', 260, 900);
+    escena.add(new THREE.HemisphereLight(0xf7f9ff, 0x9a9e8c, 1.0));
     const p = S.predio, cx = (p.x0 + p.x1) / 2, cy = (p.y0 + p.y1) / 2, r = Math.max(p.x1 - p.x0, p.y1 - p.y0) / 2;
-    centro = { x: cx, y: cy, r };
-    const sol = new THREE.DirectionalLight(0xffffff, oscuro ? .55 : .75);
-    sol.position.set(cx + r * .6, r * 1.4, cy - r * .9); sol.target.position.set(cx, 0, cy);
-    sol.castShadow = true; sol.shadow.mapSize.set(2048, 2048);
-    Object.assign(sol.shadow.camera, { left: -r * 1.3, right: r * 1.3, top: r * 1.3, bottom: -r * 1.3, near: 1, far: r * 5 }); sol.shadow.bias = -.0005;
+    const ed = S.objs.filter(q => TIPOS[q.tipo].capa === 1);
+    if (ed.length) { const b = ed.reduce((a, q) => ({ x0: Math.min(a.x0, q.x - Math.max(q.w, q.h) / 2), y0: Math.min(a.y0, q.y - Math.max(q.w, q.h) / 2), x1: Math.max(a.x1, q.x + Math.max(q.w, q.h) / 2), y1: Math.max(a.y1, q.y + Math.max(q.w, q.h) / 2) }), { x0: 1e9, y0: 1e9, x1: -1e9, y1: -1e9 }); centro = { x: (b.x0 + b.x1) / 2, y: (b.y0 + b.y1) / 2, r: Math.max(b.x1 - b.x0, b.y1 - b.y0) / 2 * 1.05 }; }
+    else centro = { x: cx, y: cy, r };
+    const sol = new THREE.DirectionalLight(0xfff6e8, .95);
+    sol.position.set(cx + r * .7, r * 1.5, cy - r * .8); sol.target.position.set(cx, 0, cy);
+    sol.castShadow = true; sol.shadow.mapSize.set(4096, 4096);
+    Object.assign(sol.shadow.camera, { left: -r * 1.25, right: r * 1.25, top: r * 1.25, bottom: -r * 1.25, near: 1, far: r * 5 }); sol.shadow.bias = -.0004; sol.shadow.normalBias = .03;
     escena.add(sol, sol.target);
-    const suelo = caja(raiz, cx, cy, p.x1 - p.x0, p.y1 - p.y0, -.12, .12, mat(oscuro ? '#28301f' : '#cfd9bb'), false);
-    suelo.receiveShadow = true;
-    caja(raiz, cx, cy, (p.x1 - p.x0) * 4, (p.y1 - p.y0) * 4, -.2, .05, mat(oscuro ? '#1a1c19' : '#e9ede2'), false);
-    ordenados().forEach((o, i) => { const g = construirObj(o, i); if (g) raiz.add(g); });
+    const pm = new THREE.MeshStandardMaterial({ map: texRep(texPasto(), (p.x1 - p.x0) / 6, (p.y1 - p.y0) / 6), roughness: 1 });
+    caja(raiz, cx, cy, p.x1 - p.x0, p.y1 - p.y0, -.12, .12, pm, false);
+    caja(raiz, cx, cy, (p.x1 - p.x0) * 5, (p.y1 - p.y0) * 5, -.2, .05, mat('#b9c6a6', 1, { roughness: 1 }), false);
+    ordenados().filter(o => S.nivel !== 'PB' || o.nivel !== 'PA').forEach((o, i) => { const g = construirObj(o, i); if (g) { raiz.add(g); grupos.set(o.id, g); } });
+    /* rótulos de sectores */
+    capaEtq.innerHTML = ''; etqs = [];
+    S.objs.filter(o => TIPOS[o.tipo].capa === 1 && o.verNombre !== false && grupos.has(o.id)).forEach(o => {
+      const el = document.createElement('span'); el.className = 'lbl3' + (o.nivel === 'PA' ? ' pa' : ''); el.textContent = o.nombre || TIPOS[o.tipo].n;
+      capaEtq.appendChild(el);
+      etqs.push({ id: o.id, el, pos: new THREE.Vector3(o.x, (o.nivel === 'PA' ? NPT_PA : 0) + (o.alto ?? TIPOS[o.tipo].alto) + 1.4, o.y) });
+    });
+    resaltar();
+  }
+  function resaltar() {
+    if (!R3) return;
+    if (caja3Sel) { escena.remove(caja3Sel); caja3Sel.geometry.dispose(); caja3Sel = null; }
+    const ids = [...S.sel];
+    etqs.forEach(e => e.el.classList.toggle('sel', S.sel.has(e.id)));
+    if (ids.length === 1 && grupos.has(ids[0])) { caja3Sel = new THREE.BoxHelper(grupos.get(ids[0]), 0xd4161c); escena.add(caja3Sel); }
+    pintar();
   }
   function vista(tipo) {
     const { x, y, r } = centro;
-    if (tipo === 'arriba') { cam.position.set(x, r * 2.3, y + .01); ctl.target.set(x, 0, y); }
-    else if (tipo === 'frente') { cam.position.set(x + r * 1.05, r * .55, y - r * .05); ctl.target.set(x - r * .1, 0, y - r * .15); }
-    else { cam.position.set(x + r * .55, r * .85, y + r * 1.35); ctl.target.set(x, 0, y); }
+    if (tipo === 'arriba') { cam.position.set(x, r * 2.6, y + .01); ctl.target.set(x, 0, y); }
+    else if (tipo === 'frente') { cam.position.set(x + r * 1.25, r * .42, y - r * .55); ctl.target.set(x + r * .35, 2, y - r * .1); }
+    else if (tipo === 'faena') { cam.position.set(x - r * .5, r * .55, y + r * 1.05); ctl.target.set(x - r * .3, 0, y + r * .1); }
+    else { cam.position.set(x + r * .55, r * 1.05, y + r * 1.55); ctl.target.set(x + r * .12, 0, y + r * .05); }
     ctl.update(); pintar();
   }
+  const visible3 = () => !$('#vista-3d').hidden;
   async function mostrar() {
     aviso3.hidden = false; aviso3.textContent = 'Cargando modelo…';
-    try { await asegurar(); } catch (e) { aviso3.textContent = 'No se pudo cargar el visor 3D. Revisá la conexión y volvé a abrir esta pestaña.'; return; }
+    try { await asegurar(); } catch (e) { aviso3.textContent = 'No se pudo cargar el visor 3D. Revisá la conexión y volvé a abrir esta vista.'; return; }
     const primera = !R3;
     if (primera) iniciar();
     construir(); ajustar();
     if (primera) vista('persp'); else pintar();
     aviso3.hidden = true;
   }
+  function cambio() { if (!R3 || !visible3()) return; clearTimeout(tRef); tRef = setTimeout(() => { construir(); pintar(); }, 250); }
+  const alternar = (id, fn) => $(id).addEventListener('click', e => { const v = fn(); e.currentTarget.setAttribute('aria-pressed', v); });
+  alternar('#v-techos', () => { techos = !techos; if (R3) { construir(); pintar(); } return techos; });
+  alternar('#v-rotulos', () => { rotulos = !rotulos; pintar(); return rotulos; });
   $('#v-persp').onclick = () => R3 && vista('persp');
   $('#v-arriba').onclick = () => R3 && vista('arriba');
   $('#v-frente').onclick = () => R3 && vista('frente');
-  return { mostrar };
+  $('#v-faena').onclick = () => R3 && vista('faena');
+  return { mostrar, cambio, resaltar: () => { if (R3 && visible3()) resaltar(); } };
 })();
 
 /* ============================================================
@@ -1512,11 +1757,12 @@ const Vista3D = (() => {
 $('#logo').innerHTML = logoSVG('h', '#d3262b', '#ffffff', '#e23a3f');
 paleta();
 (function iniciarApp() {
-  const b = lsGet('planta-borrador');
+  const b = lsGet('planta-borrador-v2');
   let ok = false;
   if (b && Array.isArray(b.objs) && b.objs.length) { try { cargarDatos(b, b.docId || null); S.guardadoEn = null; ok = true; } catch (e) { } }
-  if (!ok) cargarDatos({ nombre: 'Ampliación de planta', predio: { x0: -18, y0: -20, x1: 76, y1: 64 }, objs: plantillaActual() });
-  $('#estado').textContent = ok ? 'Borrador recuperado' : 'Plantilla: planta actual';
-  requestAnimationFrame(() => { ajustarVB(); encuadrar(); });
+  if (!ok) cargarDatos(JSON.parse(JSON.stringify(DISENO_V2)), 'ampliacion-v2');
+  $('#estado').textContent = ok ? 'Borrador recuperado' : 'Ampliación ordenada';
+  const v = lsGet('planta-vista');
+  requestAnimationFrame(() => { ajustarVB(); encuadrar(); if (v === 'mix' || v === '3d') ponerVista(v); });
 })();
 </script>
