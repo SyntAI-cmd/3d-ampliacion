@@ -1,0 +1,1705 @@
+<!doctype html><html><head><meta charset=utf8><meta name=viewport content="width=device-width,initial-scale=1,viewport-fit=cover"><style>:root{color-scheme:light;box-sizing:border-box;padding-top:env(safe-area-inset-top,0px);padding-bottom:env(safe-area-inset-bottom,0px)}html{scroll-padding-top:env(safe-area-inset-top,0px)}body{margin:0;padding:0;font:14px -apple-system,BlinkMacSystemFont,sans-serif;background:#fff;color:#000}img{max-width:100%}[hidden]:not([hidden=until-found i]){display:none!important}</style></head><body>
+<title>Planta El Pollito Casero</title>
+<meta name="claude:viewport-fit-sides" content="cover">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=DM+Serif+Display&amp;family=Source+Sans+3:wght@400..700&amp;display=swap">
+<style>
+/* Mesa de dibujo: lámina a pantalla completa, rótulo arriba y ficha técnica a la derecha */
+:root{
+  --bg:#ffffff; --hoja:#fbfbfa; --panel:#ffffff; --tinta:#1a1a1a; --tinta2:#5e5b58; --linea:#e0dedb; --suave:#f7f3eb;
+  --rojo:#b11e22; --sobreRojo:#ffffff; --velo:#fbe9e9; --gallo:#1a1a1a;
+  --muro:#1a1a1a; --muroRaya:#7b7774; --piso:#ffffff; --mob:#f6f5f3; --fino:#96918c;
+  --pasto:#e6ead9; --pastoRaya:#bfc9a8; --arbol:#b3c596; --arbol2:#86a067; --ripio:#efe9dc;
+  --asfalto:#c8c6c3; --hormigon:#e6e6e6; --junta:#d0cecb; --via:#ffffff;
+  --veh:#ffffff; --vidrio:#8cc3dc; --guia:#e0a500;
+  --z-frio:#2f74a8; --z-bal:#e8912d; --z-carga:#2e8b4f; --z-ofi:#b11e22; --z-lav:#128a94; --z-acc:#8448a0; --z-play:#85807c; --z-calle:#4d4a48;
+  --f1:#1f6ea6; --f2:#bf6a06; --f3:#22793f; --f4:#0c7a84; --ci:#b11e22; --ce:#5b3fa0;
+  --display:"DM Serif Display",Georgia,serif; --texto:"Source Sans 3","Source Sans Pro","Segoe UI",system-ui,sans-serif;
+}
+@media (prefers-color-scheme:dark){:root:not([data-theme="light"]){
+  --bg:#121212; --hoja:#191919; --panel:#1a1a1a; --tinta:#f4f2ee; --tinta2:#b3aeaa; --linea:#383635; --suave:#262423;
+  --rojo:#d8383d; --sobreRojo:#ffffff; --velo:#3a1c1d; --gallo:#ffffff;
+  --muro:#ece9e4; --muroRaya:#807b77; --piso:#222120; --mob:#2e2c2b; --fino:#77726e;
+  --pasto:#1c2119; --pastoRaya:#333c2b; --arbol:#33432b; --arbol2:#4e6640; --ripio:#27251f;
+  --asfalto:#34322f; --hormigon:#2c2b2a; --junta:#3c3a38; --via:#a5a09b;
+  --veh:#3f3d3b; --vidrio:#4f9dbf; --guia:#e9b93a;
+  --z-frio:#5aa5dc; --z-bal:#f0a64e; --z-carga:#57bd7c; --z-ofi:#ee6a6e; --z-lav:#38b6c0; --z-acc:#b483d0; --z-play:#9b9691; --z-calle:#8c8782;
+  --f1:#6fb6ee; --f2:#f2b45c; --f3:#68d08e; --f4:#4fccd6; --ci:#ff7a7e; --ce:#b9a2f2; color-scheme:dark}}
+:root[data-theme="dark"]{
+  --bg:#121212; --hoja:#191919; --panel:#1a1a1a; --tinta:#f4f2ee; --tinta2:#b3aeaa; --linea:#383635; --suave:#262423;
+  --rojo:#d8383d; --sobreRojo:#ffffff; --velo:#3a1c1d; --gallo:#ffffff;
+  --muro:#ece9e4; --muroRaya:#807b77; --piso:#222120; --mob:#2e2c2b; --fino:#77726e;
+  --pasto:#1c2119; --pastoRaya:#333c2b; --arbol:#33432b; --arbol2:#4e6640; --ripio:#27251f;
+  --asfalto:#34322f; --hormigon:#2c2b2a; --junta:#3c3a38; --via:#a5a09b;
+  --veh:#3f3d3b; --vidrio:#4f9dbf; --guia:#e9b93a;
+  --z-frio:#5aa5dc; --z-bal:#f0a64e; --z-carga:#57bd7c; --z-ofi:#ee6a6e; --z-lav:#38b6c0; --z-acc:#b483d0; --z-play:#9b9691; --z-calle:#8c8782;
+  --f1:#6fb6ee; --f2:#f2b45c; --f3:#68d08e; --f4:#4fccd6; --ci:#ff7a7e; --ce:#b9a2f2; color-scheme:dark}
+html,body{height:100%}
+html{box-sizing:border-box}
+body{margin:0;background:var(--bg);color:var(--tinta);font:15px/1.5 var(--texto);display:flex;flex-direction:column}
+*{box-sizing:border-box}
+button{font:inherit;color:inherit;cursor:pointer}
+:focus-visible{outline:2px solid var(--rojo);outline-offset:2px}
+[hidden]{display:none!important}
+
+.top{position:relative;overflow:hidden;display:flex;align-items:center;gap:10px 26px;flex-wrap:wrap;background:#1a1a1a;color:#fff;padding-block:10px;padding-left:max(18px,env(safe-area-inset-left,0px));padding-right:max(18px,env(safe-area-inset-right,0px))}
+.top::after{content:"";position:absolute;right:0;top:0;bottom:0;width:330px;background:#b11e22;clip-path:path("M330 0H210C150 40 90 52 0 64C110 70 200 70 330 70Z");clip-path:polygon(64% 0,100% 0,100% 100%,0 100%,14% 93%,28% 82%,40% 66%,50% 46%,58% 22%);pointer-events:none}
+.top>*{position:relative;z-index:1}
+.marca{display:flex;align-items:center;gap:18px;min-width:0}
+h1{margin:0;line-height:0;flex:none}
+h1 svg{height:46px;width:auto;display:block}
+.marca p{margin:0;padding-left:18px;border-left:1px solid #55514e;display:flex;flex-direction:column;gap:2px}
+.marca b{font:400 19px/1.1 var(--display)}
+.marca span{font-size:11.5px;letter-spacing:.2em;text-transform:uppercase;color:#c9c5c1;line-height:1.3}
+.tabs{display:flex;gap:6px}
+.tabs button{border:1px solid #55514e;background:transparent;padding:8px 18px;border-radius:8px;font:600 16px/1.2 var(--texto);color:#fff}
+.tabs button:hover{border-color:#fff}
+.tabs button[aria-selected="true"]{background:#b11e22;border-color:#b11e22}
+.tabs button:focus-visible{outline-color:#fff}
+.rotulo{margin:0 0 0 auto;font-size:13px;line-height:1.3;color:#fff;text-align:right}
+
+.app{flex:1;min-height:0;display:grid;grid-template-columns:minmax(0,1fr) 348px;grid-template-rows:minmax(0,1fr)}
+.escena{position:relative;min-height:0;min-width:0;background:var(--hoja);overflow:hidden;grid-column:1;grid-row:1}
+#svg{display:block;position:absolute;inset:0;width:100%;height:100%;touch-action:none;cursor:grab;user-select:none;-webkit-user-select:none}
+#svg:active{cursor:grabbing}
+#gl,#etiquetas{position:absolute;inset:0}
+#gl canvas{display:block;touch-action:none;cursor:grab}
+#etiquetas{pointer-events:none;overflow:hidden}
+
+.capas,.zoom,.vistas3d{position:absolute;display:flex;flex-wrap:wrap;gap:6px;pointer-events:none}
+.capas button,.zoom button,.vistas3d button{pointer-events:auto;border:1px solid var(--linea);background:var(--panel);border-radius:8px;padding:6px 12px;font:600 14.5px/1.3 var(--texto)}
+.capas{top:12px;left:max(12px,env(safe-area-inset-left,0px));right:12px}
+.capas button:hover,.zoom button:hover,.vistas3d button:hover{border-color:var(--tinta2)}
+.capas button{display:flex;align-items:center;gap:8px;color:var(--tinta2)}
+.capas button::before{content:"";width:13px;height:13px;border:2px solid var(--tinta2);border-radius:3px;flex:none}
+.capas button[aria-pressed="true"]{color:var(--tinta)}
+.capas button[aria-pressed="true"]::before{background:var(--rojo);border-color:var(--rojo);box-shadow:inset 0 0 0 2px var(--panel)}
+.capas button.fuerte[aria-pressed="true"]{background:var(--rojo);border-color:var(--rojo);color:var(--sobreRojo)}
+.capas button.fuerte[aria-pressed="true"]::before{background:var(--sobreRojo);border-color:var(--sobreRojo);box-shadow:inset 0 0 0 2px var(--rojo)}
+.vistas3d button{font-size:13.5px!important;padding:6px 9px!important}
+.zoom{bottom:12px;right:12px}
+.zoom button{min-width:34px;text-align:center}
+.vistas3d{bottom:12px;left:max(12px,env(safe-area-inset-left,0px));right:12px}
+.vistas3d button[aria-pressed="true"]{background:var(--tinta);border-color:var(--tinta);color:var(--panel)}
+.refs{border-radius:8px!important;position:absolute;left:max(12px,env(safe-area-inset-left,0px));bottom:12px;margin:0;padding:8px 12px;list-style:none;background:var(--panel);border:1px solid var(--linea);border-radius:5px;font-size:13px;line-height:1.55;color:var(--tinta2);pointer-events:none}
+.refs li{display:flex;align-items:center;gap:9px}
+.refs i{width:24px;height:0;border-top:4px solid var(--c);flex:none}
+.refs i.d{border-top-style:dashed;border-top-width:3px}
+.aviso{position:absolute;inset:0;margin:0;display:grid;place-items:center;background:var(--hoja);color:var(--tinta2);padding:24px;text-align:center}
+
+.panel{grid-column:2;grid-row:1;background:var(--panel);border-left:1px solid var(--linea);overflow-y:auto;min-height:0;padding-block:22px 26px;padding-left:20px;padding-right:max(20px,env(safe-area-inset-right,0px))}
+.panel h2{font:400 29px/1.08 var(--display);margin:0;text-wrap:balance}
+.panel h2::before{content:"";display:block;width:34px;height:5px;border-radius:3px;background:var(--rojo);margin-bottom:12px}
+.panel h3{font:600 16px/1.2 var(--texto);margin:22px 0 8px;color:var(--rojo)}
+.panel p{margin:8px 0 0}
+.panel ul{margin:0;padding:0;list-style:none}
+.lista li+li{border-top:1px solid var(--linea)}
+.lista button{display:grid;grid-template-columns:14px minmax(0,1fr) auto;gap:10px;align-items:center;width:100%;text-align:left;background:none;border:0;padding:8px 4px;border-radius:3px}
+.lista button:hover{background:var(--velo)}
+.lista i,.ficha .tag i{width:14px;height:14px;border-radius:4px;background:color-mix(in srgb,var(--c) 45%,transparent);border:2px solid var(--c);display:block}
+.lista span{font-weight:500;line-height:1.25}
+.lista small{font-size:13px;color:var(--tinta2);font-variant-numeric:tabular-nums}
+.ficha .volver{background:none;border:0;padding:4px 0;margin-bottom:8px;color:var(--tinta2);font-weight:500;text-decoration:underline;text-underline-offset:3px}
+.ficha .volver:hover{color:var(--tinta)}
+.ficha .tag{display:flex;gap:9px;align-items:center;color:var(--tinta2);font-size:13px;margin:0 0 6px}
+.datos{background:var(--suave);border-radius:10px;display:grid;grid-template-columns:auto minmax(0,1fr);gap:5px 14px;margin:14px 0 0;padding:12px 14px;font-variant-numeric:tabular-nums}
+.datos dt{color:var(--tinta2)} .datos dd{margin:0;font-weight:600}
+.ficha li{padding-left:16px;position:relative;line-height:1.42}
+.ficha li+li{margin-top:7px}
+.ficha li::before{content:"";position:absolute;left:0;top:.56em;width:7px;height:2px;background:var(--c)}
+.nota{font-size:13px;color:var(--tinta2);line-height:1.45}
+
+.lbl{position:absolute;left:0;top:0;pointer-events:auto;border:0;background:rgba(26,26,26,.92);color:#fff;font:600 13.5px/1.15 var(--texto);padding:6px 10px;border-radius:6px;white-space:nowrap;will-change:transform}
+.lbl::after{content:"";position:absolute;left:50%;top:100%;width:2px;height:13px;margin-left:-1px;background:rgba(26,26,26,.92)}
+.lbl:hover,.lbl.sel{background:#b11e22}
+.lbl:hover::after,.lbl.sel::after{background:#b11e22}
+
+.panel{position:relative;isolation:isolate}
+.galloAgua{position:sticky;bottom:-26px;height:0;pointer-events:none;z-index:-1}
+.galloAgua svg{position:absolute;right:-46px;bottom:-26px;width:230px;height:auto;opacity:.06}
+.galloAgua path{fill:var(--gallo)}
+.entrada{color:var(--tinta2)}
+
+/* ---- lámina SVG ---- */
+.pasto{fill:var(--pasto)} .pastoRaya{stroke:var(--pastoRaya);stroke-width:1.4;fill:none} .ripio{fill:var(--ripio)}
+.arbol{fill:var(--arbol);stroke:var(--arbol2);stroke-width:1} .arbol2{fill:var(--arbol2)} .mata{fill:var(--arbol);stroke:var(--arbol2);stroke-width:1}
+.asfalto{fill:var(--asfalto)} .hormigon{fill:var(--hormigon)} .juntaRaya{stroke:var(--junta);fill:none;stroke-width:1.5} .cantero{fill:var(--arbol)}
+.via{stroke:var(--via);stroke-width:2.5} .linea{stroke:var(--via);stroke-width:3.5} .senda{fill:var(--via)}
+.guia{fill:none;stroke:var(--guia);stroke-width:4.5;stroke-linecap:round}
+.piso{fill:var(--piso)} .pisoPA{fill:var(--hoja)}
+.rampa{fill:var(--hormigon);stroke:var(--fino);stroke-width:1}
+.muro{fill:url(#hMuro);stroke:var(--muro);stroke-width:2.2} .muroBg{fill:var(--piso)} .muroRaya{stroke:var(--muroRaya);stroke-width:2}
+.pir{fill:url(#hPir);stroke:var(--z-frio);stroke-width:1.6} .pirBg{fill:var(--piso)} .pirRaya{fill:none;stroke:var(--z-frio);stroke-width:1}
+.tabPA{fill:var(--muro)} .tabique{fill:none;stroke:var(--muro);stroke-width:1.5;stroke-dasharray:8 4}
+.vano{fill:var(--piso);stroke:none} .hojaF{fill:var(--muro)} .hoja{stroke:var(--muro);stroke-width:1.5;fill:none} .giro{fill:none;stroke:var(--fino);stroke-width:1} .giroP{fill:none;stroke:var(--muro);stroke-width:1.2;stroke-dasharray:6 4}
+.abrigo{fill:var(--muro)} rect.nivel{fill:url(#hPeligro);fill-opacity:.55;stroke:var(--muro);stroke-width:1} .pelA{fill:var(--piso)} .pelB{fill:var(--guia)}
+.col{fill:var(--muro)} .mob{fill:var(--mob);stroke:var(--fino);stroke-width:1} .fino{stroke:var(--fino);stroke-width:.9;fill:none} .finoL{stroke:var(--muro);stroke-width:1.4;fill:none}
+.equipo{fill:var(--mob);stroke:var(--muro);stroke-width:1.3} .equipo2{fill:color-mix(in srgb,var(--z-lav) 35%,var(--piso));stroke:var(--muro);stroke-width:1.3} .fan{fill:none;stroke:var(--muro);stroke-width:.9} .rayo{fill:var(--guia)}
+.balFondo{fill:color-mix(in srgb,var(--z-bal) 24%,transparent);stroke:var(--z-bal);stroke-width:1.6;stroke-dasharray:7 4} .balanza{fill:var(--piso);stroke:var(--muro);stroke-width:2} .balDisco{fill:none;stroke:var(--muro);stroke-width:1.4}
+.pulmon{fill:none;stroke:var(--guia);stroke-width:2} .divisor{stroke:var(--z-carga);stroke-width:2.2;stroke-dasharray:14 7} .canaleta{fill:none;stroke:var(--z-lav);stroke-width:3;stroke-dasharray:3 3}
+.escal{fill:var(--mob);stroke:var(--muro);stroke-width:1.3} .cerco{stroke:var(--fino);stroke-width:2;stroke-dasharray:2 7;stroke-linecap:round;fill:none}
+.proy{fill:none;stroke:var(--tinta2);stroke-width:1.3;stroke-dasharray:12 5 2 5;pointer-events:none} .proy2{fill:none;stroke:var(--z-ofi);stroke-width:2;stroke-dasharray:12 6;pointer-events:none}
+.atrio{fill:color-mix(in srgb,var(--z-carga) 34%,var(--hoja));stroke:var(--vidrio);stroke-width:4;pointer-events:none}
+.cono{stroke-width:2;stroke-dasharray:9 5;fill-opacity:.26}.v1{fill:var(--ce);stroke:var(--ce)}.v2{fill:var(--f2);stroke:var(--f2)}.v3{fill:var(--f3);stroke:var(--f3)}.v4{fill:var(--f1);stroke:var(--f1)}
+.ojo circle{fill:var(--rojo);stroke:var(--hoja);stroke-width:2}
+.vidrio{fill:var(--vidrio);stroke:var(--muro);stroke-width:1}
+.veh{fill:var(--veh);stroke:var(--muro);stroke-width:1.5} .vehf{fill:none;stroke:var(--fino);stroke-width:.9} .vehv{fill:var(--muro)}
+.zona{cursor:pointer;outline:none} .zf{fill:var(--c);fill-opacity:.17;stroke:none;transition:fill-opacity .15s}
+.zona[data-id="playon"] .zf,.zona[data-id="calle"] .zf{fill-opacity:.04}
+.zona[data-id="porton"] .zf{fill-opacity:.4}
+.zona[data-id="muelles"] .zf{fill-opacity:.12}
+.zona:hover .zf{fill-opacity:.36}
+.zona.sel .zf{fill-opacity:.42;stroke:var(--c);stroke-width:4}
+.zona:focus-visible .zf{stroke:var(--rojo);stroke-width:4}
+.mob,.equipo,.equipo2,.balanza,.balFondo,.balDisco,.fino,.finoL,.pulmon,.col,.evap,.escal,.veh,.vehf,.vehv,.linea,.guia,.canaleta,.divisor,.hoja{pointer-events:none}
+.t{font-family:var(--texto);text-anchor:middle;dominant-baseline:middle;fill:var(--tinta);pointer-events:none;font-weight:600}
+.tz{font-size:18.5px;font-weight:700;letter-spacing:.01em} .tz2{font-size:14px;font-weight:700;letter-spacing:.01em} .tz3{font-size:15px;font-weight:700} .ts{font-size:12.5px;font-weight:500;fill:var(--tinta2)} .tmin{font-size:10.8px;font-weight:500;fill:var(--tinta2)} .tc{font-size:12px;font-weight:500} .tb{font-size:15px} .tnum{font-size:25px;font-weight:700;fill:var(--via)} .tnv{font-size:12.5px;text-anchor:start} .ti{text-anchor:start}
+.rot .t,.tz,.tz2{paint-order:stroke;stroke:var(--hoja);stroke-width:3.5px;stroke-linejoin:round}
+.cota{stroke:var(--tinta2);stroke-width:1} .tick{stroke:var(--tinta);stroke-width:2} .eje{stroke:var(--tinta2);stroke-width:1;stroke-dasharray:9 3 2 3} .burb{fill:var(--hoja);stroke:var(--tinta2);stroke-width:1.3} .nvl{fill:var(--tinta)}
+.escA{fill:var(--tinta);stroke:var(--tinta);stroke-width:1} .escB{fill:var(--hoja);stroke:var(--tinta);stroke-width:1}
+.flujo{fill:none;stroke-width:6.5;stroke-linecap:butt} .flujo.halo{stroke:var(--hoja);stroke-width:11;opacity:.75}
+.flujo.f1{stroke:var(--f1)} .flujo.f2{stroke:var(--f2)} .flujo.f3{stroke:var(--f3)} .flujo.f4{stroke:var(--f4)}
+.flujo.f1,.flujo.f2,.flujo.f3,.flujo.f4{stroke-dasharray:17 5;animation:correr 1.1s linear infinite}
+@keyframes correr{to{stroke-dashoffset:-22}}
+.mk-f1{fill:var(--f1)} .mk-f2{fill:var(--f2)} .mk-f3{fill:var(--f3)} .mk-f4{fill:var(--f4)} .mk-ci{fill:var(--ci)} .mk-ce{fill:var(--ce)}
+.ruta{fill:none;stroke-width:5} .ri{stroke:var(--ci)} .re{stroke:var(--ce)} .rv{stroke:var(--ci);stroke-width:3.5;stroke-dasharray:8 6}
+.pasoT{font:700 16px var(--texto);text-anchor:middle;dominant-baseline:central;fill:var(--hoja)}
+.noint{pointer-events:none} .capa{transition:opacity .25s} .capa.off{opacity:0;visibility:hidden}
+#svg.conPA #capa-pb,#svg.conPA #capa-flujo{opacity:.3}
+#svg.conPA #capa-pb.off,#svg.conPA #capa-flujo.off,#svg.conPA #proyOfi{opacity:0}
+
+@media (max-width:900px){
+  html,body{height:auto;min-height:100%}
+  .app{grid-template-columns:minmax(0,1fr);grid-template-rows:auto auto}
+  .escena{height:68vh;min-height:430px;grid-row:1}
+  .panel{grid-column:1;grid-row:2;border-left:0;border-top:1px solid var(--linea);padding-left:max(16px,env(safe-area-inset-left,0px));padding-right:max(16px,env(safe-area-inset-right,0px));overflow:visible}
+  .rotulo{display:none}
+  .top::after{width:150px}
+  .galloAgua{display:none}
+  .capas button,.zoom button,.vistas3d button{font-size:14px;padding:4px 8px}
+  .refs{display:none}
+  .vistas3d{flex-wrap:nowrap;overflow-x:auto;pointer-events:auto;padding-bottom:2px}
+  .vistas3d button{flex:none}
+  .lbl{font-size:12px;padding:3px 6px}
+}
+@media (prefers-reduced-motion:reduce){.flujo{animation:none!important}.capa,.zf{transition:none}}
+
+</style>
+<header class="top">
+  <div class="marca">
+    <h1 id="logo" aria-label="El Pollito Casero"></h1>
+    <p><b>Ampliación de planta</b><span>Anteproyecto</span></p>
+  </div>
+  <div class="tabs" role="tablist" aria-label="Vistas">
+    <button role="tab" id="tab-plano" aria-controls="vista-plano" aria-selected="true">Plano 2D</button>
+    <button role="tab" id="tab-modelo" aria-controls="vista-modelo" aria-selected="false" tabindex="-1">Modelo 3D</button>
+  </div>
+  <p class="rotulo">Medidas estimadas por foto y boceto.<br>No apto para obra.</p>
+</header>
+<main class="app">
+  <section class="escena" id="vista-plano" role="tabpanel" aria-labelledby="tab-plano">
+    <svg id="svg" xmlns="http://www.w3.org/2000/svg" role="group" aria-label="Plano en planta de la ampliación" preserveAspectRatio="xMidYMid meet"></svg>
+    <div class="capas" role="group" aria-label="Capas del plano" id="capas"></div>
+    <div class="zoom" role="group" aria-label="Encuadre">
+      <button id="z-mas" aria-label="Acercar">+</button><button id="z-menos" aria-label="Alejar">−</button>
+      <button id="z-planta">Planta</button><button id="z-predio">Predio</button>
+    </div>
+    <ul class="refs" id="refs"></ul>
+  </section>
+  <section class="escena" id="vista-modelo" role="tabpanel" aria-labelledby="tab-modelo" hidden>
+    <div id="gl"></div>
+    <div id="etiquetas"></div>
+    <div class="capas" role="group" aria-label="Capas del modelo" id="capas3d"></div>
+    <div class="vistas3d" role="group" aria-label="Vistas de cámara" id="vistas3d"></div>
+    <p class="aviso" id="aviso3d">Cargando modelo…</p>
+  </section>
+  <aside class="panel" id="panel" aria-live="polite"></aside>
+</main>
+<script src="https://cdn.jsdelivr.net/npm/three@0.147.0/build/three.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/three@0.147.0/examples/js/controls/OrbitControls.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/three@0.147.0/examples/js/loaders/SVGLoader.js"></script>
+<script>
+'use strict';
+/* Logo oficial: g = gallo, n = El Pollito, c = Casero */
+const LOGO = {"h":{"b":[56.8,39.4,482.02,176.89],"p":[["M307.35,141.09c-.39,0-1.76-.34-1.72-1.52,0-.93,1.06-1.34,1.5-1.68.94-.72,2.45-2.75,2.45-4.07l.03-38.11c0-1.41-1.36-3.33-2.25-4.1l-1.6-1.34c-.93-.85.96-1.75,1.52-2.03,2.62-1.3,10.15-3.11,12.8-3.72.48-.11.94.25.94.75l.09,48.8c0,1.1,1.32,3.08,2.08,3.73,0,0,1.01.94,1.08,1.36.18,1.02-.55,1.83-1.15,1.83l-15.78.1Z","n"],["M285.22,115.85l-9.4.31.27,18.88c6.13.63,11.6.93,16.82-1.53,5.05-2.37,6.82-9.66,10.2-9.01.83.16,1.66,2.44,1.39,3.38l-3.7,12.97-44.71.17-.83-1.47c-.65-1.14,6-2.43,5.98-7.9l-.12-34.93c-.02-5.36-4.78-5.07-5.91-7.33-.32-.63,1.35-1.77,2.13-1.77,14.74-.05,28.21-.75,43.2-1.97l.74,12.95c.04.76-1.94,2.02-2.49,1.65-4.48-3-1.9-10.59-22.86-7.52l-.13,17.58,9.71-.59c4.25-.26,4.56-9.06,8.88-5.24l-.02,15.49c0,.69-1.84,1.92-2.42,1.69-2.86-1.14-2.97-5.95-6.75-5.82Z","n"],["M359.41,137.36s1.73.32,1.78,1.53c.06,1.46-.5,1.86-.76,2.12l-23.01-.02c-1.96-3.65,4.7-3.2,4.7-8.5v-36.83c0-4.85-5.48-5.68-5.15-6.55l.84-2.23,26.15-.14c5.12.7,10.14,1.89,13.48,6.14,4.82,6.15,4.5,16.06-1.46,21.4-5.76,5.17-13.39,5.9-21.13,4.68l-.04,12.87c0,2.66,1.59,5.17,4.62,5.55ZM366.23,109.49c2.06-4.7,1.91-10.48-.83-14.45-2.31-3.35-6.79-3.56-10.59-2.44l.05,20.26c3.81,2.24,9.43,1.04,11.37-3.38Z","n"],["M306.38,185.85c3.24,4.92,8.41,6.56,13.57,6.23,10.03-.63,12.04-9.42,15.06-8.41,2.47.83.65,7.42-4.61,10.93-11.61,7.74-28.57,6.1-37.38-5.33-10.18-13.21-4.43-32.29,10.29-39.19,9.06-4.24,18.23-3.49,27.54-.69,1.19.36,3.73-.58,3.86,1.99l.49,10.1c.04.85-.98,2.45-1.78,2.72-3.63,1.21-3.36-9.3-13.13-10.99-5.1-.89-10.47.94-13.65,5.57-5.3,7.74-5.61,18.94-.25,27.07Z","c"],["M517.9,141.92c-11.56-.02-19.02-8.28-19.09-19.26-.05-8.94,4.65-16.81,13.56-19.42,6.54-1.92,14.01-.79,19.56,3.6,6.68,5.29,8.45,14.5,5.53,22.43-2.81,7.65-10.38,12.66-19.56,12.65ZM523.2,110.99c-1.25-2.22-3.14-3.71-6.02-3.32-3.68.49-5.09,4.64-5.57,7.8-.63,4.17-.74,8.62.1,12.76.72,3.52,2.58,8.36,6.89,8.36,2.65,0,4.41-2.23,5.38-4.46,1.38-3.18,1.71-6.81,1.59-10.24-.1-2.87-.55-7.66-2.37-10.89Z","n"],["M484.21,195.41c-10.03-1.01-16.37-8.61-16.86-18.26-.31-6.08,1.68-11.96,5.61-16.02,4.34-4.49,10.42-6.17,16.68-5.62,10.01.88,17.15,8.4,17.63,18.32.64,13.04-9.74,22.92-23.06,21.58ZM487,160.4c-7.68-.14-9.94,15.79-5.13,26.47.93,2.06,3.88,3.53,5.81,3.42,9.26-.56,9.57-29.71-.68-29.89Z","c"],["M397.53,141.71c-11.46.06-18.51-8.22-18.61-19.02-.12-11.81,8.34-20.78,20.05-20.19,11.54.58,19.08,10.88,17.27,22.72-1.45,9.51-8.44,16.44-18.71,16.49ZM397.5,107.53c-1.44-.01-4.13,1.76-4.65,3.43-3.29,10.47-1.49,26.06,5.3,25.8,8.43-.31,8.28-29.15-.65-29.23Z","n"],["M359.41,190.98c-.17-.35-.64-.41-.91-.14-4.67,4.53-11.26,6.61-16.81,2.31-2.67-2.06-3.62-5.62-3.21-9,1.04-8.63,10.6-10.03,19.74-12.63.26-.07.43-.32.42-.59l-.39-7.19c-.11-2.11-3.33-3.56-5.02-3.32-5.58.81-2.15,7.86-7.18,9.4-1.99.61-4.84-.21-5.68-2.37-2.84-7.35,9.44-14.18,20.99-11.24,4.57,1.17,8.22,5.14,8.24,10.13l.07,18.71c0,.9.35,3.25,1.12,3.31l3.59.29c.35.03.58.36.52.7-.82,4.08-5.4,6.21-9.39,5.98-2.69-.16-4.52-1.25-6.1-4.37ZM358.53,185.78l.21-9.7c0-.38-.36-.67-.73-.57-3.54,1.01-6.94,2.62-8.09,5.84-1.04,2.91.51,5.78,2.57,6.77,1.55.74,6-.28,6.04-2.34Z","c"],["M418.57,182.79c3.81,5.98,11.48,5.63,15.83,1.35.36-.35,1.45-1.17,2.45-.65.93.56.35,2.33.35,2.33-3.26,6.86-9.59,10.28-16.76,9.54-6.79-.52-12.44-5.47-14.29-12.56-1.59-6.08-1.01-12.62,2.04-18.15,4.32-7.84,13.5-11.45,21.77-7.81,4.99,2.2,7.86,7.7,7.03,13.28-.19,1.26-1.5,3.38-4.19,3.47l-16.66,1.84c.29,1.85,1.08,5.21,2.43,7.34ZM415.92,171.27c3.15-.29,7.32,0,9.85-1.71,3.14-2.13,1.14-7.93-2.14-9.37-3.79-1.67-7.5,3.83-7.71,11.09Z","c"],["M385.46,163.25c-1.53,7.82,22.89,6.53,17.6,23.52-2.95,9.47-15.67,10.71-25.73,6.19-.64-.29-1.07-.91-1.14-1.62l-.73-7.3c-.07-.7.31-2.25,1.78-2.35,3.32-.22,3.02,8.67,11.7,8.98,1.99.07,4.25-1.45,4.79-3.17.44-1.39-.52-4.39-1.99-5.13l-9.1-4.56c-5.12-2.57-7.6-7.75-6.42-13.17,1.1-5.05,5.91-9.84,11.97-9.14l12.08,1.39c.54.06.97.5,1.02,1.04l.82,8.48c.05.54-.35,1.02-.9,1.07-4.83.46-4.1-7.93-11.67-7.6-1.54.07-3.78,1.8-4.09,3.35Z","c"],["M437.61,141.09c-.39,0-1.76-.34-1.72-1.52,0-.93,1.06-1.34,1.5-1.68.94-.72,2.45-2.75,2.45-4.07l.03-38.11c0-1.41-1.36-3.33-2.25-4.1l-1.6-1.34c-.93-.85.96-1.75,1.52-2.03,2.62-1.3,10.15-3.11,12.8-3.72.48-.11.94.25.94.75l.09,48.8c0,1.1,1.32,3.08,2.08,3.73,0,0,1.01.94,1.08,1.36.18,1.02-.55,1.83-1.15,1.83l-15.78.1Z","n"],["M418.06,141.09c-.39,0-1.76-.34-1.72-1.52,0-.93,1.06-1.34,1.5-1.68.94-.72,2.45-2.75,2.45-4.07l.03-38.11c0-1.41-1.36-3.33-2.25-4.1l-1.6-1.34c-.93-.85.96-1.75,1.52-2.03,2.62-1.3,10.15-3.11,12.8-3.72.48-.11.94.25.94.75l.09,48.8c0,1.1,1.32,3.08,2.08,3.73,0,0,1.01.94,1.08,1.36.18,1.02-.55,1.83-1.15,1.83l-15.78.1Z","n"],["M491.02,133.14c2.28,2.11,5.54-.21,8.41.27,2.27.38-1.65,8.84-11.96,8.04-5.78-.45-9.72-4.61-9.74-10.51l-.09-21.97-4.07-.55c-.74-.1-.23-2.78.14-3.34,10.88-4.25,9.66-15.11,15.47-12.63l.1,11.04,9.26.07c.41,1.29.4,3.91-.02,5.29l-9.22.15v19.89c0,1.15.92,3.5,1.72,4.25Z","n"],["M453.39,187.31c0,3.05,2.69,3.03,5.25,5.22.5.43.63,2.24-1.72,2.23l-16.82.03c-1.49-.04-2.06-.57-2.01-1.06.25-2.88,4-2.63,4-6.27l-.04-21.87c0-.84-.35-1.65-.96-2.23l-2.75-2.63c-.43-.41.79-1.59,1.84-2.05,3.26-1.43,7.07-2.76,10.28-3.43.72-.15,1.44.25,1.69.94.37,1.04.67,2.07.81,3.2.19,1.58.17,3.18.19,4.78,1.88-3.52,3.44-6.87,7.29-8.32,1.72-.65,4.92-.24,6.13.84,2.63,2.36,1.97,8.62-.7,11.22-1,.97-3.65,1.06-4.77.32-.81-.53-.94-1.47-1.6-2.13-.72-.72-2.73-1.03-3.55-.25-1.31,1.24-2.56,4.52-2.56,6.32v15.14Z","c"],["M455.72,138.94c.51-.78,1.35-1.4,2.07-1.98.29-.24.46-.59.47-.96,0,0,.28-22.84.28-22.86.02-1.25-.67-2.2-1.52-3.05-.79-.8-1.73-1.55-2.25-2.58-.42-.83.84-1.65,1.56-1.85l13.48-3.59.16,31.29c.02,3.97,3.09,3.77,3.9,6.37.18.57.03,1.39-.59,1.38l-16.49-.2c-1.01-.01-1.61-1.13-1.06-1.97Z","n"],["M462.98,99.33c-4.16-.26-6.24-3.61-5.87-7.04.34-3.16,3.24-5.66,6.87-5.36,3.51.29,5.97,3.02,5.95,6.1-.02,3.53-2.71,6.56-6.95,6.3Z","n"],["M193.33,141.58c.03-.33-.43-.45-.57-.15-7.16,15.82-18.89,24.12-34.83,30.13-14.53,6.07-25.61,13.67-35,26.5-.19.26-.59.08-.53-.23,2.61-13.84,10.66-25.12,22.28-33.04.27-.18.08-.6-.23-.54-6.67,1.44-12.35,5.43-17.01,10.8-4.87,5.61-7.09,12.59-8.16,20.13-.04.31-.48.34-.58.04-2.84-9.23-2.54-18.9,1.49-28.12,3.83-8.75,9.53-16.64,17.66-21.72l13.31-8.33c15.36-9.62,26.93-24.3,21.5-42.44-.08-.26-.43-.29-.55-.04l-4.19,8.5c-.12.23-.45.22-.54-.03l-2.68-7.4c-4.32-11.93.9-23.74,12.09-29.16,6.6-3.2,13.57-3.85,20.37-.15.29.16.59-.21.37-.46-4.09-4.43-12.72-4.56-19.05-3.18-4.57,1-8.94,1.38-13.39-.19-3.74-1.32-7.08-5.62-5.65-9.53,1.34-3.66,5.24-3.44,8.47-3.22.23.02.39-.23.28-.44-.2-.37-.38-.76-.48-1.17-.53-2.28,2.07-2.61,3.7-2.62,4.11,0,7.78,2.65,10.94,5.18.25.2.6-.09.44-.37-.67-1.24-1.32-2.5-1.97-3.76-.86-1.62-1.83-3.17-1.77-5.08.08-2.57,2.57-2.28,4.38-1.69,5.97,1.97,10.26,6.69,12.62,12.42.27.65.51,1.31.73,1.98.1.31.55.26.58-.07.25-2.89.23-5.76.18-8.84,0-.21.22-.37.41-.28,5.48,2.37,9.73,7.62,8.6,13.77-.75,4.07-3.84,7.2-6.82,9.95-.1.09-.25.1-.37.02-5.95-4.1-12.8-2.78-17.78,2-4.44,4.27-6.29,10.24-3.96,16.19,2.12,5.4,6.33,9.04,10.45,12.92l9.21,8.68c10.15,9.56,17.23,25.23,14.83,39.67-3.75,22.57-21.7,34.06-40.04,44.94-5.6,3.32-11.42,5.61-17.79,8.07-.3.11-.23.55.08.57,14.48,1.02,28.81,2.25,43.15,5.65,9.27,2.2,18.15,4.24,26.64,8.28.31.15.16.62-.18.56l-23.39-4.44c-16.46-3.13-32.73-3.97-49.42-4.79-30.1-.8-58.94,1.63-88.64,7.09-.36.07-.5-.45-.15-.57,19.79-6.79,40.45-10,61.42-11.34,2.95-.19,5.36-.64,7.82-2.14l17.13-9.39c9.64-5.28,19.08-10.36,27.32-17.57,9.49-8.29,16.21-19.01,17.28-31.55Z","g"],["M135.85,140.46c.02.31-.38.43-.55.17-13.41-21.28-42.15-28.76-62.56-12.25-6.88,5.57-11.02,13.31-13.24,22.27-.07.29-.47.31-.57.03-3.89-11.21-2.32-23.36,3.59-33.83,6.29-11.16,18-18.59,30.25-19.46,13.23-.95,26.11,4.4,33.79,15.19,5.86,8.24,8.59,17.81,9.27,27.87Z","g"],["M139.73,140.32c-.15.26-.54.15-.55-.14-.47-11.66-2.88-22.45-9.63-31.73-13.13-18.05-37.86-22.68-56.8-11.97-.27.15-.56-.17-.39-.42,4.72-7.22,12.72-12.67,19.93-15.99,10.69-4.92,22.52-5.64,33.5-1.84,14.64,5.07,23.59,18.25,22.56,33.82-.65,9.87-3.41,19.35-8.61,28.28Z","g"],["M92.88,145c-10.22,8.13-13.37,20.5-9.95,33.08.07.27-.23.48-.45.32-14.28-10.06-18.36-27.77-8.04-41.59,5.21-6.72,12.37-10.8,21.03-11.7,13.91-1.45,27.76,4.8,36.37,16.11.19.25-.08.58-.36.45-12.96-6.14-27.33-5.62-38.58,3.33Z","g"],["M110.79,196.64c.13.25-.11.53-.37.42-9.58-3.98-18-10.64-21.53-21.5-2.74-8.43-.61-17.7,5.8-24.26,9.34-9.55,23.89-11.45,35.99-6.79.27.1.24.5-.05.56-15.06,3.24-25.66,20.66-24.38,35.9,0,0,0,.01,0,.02-.03,5.52,1.56,10.22,4.53,15.65Z","g"],["M224.81,145.12c-2.7,8.23-7.35,15.1-14.48,20.55-.25.19-.59-.08-.44-.37,11.06-22.12,11.65-42.32-4.68-62.19-.21-.25.09-.6.38-.45,15.56,8.65,24.58,24.58,19.23,42.45Z","g"],["M212.56,90.93c-.34,3.09-2.79,5.45-5.12,6.05-2.96.77-6.02-.47-7.95-3.14-2.85-3.94-2.5-9.24-.64-13.7.11-.27-.19-.52-.44-.36l-3.77,2.54c-.25.17-.57-.1-.43-.38l3.62-7.32c1.31-2.64,3.34-5.93,6.21-7.17,4.5-1.94,9.25-.03,12.35,3.27.16.18.05.46-.19.49-4.5.55-8.28,1.89-11.12,5.33-.09.11-.09.28,0,.39l4.19,4.85c2.15,2.49,3.68,5.47,3.28,9.15Z","g"],["M190.4,70.51a2.1,2.1,0,1,0,4.2,0a2.1,2.1,0,1,0,-4.2,0Z","g"]]},"i":{"b":[86.11,64.64,424.61,437.99],"p":[["M427.99,320.52c.07-.83-1.07-1.12-1.42-.37-17.92,39.62-47.3,60.41-87.22,75.45-36.39,15.2-64.14,34.23-87.64,66.37-.47.64-1.47.21-1.33-.57,6.54-34.66,26.69-62.91,55.8-82.75.67-.46.21-1.51-.58-1.34-16.69,3.6-30.94,13.59-42.61,27.04-12.19,14.05-17.75,31.53-20.45,50.41-.11.79-1.21.86-1.44.1-7.12-23.12-6.35-47.34,3.74-70.41,9.58-21.92,23.87-41.66,44.21-54.4l33.32-20.86c38.48-24.09,67.43-60.86,53.84-106.29-.19-.64-1.09-.71-1.38-.11l-10.49,21.29c-.29.59-1.14.54-1.36-.07l-6.72-18.52c-10.83-29.86,2.25-59.44,30.27-73.03,16.53-8.02,33.97-9.63,51.02-.39.73.4,1.49-.53.92-1.14-10.23-11.1-31.87-11.43-47.72-7.96-11.45,2.5-22.4,3.46-33.53-.48-9.36-3.32-17.73-14.07-14.15-23.86,3.36-9.17,13.12-8.62,21.22-8.06.59.04.98-.58.7-1.1-.51-.94-.96-1.9-1.2-2.94-1.32-5.72,5.18-6.54,9.27-6.55,10.29-.02,19.48,6.64,27.4,12.96.63.5,1.49-.22,1.11-.93-1.67-3.11-3.31-6.26-4.94-9.42-2.15-4.06-4.59-7.94-4.43-12.71.21-6.44,6.44-5.72,10.96-4.23,14.96,4.94,25.7,16.75,31.6,31.11.67,1.63,1.28,3.28,1.83,4.95.25.77,1.37.64,1.44-.16.63-7.23.58-14.42.45-22.13,0-.54.54-.92,1.03-.71,13.71,5.92,24.36,19.08,21.53,34.49-1.88,10.2-9.6,18.02-17.08,24.92-.25.23-.63.25-.92.06-14.9-10.27-32.06-6.97-44.52,5-11.13,10.7-15.76,25.64-9.92,40.54,5.31,13.53,15.84,22.63,26.16,32.36l23.06,21.73c25.42,23.95,43.16,63.17,37.15,99.34-9.39,56.53-54.34,85.3-100.26,112.53-14.02,8.32-28.6,14.04-44.55,20.2-.74.29-.58,1.39.21,1.43,69.02,3.51,137.35,19.22,166.66,29.68.82.29.49,1.78-.36,1.62,0,0-102.15-16.28-174.35-18.12-75.37-1.93-147.61,4.09-221.99,17.76-.9.17-1.25-1.14-.38-1.44,49.56-17.01,101.31-25.05,153.81-28.4,7.4-.47,13.42-1.6,19.59-5.35l42.9-23.51c24.14-13.23,47.78-25.96,68.42-43.99,23.77-20.76,40.59-47.6,43.28-79.01Z","g"],["M284.05,317.72c.05.77-.96,1.09-1.37.43-33.58-53.28-105.56-72.02-156.66-30.67-17.24,13.95-27.59,33.33-33.15,55.76-.18.71-1.18.78-1.42.08-9.75-28.08-5.8-58.49,8.99-84.71,15.76-27.94,45.07-46.55,75.76-48.74,33.12-2.37,65.4,11.03,84.63,38.05,14.68,20.63,21.52,44.59,23.23,69.81Z","g"],["M293.77,317.35c-.37.64-1.35.39-1.38-.35-1.17-29.2-7.22-56.23-24.12-79.46-32.88-45.2-94.81-56.8-142.25-29.97-.67.38-1.4-.42-.98-1.06,11.82-18.09,31.85-31.74,49.9-40.05,26.77-12.33,56.4-14.13,83.9-4.61,36.67,12.7,59.08,45.71,56.5,84.69-1.64,24.71-8.53,48.45-21.57,70.82Z","g"],["M176.44,329.09c-25.6,20.36-33.48,51.33-24.93,82.83.18.67-.57,1.21-1.14.81-35.76-25.19-45.98-69.54-20.14-104.15,13.04-16.82,30.98-27.04,52.66-29.3,34.84-3.63,69.52,12.02,91.07,40.34.48.63-.2,1.46-.91,1.12-32.46-15.38-68.45-14.06-96.61,8.34Z","g"],["M221.3,458.4c.34.61-.28,1.32-.93,1.05-23.99-9.96-45.07-26.64-53.91-53.83-6.86-21.11-1.54-44.33,14.53-60.76,23.39-23.92,59.82-28.67,90.13-17,.68.26.6,1.26-.11,1.41-37.71,8.12-64.26,51.75-61.05,89.9,0,.01,0,.03,0,.04-.07,13.82,3.91,25.59,11.34,39.2Z","g"],["M506.84,329.39c-6.76,20.6-18.42,37.8-36.27,51.46-.63.48-1.47-.21-1.11-.92,27.7-55.4,29.18-105.98-11.72-155.73-.52-.63.23-1.51.94-1.12,38.96,21.66,61.55,61.57,48.16,106.31Z","g"],["M476.15,193.68c-.85,7.75-6.98,13.64-12.82,15.16-7.41,1.92-15.07-1.17-19.92-7.87-7.13-9.87-6.27-23.13-1.59-34.3.28-.68-.49-1.3-1.09-.89l-9.43,6.37c-.63.43-1.42-.26-1.08-.94l9.06-18.34c3.27-6.62,8.36-14.86,15.55-17.96,11.28-4.87,23.18-.07,30.92,8.18.41.44.13,1.16-.47,1.23-11.26,1.37-20.74,4.74-27.86,13.35-.23.28-.22.69.01.97l10.5,12.15c5.39,6.24,9.23,13.7,8.21,22.9Z","g"],["M420.65000000000003,142.54a5.27,5.27,0,1,0,10.54,0a5.27,5.27,0,1,0,-10.54,0Z","g"]]}};
+function logoSVG(k, g, n, c, w) { const L = LOGO[k], b = L.b, f = { g, n, c }; return `<svg xmlns="http://www.w3.org/2000/svg" viewBox="${b.join(' ')}"${w ? ` width="${w}" height="${Math.round(w * b[3] / b[2])}"` : ''}>` + L.p.map(x => `<path d="${x[0]}" fill="${f[x[1]] || g}"/>`).join('') + '</svg>'; }
+const logoURI = (...a) => 'data:image/svg+xml,' + encodeURIComponent(logoSVG(...a));
+
+/* ============================================================
+   MODELO ESPACIAL ÚNICO (metros). x crece hacia la fachada de
+   portones; y crece hacia las cámaras y el tinglado.
+   1 unidad del Excalidraw ≈ 0,0365 m. El plano 2D y el modelo 3D
+   leen exactamente estos números.
+   ============================================================ */
+const M = {
+  nave:   { x0: 0, y0: 0, x1: 40, y1: 26 },
+  ejeX:   [0, 6.5, 13, 19.5, 26, 32.5, 40],
+  yCam:   20.2,
+  xCam:   19.5,
+  xCarga: 32.5,
+  ofi:    { x0: 32.5, y0: 0, x1: 42.5, y1: 13 },
+  atrio:  { x0: 34.6, y0: 3.4, x1: 38, y1: 9.6 },
+  portones: [4.5, 8.5, 12.5, 16.5],
+  anchoPorton: 2.6,
+  puertasCam: [9.3, 27.6],
+  anchoPuertaCam: 2.4,
+  balanzas: [[18.6, 5.4], [17.8, 12.6]],
+  zorras: [[24.2, 4.0], [23.4, 10.4]],
+  accesos: [4.7, 14.9],
+  escalera: { x0: 24, y0: 0.3, x1: 32.5, y1: 1.7 },
+  playon: { x0: 40, y0: -3, x1: 54, y1: 20.2 },
+  alero:  { x0: 40, y0: 0.4, x1: 47, y1: 20 },
+  apron:  { x0: 40, y0: 20.2, x1: 46.25, y1: 36 },
+  tinglado: { x0: 4, y0: 26, x1: 40, y1: 33 },
+  porton: { y0: 26.7, y1: 33.3 },
+  rampa:  { x0: -2.2, y0: 16.2, x1: 0, y1: 26 },
+  egreso: { x0: 54, x1: 58.75 },
+  ingreso:{ x0: 59.25, x1: 64.25 },
+  ramal:  { x0: 46.25, x1: 51.25 },
+  loop:   { cx: 55.25, cy: 46, r: 6.5, w: 5 },
+  yNorte: -16,
+  npt: 1.10
+};
+
+/* Circulación: arco del retorno muestreado */
+const ARCO = [];
+for (let i = 0; i <= 14; i++) {
+  const a = Math.PI * i / 14;
+  ARCO.push([M.loop.cx + M.loop.r * Math.cos(a), M.loop.cy + M.loop.r * Math.sin(a)]);
+}
+const RUTA_INGRESO = [[61.75, -16], ...ARCO, [48.75, 24], [51.4, 18.5], [51.4, 4]];
+const RUTA_EGRESO  = [[51.4, 4], [56.4, -3], [56.4, -16]];
+
+/* Flujo: camaras → balanzas → carga → camiones; cajones por circuito aparte */
+const FLUJOS = [
+  { t: 'f1', p: [[9.3, 23], [9.3, 5.4], [15.6, 5.4]] },
+  { t: 'f1', p: [[27.6, 23], [27.6, 17], [17.8, 17], [17.8, 15.3]] },
+  { t: 'f2', p: [[21.4, 6.6], [35.2, 6.6]] },
+  { t: 'f2', p: [[20.8, 12.6], [35.2, 12.6]] },
+  { t: 'f3', p: [[36, 6.2], [36, 4.5], [41.6, 4.5]] },
+  { t: 'f3', p: [[36, 7.0], [36, 8.5], [41.6, 8.5]] },
+  { t: 'f3', p: [[36, 12.5], [41.6, 12.5]] },
+  { t: 'f3', p: [[36, 13.2], [36, 16.5], [41.6, 16.5]] },
+  { t: 'f4', p: [[44.8, 30.4], [33.4, 30.4]] },
+  { t: 'f4', p: [[23, 30.4], [-1.1, 30.4], [-1.1, 14.9], [4.4, 14.9]] }
+];
+const TIPOS_FLUJO = {
+  f1: 'Cámaras a balanzas',
+  f2: 'Balanzas a zona de carga',
+  f3: 'Zona de carga a camiones',
+  f4: 'Cajones: sucios, lavado, limpios'
+};
+
+const SECTORES = [
+  {
+    id: 'cam1', nombre: 'Cámara Frigorífica 1', color: '--z-frio', planta: 'PB', estado: 'Nueva',
+    poli: [[19.5, 20.2], [40, 20.2], [40, 26], [19.5, 26]], centro: [32.6, 23.4], alto: 4,
+    medidas: '20,50 × 5,80 m', area: 118.9,
+    resumen: 'Sector inferior derecho, contra la fachada. Puerta propia hacia el área central.',
+    obra: [
+      'Panel PIR de 100 mm en muros y cielorraso, con zócalo sanitario curvo.',
+      'Piso con barrera de vapor, aislación XPS de 80 mm y hormigón con terminación de poliuretano cemento antideslizante.',
+      'Puerta corrediza isotérmica de 2,40 × 2,80 m con burlete calefaccionado, cortina de lamas y apertura interior de emergencia.',
+      'Desagüe del evaporador con sifón afuera de la cámara.'
+    ],
+    uso: [
+      'Consigna sugerida de 0 a 2 °C. Confirmar con tu habilitación sanitaria.',
+      'Racks contra el muro del fondo y pasillo libre de 2,40 m para zorra.',
+      'Separar los cajones 10 cm del muro para que circule el aire.',
+      'Rotación FEFO con rótulo visible desde el pasillo.'
+    ]
+  },
+  {
+    id: 'cam2', nombre: 'Cámara Frigorífica 2', color: '--z-frio', planta: 'PB', estado: 'Nueva',
+    poli: [[0, 20.2], [19.5, 20.2], [19.5, 26], [0, 26]], centro: [12.4, 23.4], alto: 4,
+    medidas: '19,50 × 5,80 m', area: 113.1,
+    resumen: 'Sector inferior izquierdo. Circuito de frío independiente del de la Cámara 1.',
+    obra: [
+      'Misma envolvente que la Cámara 1, con tabique divisorio de panel PIR de 100 mm.',
+      'Evaporador y condensador propios, para que una falla no deje la planta sin frío.',
+      'Protecciones de acero inoxidable en los cantos de la puerta.',
+      'Válvula equilibradora de presión en el muro.'
+    ],
+    uso: [
+      'Reservar una de las dos cámaras como respaldo durante limpieza y mantenimiento.',
+      'Registro automático de temperatura con alarma al celular.',
+      'Cortina de aire activada al abrir la puerta.',
+      'Su salida alimenta la Balanza 1 y no cruza la salida de la Cámara 1.'
+    ]
+  },
+  {
+    id: 'bal', nombre: 'Balanzas y Preparación', color: '--z-bal', planta: 'PB', estado: 'Nave existente más ampliación',
+    poli: [[0, 0], [32.5, 0], [32.5, 20.2], [0, 20.2]], centro: [12.6, 9.0], alto: 2.4,
+    medidas: '32,50 × 20,20 m', area: 656.5,
+    resumen: 'Zona central con dos estaciones de pesaje, armado de pedidos y acopio de cajones limpios.',
+    obra: [
+      'Piso de poliuretano cemento de 6 mm, pendiente del 1 % hacia canaletas de acero inoxidable.',
+      'Pórticos cada 6,50 m que salvan 26 m de luz, sin columnas en el medio.',
+      'Muros en panel sándwich blanco lavable hasta 2,40 m, con defensa perimetral.',
+      'Dos fosas para balanza de plataforma de 1,50 × 1,50 m, a nivel de piso.',
+      'Iluminación LED IP65 de 500 lux sobre las mesas.'
+    ],
+    uso: [
+      'Balanza 1 atiende Portones 1 y 2. Balanza 2 atiende Portones 3 y 4.',
+      'Pasillos de 3,00 m para que se crucen dos zorras.',
+      'Lavamanos a pedal y desinfección de calzado en el acceso de personal.',
+      'Ambiente de 10 a 12 °C para no perder la cadena de frío en el armado.'
+    ]
+  },
+  {
+    id: 'carga', nombre: 'Zona de Carga', color: '--z-carga', planta: 'PB', estado: 'Nueva',
+    poli: [[32.5, 0], [40, 0], [40, 20.2], [32.5, 20.2]], centro: [36.2, 10.4], alto: 2.4,
+    medidas: '7,50 × 20,20 m', area: 151.5,
+    resumen: 'Franja de expedición conectada con los cuatro portones. Pulmón de pedidos ya pesados.',
+    obra: [
+      'Piso de hormigón con endurecedor y poliuretano cemento, a +1,10 m del playón.',
+      'Cuatro bocas cada 4,00 m con rampa niveladora de 2,00 × 2,50 m.',
+      'Canaleta lineal paralela a la fachada, detrás de las niveladoras.',
+      'Altura libre de 4,20 m bajo la losa de oficinas.'
+    ],
+    uso: [
+      'Un rectángulo pintado por portón, para preparar sin mezclar repartos.',
+      'Espacio para 6 pallets por boca.',
+      'Recibir mercadería por el Portón 4, fuera del horario de expedición.',
+      'Portón cerrado hasta que el camión apoye en los topes.'
+    ]
+  },
+  {
+    id: 'muelles', nombre: 'Portones de Carga 1 a 4', color: '--z-carga', planta: 'PB', estado: 'Nuevos',
+    poli: [[39.6, 2.8], [41.1, 2.8], [41.1, 18.2], [39.6, 18.2]], centro: [40.3, 18.9], alto: 4.9,
+    medidas: '2,60 × 3,00 m cada uno', area: null,
+    resumen: 'Las cuatro bocas marcadas en azul en Edit 1 y como “portón” en el esquema.',
+    obra: [
+      'Portón seccional de panel de 40 mm, con mirilla y accionamiento eléctrico.',
+      'Abrigo retráctil de lona negra de 3,30 × 3,40 m con franjas de alineación.',
+      'Topes de caucho, semáforo interior y exterior, y luz de brazo articulado.',
+      'Guías de rueda amarillas, dos por boca, ancladas al hormigón.'
+    ],
+    uso: [
+      'Separación de 4,00 m entre ejes. Deja 1,50 m libres entre camiones.',
+      'Calzar ruedas antes de bajar la niveladora.',
+      'Número de portón legible desde la Calle Nueva.',
+      'Verificar la altura de caja de tu flota antes de fijar los +1,10 m.'
+    ]
+  },
+  {
+    id: 'ofi', nombre: 'Oficinas Administrativas', color: '--z-ofi', planta: 'PA', estado: 'Nueva, planta alta',
+    poli: [[32.5, 0], [42.5, 0], [42.5, 13], [32.5, 13]], centro: [37.4, 4.2], alto: 9.4,
+    medidas: '10,00 × 13,00 m, con atrio de 3,40 × 6,20 m', area: 108.9,
+    resumen: 'La “O” de Edit 1, sobre la fachada. Vidriada en sus cuatro lados y con atrio central, para ver el frente, la carga y las balanzas.',
+    obra: [
+      'Estructura metálica propia sobre los pórticos 6 y 7. La nave actual no recibe la carga.',
+      'Losa steel deck a +5,60 m, con 2,50 m en voladizo. El voladizo permite mirar hacia los dos lados de la fachada.',
+      'Frente y esquinas en doble vidriado hermético con control solar.',
+      'Atrio de vidrio cerrado, de piso a techo, sobre los Portones 1 y 2.',
+      'Paño de vidrio interior hacia balanzas y otro hacia los Portones 3 y 4.',
+      'Aislación acústica en piso y contrapiso flotante sobre la zona de carga.'
+    ],
+    uso: [
+      'Desde la esquina del voladizo se ve quién llega al Portón General y el retorno. La hoja del portón queda de canto: sumarle una cámara.',
+      'Control logístico entre el frente y el atrio: playón de un lado, zona de carga del otro. Contra el vidrio queda una franja libre para asomarse.',
+      'Galería hacia balanzas, con vista a las dos estaciones y a las puertas de las cámaras.',
+      'Administración mira por dentro a los Portones 3 y 4.',
+      'El interior de las cámaras, los accesos del contrafrente y el lavado no se ven desde acá. Cubrirlos con cámaras y monitores en Control.',
+      'Escalera por el muro del fondo, fuera de la circulación de zorras.',
+      'Segunda salida de emergencia a definir con el proyecto de seguridad.'
+    ]
+  },
+  {
+    id: 'lavado', nombre: 'Lavado y Acopio de Cajones', color: '--z-lav', planta: 'PB', estado: 'Tinglado existente, ampliado',
+    poli: [[4, 26], [40, 26], [40, 33], [4, 33]], centro: [27.6, 31.9], alto: 5.4,
+    medidas: '36,00 × 7,00 m', area: 252,
+    resumen: 'El tinglado actual, ordenado en línea: descarga de sucios, lavado, escurrido y acopio de limpios.',
+    obra: [
+      'Conservar columnas y cabriadas. Extender la cubierta hasta 7,00 m.',
+      'Hormigón con pendiente del 2 % hacia canaleta con rejilla y cámara desgrasadora.',
+      'Túnel de lavado de cajones con agua caliente y enjuague.',
+      'Rampa del 9 % al ingreso de cajones limpios.'
+    ],
+    uso: [
+      'Sucio y limpio no se cruzan: entra por el portón y avanza en un solo sentido.',
+      'Pilas de 8 cajones como máximo, sobre pallet plástico.',
+      'Códigos de color: rojo para reparto, blanco para cámara.',
+      'Cerrar con panel el portón corredizo actual que da a las cámaras.'
+    ]
+  },
+  {
+    id: 'porton', nombre: 'Portón General', color: '--z-acc', planta: 'PB', estado: 'Nuevo',
+    poli: [[39.2, 26.7], [40.8, 26.7], [40.8, 33.3], [39.2, 33.3]], centro: [41.2, 34.2], alto: 4.6,
+    medidas: '6,60 m de ancho', area: null,
+    resumen: 'Ingreso operativo, abajo a la derecha, sobre la prolongación de la fachada como en el esquema.',
+    obra: [
+      'Portón corredizo de chapa con puerta de escape peatonal.',
+      'Riel embutido con desagüe y motor con freno antiaplastamiento.',
+      'Paso libre de 6,60 m de ancho y 4,00 m de alto.'
+    ],
+    uso: [
+      'Uso exclusivo para retorno de cajones, insumos y residuos.',
+      'El producto sale solo por los Portones 1 a 4.',
+      'Control de acceso con cámara y registro de patente.'
+    ]
+  },
+  {
+    id: 'acc', nombre: 'Accesos del Contrafrente', color: '--z-acc', planta: 'PB', estado: 'Interpretado del esquema',
+    poli: [[0, 3.5], [3.1, 3.5], [3.1, 5.9], [0, 5.9]], centro: [2.6, 4.7], alto: 3.4,
+    poli2: [[0, 13.7], [3.1, 13.7], [3.1, 16.1], [0, 16.1]],
+    medidas: '3,10 × 2,40 m cada uno', area: 14.9,
+    resumen: 'Los dos rectángulos sin rótulo del esquema: personal con filtro sanitario, e ingreso de cajones limpios.',
+    obra: [
+      'Puertas de vaivén lavables con mirilla.',
+      'Lavamanos, lavabotas y pediluvio en el acceso de personal.',
+      'Cortina de aire y mosquitero en ambos pasos.'
+    ],
+    uso: [
+      'El personal entra sin pasar por la zona de carga.',
+      'Los cajones limpios llegan directo al acopio de las balanzas.',
+      'Confirmar qué representaban estos dos recuadros en tu boceto.'
+    ]
+  },
+  {
+    id: 'playon', nombre: 'Playón de Maniobras', color: '--z-play', planta: 'EXT', estado: 'Nuevo',
+    poli: [[40, -3], [54, -3], [54, 20.2], [40, 20.2]], centro: [52.2, 9.6], alto: 0.6,
+    medidas: '14,00 × 23,20 m', area: 324.8,
+    resumen: 'Cuatro camiones refrigerados de culata en simultáneo, bajo alero metálico de 7,00 m.',
+    obra: [
+      'Hormigón H30 de 20 cm con malla, juntas aserradas cada 4,00 m y terminación alisada.',
+      'Pendiente del 2 % alejándose de la fachada y rejilla corrida.',
+      'Alero de 7,00 m: los primeros 2,25 m, de chapa sobre los muelles. El resto, de policarbonato compacto cristal, para que las oficinas vean los camiones y el portón general.',
+      'Columnas en la línea divisoria, con bolardos.',
+      'Toma trifásica por boca, para apagar el motor del equipo de frío durante la carga.'
+    ],
+    uso: [
+      'Retroceso del lado del conductor en las cuatro bocas.',
+      'Maniobra total de 24 m contando la Calle Nueva.',
+      'Lavar el policarbonato del alero cada mes, para mantener la vista desde Control.',
+      'Peatones solo por la senda junto a la escalera del muelle.',
+      'El desnivel de 1,10 m se logra bajando el playón o recreciendo el piso. Definir con topografía.'
+    ]
+  },
+  {
+    id: 'calle', nombre: 'Calle Nueva', color: '--z-calle', planta: 'EXT', estado: 'Nueva',
+    poli: [[54, -16], [58.75, -16], [58.75, 20.2], [54, 20.2]], centro: [61.8, 30], alto: 0.6,
+    poli2: [[59.25, -16], [64.25, -16], [64.25, 46], [59.25, 46]],
+    medidas: '≈ 5,00 m por mano', area: 713,
+    resumen: 'La “C” de Edit 1, paralela a la fachada, con retorno al pie del playón donde la ubica el esquema.',
+    obra: [
+      'Base estabilizada de 20 cm y carpeta asfáltica o intertrabado para tránsito pesado.',
+      'Cordón cuneta, cantero central entre manos y cuneta hacia la alameda.',
+      'Retorno con radio exterior de 9,00 m, para camión rígido de 8 m.',
+      'Columnas LED cada 18 m y señalización horizontal.'
+    ],
+    uso: [
+      'Sentido único: ingreso por la mano externa, retorno, playón y egreso por la mano interna.',
+      'Quien entra y quien sale no se cruzan dentro del predio.',
+      'Velocidad máxima de 10 km/h.',
+      'Verificar distancia a la subestación antes de replantear.'
+    ]
+  }
+];
+
+const CAPAS = [
+  { id: 'pb',    nombre: 'Planta Baja', on: true },
+  { id: 'pa',    nombre: 'Planta Alta', on: false },
+  { id: 'flujo', nombre: 'Flujo Logístico', on: true },
+  { id: 'circ',  nombre: 'Circulación de Camiones', on: true },
+  { id: 'vis',   nombre: 'Visuales desde Oficinas', on: false },
+  { id: 'cotas', nombre: 'Cotas y ejes', on: true }
+];
+
+/* ============================================================
+   PLANO 2D (SVG). 1 m = 20 unidades.
+   ============================================================ */
+const Plano = (() => {
+  const K = 20;
+  const u = n => +(n * K).toFixed(2);
+  const svg = document.getElementById('svg');
+  const R = (x0, y0, x1, y1, cls, extra = '') =>
+    `<rect x="${u(x0)}" y="${u(y0)}" width="${u(x1 - x0)}" height="${u(y1 - y0)}" class="${cls}" ${extra}/>`;
+  const L = (x0, y0, x1, y1, cls, extra = '') =>
+    `<line x1="${u(x0)}" y1="${u(y0)}" x2="${u(x1)}" y2="${u(y1)}" class="${cls}" ${extra}/>`;
+  const C = (x, y, r, cls) => `<circle cx="${u(x)}" cy="${u(y)}" r="${u(r)}" class="${cls}"/>`;
+  const T = (x, y, s, cls = '', rot = 0) =>
+    `<text x="${u(x)}" y="${u(y)}" class="t ${cls}" ${rot ? `transform="rotate(${rot} ${u(x)} ${u(y)})"` : ''}>${s}</text>`;
+  const poly = p => p.map(a => a.map(u).join(',')).join(' ');
+  const nf = n => n.toFixed(2).replace('.', ',');
+
+  /* Camino con esquinas redondeadas */
+  function camino(p, r = 1) {
+    let d = `M${u(p[0][0])} ${u(p[0][1])}`;
+    for (let i = 1; i < p.length; i++) {
+      const a = p[i - 1], b = p[i], c = p[i + 1];
+      if (!c) { d += `L${u(b[0])} ${u(b[1])}`; break; }
+      const la = Math.hypot(b[0] - a[0], b[1] - a[1]), lc = Math.hypot(c[0] - b[0], c[1] - b[1]);
+      const k = Math.min(r, la / 2, lc / 2);
+      d += `L${u(b[0] + (a[0] - b[0]) / la * k)} ${u(b[1] + (a[1] - b[1]) / la * k)}`;
+      d += `Q${u(b[0])} ${u(b[1])} ${u(b[0] + (c[0] - b[0]) / lc * k)} ${u(b[1] + (c[1] - b[1]) / lc * k)}`;
+    }
+    return d;
+  }
+
+  /* Cota horizontal o vertical en cadena */
+  function cadena(puntos, fijo, vertical, lado, rotulos) {
+    let s = '';
+    const v = vertical;
+    s += v ? L(fijo, puntos[0], fijo, puntos[puntos.length - 1], 'cota') : L(puntos[0], fijo, puntos[puntos.length - 1], fijo, 'cota');
+    puntos.forEach(p => {
+      const [x, y] = v ? [fijo, p] : [p, fijo];
+      s += L(x - .22, y + .22, x + .22, y - .22, 'tick');
+      s += v ? L(fijo - .5, p, fijo + .5, p, 'cota') : L(p, fijo - .5, p, fijo + .5, 'cota');
+    });
+    for (let i = 1; i < puntos.length; i++) {
+      const m = (puntos[i] + puntos[i - 1]) / 2;
+      const txt = rotulos && rotulos[i - 1] ? rotulos[i - 1] : nf(puntos[i] - puntos[i - 1]);
+      s += v ? T(fijo + (lado || -.45), m, txt, 'tc', -90) : T(m, fijo + (lado || -.45), txt, 'tc');
+    }
+    return s;
+  }
+
+  function camion(x, y, n) { /* culata en x, frente hacia +x */
+    return `<g class="camion">` +
+      R(x, y - 1.22, x + 5.9, y + 1.22, 'veh', 'rx="2"') +
+      R(x + .12, y - 1.1, x + 5.78, y + 1.1, 'vehf') +
+      R(x + 5.0, y - .8, x + 5.9, y + .8, 'vehf') +
+      R(x + 6.05, y - 1.12, x + 8.2, y + 1.12, 'veh', 'rx="9"') +
+      `<path d="M${u(x + 7.0)} ${u(y - .95)}Q${u(x + 7.75)} ${u(y)} ${u(x + 7.0)} ${u(y + .95)}L${u(x + 7.35)} ${u(y + .95)}Q${u(x + 8.05)} ${u(y)} ${u(x + 7.35)} ${u(y - .95)}Z" class="vehv"/>` +
+      R(x + 6.9, y - 1.36, x + 7.15, y - 1.14, 'vehv') + R(x + 6.9, y + 1.14, x + 7.15, y + 1.36, 'vehv') +
+      (n ? T(x + 2.7, y + .12, 'CAMIÓN ' + n, 'tmin') : '') + `</g>`;
+  }
+  const pallet = (x, y) => R(x - .5, y - .6, x + .5, y + .6, 'mob') + L(x - .5, y, x + .5, y, 'fino') + L(x, y - .6, x, y + .6, 'fino');
+  const arbol = (x, y, r) => C(x, y, r, 'arbol') + C(x, y, r * .35, 'arbol2');
+  function puertaHoja(x, y, w, ang, sentido) { /* puerta de abrir */
+    const a = ang * Math.PI / 180, bx = x + w * Math.cos(a), by = y + w * Math.sin(a);
+    const a2 = a + sentido * Math.PI / 2, cx = x + w * Math.cos(a2), cy = y + w * Math.sin(a2);
+    return `<path d="M${u(cx)} ${u(cy)}L${u(x)} ${u(y)}" class="hoja"/><path d="M${u(bx)} ${u(by)}A${u(w)} ${u(w)} 0 0 ${sentido > 0 ? 1 : 0} ${u(cx)} ${u(cy)}" class="giro"/>`;
+  }
+
+  const zona = (id) => SECTORES.find(s => s.id === id);
+  function zonaSVG(id) {
+    const s = zona(id);
+    return `<g class="zona" data-id="${id}" tabindex="0" role="button" aria-label="${s.nombre}" style="--c:var(${s.color})">` +
+      `<polygon points="${poly(s.poli)}" class="zf"/>` + (s.poli2 ? `<polygon points="${poly(s.poli2)}" class="zf"/>` : '') + `</g>`;
+  }
+
+  function construir() {
+    let s = `<defs>
+      <pattern id="hMuro" width="6" height="6" patternUnits="userSpaceOnUse" patternTransform="rotate(45)"><rect width="6" height="6" class="muroBg"/><line x1="0" y1="0" x2="0" y2="6" class="muroRaya"/></pattern>
+      <pattern id="hPir" width="8" height="8" patternUnits="userSpaceOnUse"><rect width="8" height="8" class="pirBg"/><path d="M0 8L4 0L8 8" class="pirRaya"/></pattern>
+      <pattern id="hPasto" width="46" height="46" patternUnits="userSpaceOnUse"><path d="M8 14l2-6M11 14l3-5M32 36l2-6M35 36l3-5" class="pastoRaya"/></pattern>
+      <pattern id="hHorm" width="80" height="80" patternUnits="userSpaceOnUse"><path d="M80 0H0V80" class="juntaRaya"/></pattern>
+      <pattern id="hPeligro" width="10" height="10" patternUnits="userSpaceOnUse" patternTransform="rotate(45)"><rect width="10" height="10" class="pelA"/><rect width="5" height="10" class="pelB"/></pattern>
+      ${['f1', 'f2', 'f3', 'f4', 'ci', 'ce'].map(k => `<marker id="m-${k}" viewBox="0 0 10 10" refX="7" refY="5" markerWidth="3.1" markerHeight="3.1" orient="auto"><path d="M0 0L10 5L0 10Z" class="mk-${k}"/></marker>`).join('')}
+    </defs>`;
+
+    /* ---------- terreno ---------- */
+    s += `<g id="terreno">` + R(-120, -100, 200, 160, 'pasto') + `<rect x="${u(-120)}" y="${u(-100)}" width="${u(320)}" height="${u(260)}" fill="url(#hPasto)"/>`;
+    s += R(-4.2, -4.5, 46.25, 37.4, 'ripio', 'rx="10"');
+    for (let y = -20; y <= 62; y += 2.6) s += arbol(70.2 + (y % 5.2 ? .5 : 0), y, 1.15) + arbol(73.4, y + 1.2, 1.15);
+    for (let x = -14; x <= 67; x += 2.6) s += arbol(x, 60.2, 1.15);
+    for (let y = -9; y <= 57; y += 2.6) s += arbol(-14.5, y, 1.15);
+    for (let y = 24; y <= 43; y += 3.2) s += C(55.25, y, .7, 'mata');
+    s += `</g>`;
+
+    /* ---------- exterior ---------- */
+    const { playon: p, apron: ap, egreso: e, ingreso: g, ramal: r, loop: lo } = M;
+    const rin = lo.r - lo.w / 2, rout = lo.r + lo.w / 2;
+    s += `<g id="exterior">`;
+    s += `<path d="M${u(lo.cx - rout)} ${u(lo.cy)}A${u(rout)} ${u(rout)} 0 0 0 ${u(lo.cx + rout)} ${u(lo.cy)}L${u(lo.cx + rin)} ${u(lo.cy)}A${u(rin)} ${u(rin)} 0 0 1 ${u(lo.cx - rin)} ${u(lo.cy)}Z" class="asfalto"/>`;
+    s += R(r.x0, p.y1 - .02, r.x1, lo.cy, 'asfalto') + R(g.x0, M.yNorte, g.x1, lo.cy, 'asfalto') + R(e.x0, M.yNorte, e.x1, 20.2, 'asfalto');
+    s += R(ap.x0, ap.y0, ap.x1, ap.y1, 'asfalto');
+    s += R(58.75, M.yNorte, 59.25, 20.2, 'cantero');
+    s += L(g.x1 - .25, M.yNorte, g.x1 - .25, 46, 'via') + L(g.x0 + .25, M.yNorte, g.x0 + .25, 46, 'via') + L(e.x1 - .25, M.yNorte, e.x1 - .25, 20.2, 'via') + L(e.x0 + .25, M.yNorte, e.x0 + .25, -3, 'via');
+    s += L(r.x1 - .25, 20.4, r.x1 - .25, 46, 'via') + L(r.x0 + .25, 36, r.x0 + .25, 46, 'via');
+    s += zonaSVG('calle');
+    s += R(p.x0, p.y0, p.x1, p.y1, 'hormigon') + `<rect x="${u(p.x0)}" y="${u(p.y0)}" width="${u(p.x1 - p.x0)}" height="${u(p.y1 - p.y0)}" fill="url(#hHorm)"/>`;
+    s += zonaSVG('playon');
+    [2.5, 6.5, 10.5, 14.5, 18.5].forEach(y => s += L(40.2, y, 49.6, y, 'linea'));
+    M.portones.forEach((y, i) => {
+      s += `<path d="M${u(41)} ${u(y - 1.5)}H${u(44.2)}q8 0 8 -5" class="guia"/><path d="M${u(41)} ${u(y + 1.5)}H${u(44.2)}q8 0 8 5" class="guia"/>`;
+    });
+    /* subestación */
+    s += R(48, -13.5, 51.6, -10, 'equipo') + `<path d="M${u(49.9)} ${u(-13)}l-10 24h8l-6 20 18 -28h-9l6 -16z" class="rayo"/>` + T(49.8, -8.9, 'Subestación existente', 'tmin');
+    /* peatonal */
+    s += R(40.1, .5, 41.5, 1.9, 'escal'); for (let i = 1; i < 5; i++) s += L(40.1 + i * .28, .5, 40.1 + i * .28, 1.9, 'fino');
+    for (let i = 0; i < 5; i++) s += R(41.8 + i * .9, .6, 42.3 + i * .9, 1.8, 'senda');
+    s += `</g>`;
+
+    /* ---------- capa planta baja ---------- */
+    s += `<g id="capa-pb" class="capa">`;
+    s += R(0, 0, 40, 26, 'piso');
+    ['bal', 'carga', 'cam2', 'cam1', 'lavado', 'acc'].forEach(z => {
+      if (z === 'lavado') s += R(4, 26, 40, 33, 'piso');
+      s += zonaSVG(z);
+    });
+    /* rampa */
+    s += R(M.rampa.x0, M.rampa.y0, M.rampa.x1, M.rampa.y1, 'rampa') + R(-2.2, 13.4, 0, 16.2, 'rampa');
+    s += `<path d="M${u(-1.75)} ${u(25.4)}V${u(17)}m-5 8l5 -8 5 8" class="finoL"/>` + T(-2.65, 21, 'Rampa 9 %', 'tmin', -90);
+    s += R(-2.2, 26, 4, 33, 'rampa');
+
+    /* racks y cajones en cámaras */
+    for (let x = .9; x < 18.4; x += 1.45) s += R(x, 24.75, x + 1.2, 25.75, 'mob');
+    for (let x = 20.2; x < 38.9; x += 1.45) s += R(x, 24.75, x + 1.2, 25.75, 'mob');
+    for (let x = 13.2; x < 18.6; x += 1.45) s += R(x, 20.55, x + 1.2, 21.5, 'mob');
+    for (let x = 32.2; x < 38.9; x += 1.45) s += R(x, 20.55, x + 1.2, 21.5, 'mob');
+    [[4, 25.1], [15, 25.1], [25, 25.1], [35, 25.1]].forEach(([x]) => s += `<g class="evap">${R(x, 25.45, x + 2, 25.85, 'equipo')}${C(x + .5, 25.65, .14, 'fan')}${C(x + 1, 25.65, .14, 'fan')}${C(x + 1.5, 25.65, .14, 'fan')}</g>`);
+
+    /* balanzas */
+    M.balanzas.forEach(([x, y], i) => {
+      s += `<polygon points="${poly([[x, y - 2.1], [x + 2.3, y], [x, y + 2.1], [x - 2.3, y]])}" class="balFondo"/>`;
+      s += R(x - .75, y - .75, x + .75, y + .75, 'balanza', 'rx="2"') + C(x, y, .45, 'balDisco') + L(x, y, x + .25, y - .28, 'hoja');
+      s += R(x - .9, y + 1.0 - .02, x + .9, y + 1.35, 'mob');
+      s += T(x, y - 2.55, 'BALANZA ' + (i + 1), 'tz2');
+    });
+    /* zorras */
+    M.zorras.forEach(([x, y]) => {
+      s += pallet(x, y) + L(x + .55, y - .25, x + 1.0, y - .25, 'hoja') + L(x + .55, y + .25, x + 1.0, y + .25, 'hoja') + L(x + 1, y - .25, x + 1, y + .25, 'hoja') + L(x + 1, y, x + 1.7, y - .5, 'hoja');
+    });
+    /* mesas de armado y acopio limpio */
+    for (let x = 25.6; x < 30.5; x += 2.6) s += R(x, 8.5, x + 2, 9.5, 'mob') + R(x, 14.3, x + 2, 15.3, 'mob');
+    for (let y = 7.6; y < 13; y += 1.3) s += pallet(2.2, y + .2) + pallet(3.6, y + .2);
+    s += T(5.1, 10.4, 'Cajones limpios', 'tmin', -90);
+    /* pulmón por portón */
+    M.portones.forEach(y => {
+      s += R(33, y - 1.65, 35.6, y + 1.65, 'pulmon');
+      s += pallet(33.7, y - .8) + pallet(33.7, y + .8) + pallet(34.9, y - .8) + pallet(34.9, y + .8);
+    });
+    s += L(32.5, 0.2, 32.5, 20.1, 'divisor');
+    s += `<path d="M${u(38.9)} ${u(.6)}V${u(19.8)}" class="canaleta"/><path d="M${u(6)} ${u(18.9)}H${u(31.6)}" class="canaleta"/><path d="M${u(5)} ${u(32.2)}H${u(33)}" class="canaleta"/>`;
+
+    /* escalera */
+    const es = M.escalera;
+    s += R(es.x0, es.y0, es.x1, es.y1, 'escal');
+    for (let x = es.x0 + .3; x < es.x1 - .2; x += .28) s += L(x, es.y0, x, es.y1, 'fino');
+    s += `<path d="M${u(es.x0 + .3)} ${u(1)}H${u(es.x1 - .5)}m-8 -5l8 5 -8 5" class="finoL"/>` + T(28.2, 2.45, 'Escalera a oficinas', 'tmin');
+
+    /* lavado */
+    s += R(24, 29.2, 31.4, 31.4, 'equipo') + L(24, 30.3, 31.4, 30.3, 'fino') + R(26, 29.2, 29.4, 31.4, 'equipo2');
+    for (let x = 8; x < 22; x += 1.35) s += pallet(x, 27.2);
+    for (let x = 33.6; x < 38.8; x += 1.35) s += pallet(x, 27.2);
+    for (let x = 8.3; x < 20; x += 1.35) s += pallet(x, 31.9 - .2);
+    [4.3, 10.2, 16.1, 22, 27.9, 33.8, 39.6].forEach(x => s += R(x - .17, 32.6, x + .17, 32.94, 'col'));
+    s += `<rect x="${u(4)}" y="${u(26)}" width="${u(36)}" height="${u(7)}" class="proy"/>`;
+
+    /* muros */
+    const W = .3;
+    const muro = (a, b, c, d, cl = 'muro') => s += R(a, b, c, d, cl);
+    muro(-W, -W, 40, 0); muro(-W, 26, 40, 26 + W);
+    muro(-W, 0, 0, 3.6); muro(-W, 5.8, 0, 13.8); muro(-W, 16, 0, 26);
+    let y0 = -W;
+    M.portones.forEach(y => { muro(40, y0, 40 + W, y - 1.3); y0 = y + 1.3; });
+    muro(40, y0, 40 + W, 26 + W);
+    /* cámaras */
+    let x0 = 0;
+    M.puertasCam.forEach(x => { muro(x0, 20.1, x - 1.2, 20.3, 'pir'); x0 = x + 1.2; });
+    muro(x0, 20.1, 40, 20.3, 'pir'); muro(19.4, 20.3, 19.6, 26, 'pir');
+    muro(0, 20.3, .15, 26, 'pir'); muro(39.85, 20.3, 40, 26, 'pir'); muro(0, 25.85, 40, 26, 'pir');
+    M.puertasCam.forEach(x => { s += R(x - 1.2, 20.13, x + 1.2, 20.27, 'vano') + R(x + .1, 19.86, x + 2.6, 20.02, 'hojaF'); s += T(x + 2, 19.45, 'Puerta', 'tmin'); });
+    /* portones */
+    M.portones.forEach((y, i) => {
+      s += R(39.95, y - 1.3, 40.35, y + 1.3, 'vano') + R(37.95, y - 1, 40, y + 1, 'nivel') + L(39.5, y - 1, 39.5, y + 1, 'fino');
+      s += R(40.3, y - 1.7, 40.95, y - 1.3, 'abrigo') + R(40.3, y + 1.3, 40.95, y + 1.7, 'abrigo');
+      s += R(40.02, y - 1.3, 40.2, y + 1.3, 'hojaF');
+      s += T(37.75, y + 1.42, 'PORTÓN ' + (i + 1), 'tmin');
+    });
+    /* accesos contrafrente */
+    s += R(-W, 3.6, 0, 5.8, 'vano') + R(-W, 13.8, 0, 16, 'vano');
+    s += R(0, 3.5, 3.1, 5.9, 'tabique') + R(0, 13.7, 3.1, 16.1, 'tabique');
+    s += puertaHoja(0, 4.7, 1.05, 90, -1) + puertaHoja(0, 4.7, 1.05, -90, 1);
+    s += puertaHoja(0, 14.9, 1.05, 90, -1) + puertaHoja(0, 14.9, 1.05, -90, 1);
+    /* pórticos */
+    M.ejeX.forEach(x => { s += R(x - .18, -.02, x + .18, .36, 'col') + (x < 40 ? R(x - .18, 25.64, x + .18, 26, 'col') : ''); });
+    /* portón general */
+    s += R(39.9, 26.3, 40.2, 26.7, 'muro') + R(39.9, 33.3, 40.2, 37.2, 'muro');
+    s += R(39.98, 26.7, 40.12, 33.3, 'hojaF') + R(40.3, 30.2, 40.42, 36.4, 'giroP');
+    s += `<path d="M${u(-4)} ${u(37.2)}H${u(40)}" class="cerco"/>`;
+    s += zonaSVG('porton') + zonaSVG('muelles');
+    /* proyecciones */
+    s += `<g id="proyOfi"><rect x="${u(32.5)}" y="0" width="${u(10)}" height="${u(13)}" class="proy2"/></g>`;
+    s += R(M.alero.x0, M.alero.y0, M.alero.x1, M.alero.y1, 'proy');
+    [2.5, 6.5, 10.5, 14.5, 18.5].forEach(y => s += C(46.7, y, .16, 'col'));
+    /* camiones */
+    M.portones.forEach((y, i) => s += camion(40.45, y, i + 1));
+    /* rótulos */
+    s += T(12.6, 9.4, 'BALANZAS Y', 'tz') + T(12.6, 10.6, 'PREPARACIÓN', 'tz');
+    s += T(36.2, 19.2, 'ZONA DE CARGA', 'tz2');
+    s += T(5.1, 23.5, 'CÁMARA FRIGORÍFICA 2', 'tz2') + T(5.1, 24.3, '113 m²  ·  0 a 2 °C', 'ts');
+    s += T(24.0, 23.5, 'CÁMARA FRIGORÍFICA 1', 'tz2') + T(24.0, 24.3, '119 m²  ·  0 a 2 °C', 'ts');
+    s += T(27.7, 30.5, 'TÚNEL DE LAVADO', 'tmin');
+    s += T(14.6, 28.95, 'LAVADO Y ACOPIO DE CAJONES', 'tz2') + T(14.6, 29.7, 'Tinglado existente, ampliado', 'ts');
+    s += T(36.3, 28.9, 'Sucios', 'tmin') + T(41.9, 28.3, 'PORTÓN', 'tz2 ti') + T(41.9, 29.05, 'GENERAL', 'tz2 ti');
+    s += T(1.55, 6.5, 'Personal', 'tmin') + T(1.55, 13.4, 'Cajones', 'tmin');
+    s += `</g>`;
+
+    /* rótulos exteriores siempre visibles */
+    s += `<g class="rot">` + T(47, -1.75, 'PLAYÓN DE MANIOBRAS', 'tz2') + T(47, -.85, 'Flota de camiones', 'ts') +
+      T(60.45, 34, 'CALLE NUEVA', 'tz', -90) + T(56.4, 15.3, 'EGRESO', 'tz2', -90) + T(50.15, 41, 'RETORNO', 'tz2', -90) + `</g>`;
+
+    /* ---------- capa planta alta ---------- */
+    const o = M.ofi;
+    s += `<g id="capa-pa" class="capa">`;
+    s += R(o.x0, o.y0, o.x1, o.y1, 'pisoPA') + zonaSVG('ofi');
+    const mp = (a, b, c, d) => s += R(a, b, c, d, 'muro');
+    mp(o.x0 - .12, -.2, o.x1, 0); mp(o.x0 - .12, 13, o.x1, 13.2); mp(o.x0 - .12, 1.9, o.x0 + .08, 13);
+    const at = M.atrio;
+    s += R(o.x1 - .05, 0, o.x1 + .15, 13, 'vidrio'); for (let y = 0; y <= 13; y += 1.3) s += L(o.x1 - .05, y, o.x1 + .15, y, 'hoja');
+    s += R(32.7, 12.98, 42.5, 13.22, 'vidrio') + R(38.2, -.22, 42.5, .02, 'vidrio') + R(o.x0 - .12, 3.4, o.x0 + .08, 12.9, 'vidrio');
+    /* atrio */
+    s += R(at.x0, at.y0, at.x1, at.y1, 'atrio') + L(at.x0, at.y0, at.x1, at.y1, 'fino') + L(at.x1, at.y0, at.x0, at.y1, 'fino');
+    /* tabiques vidriados y macizos */
+    s += R(38, 3.3, 39.4, 3.4, 'vidrio') + R(40.4, 3.3, 42.5, 3.4, 'vidrio') + R(37.95, 0, 38.05, 1.2, 'tabPA') + R(37.95, 2.2, 38.05, 3.4, 'tabPA');
+    s += R(35.5, 0, 35.6, 2.2, 'tabPA') + R(35.5, 2.2, 36.2, 2.3, 'tabPA') + R(37.1, 2.2, 38, 2.3, 'tabPA');
+    s += R(37.95, 9.6, 38.05, 10.9, 'vidrio') + R(37.95, 11.9, 38.05, 13, 'vidrio') + R(34.6, 9.55, 38, 9.65, 'vidrio');
+    s += puertaHoja(38, 2.2, 1, -90, 1) + puertaHoja(39.4, 3.35, 1, 0, -1) + puertaHoja(36.2, 2.25, .9, 0, -1) + puertaHoja(38, 10.9, 1, 90, 1);
+    /* muebles */
+    s += R(39.3, 4.2, 40.1, 7.2, 'mob') + R(39.3, 8.4, 40.1, 11.4, 'mob'); [4.9, 6.4, 9.1, 10.7].forEach(y => s += C(38.8, y, .26, 'mob'));
+    s += R(39.6, 1, 41.4, 1.9, 'mob') + [39.9, 40.5, 41.1].map(x => C(x, 2.2, .2, 'mob')).join('') + C(40.5, .65, .24, 'mob');
+    s += R(32.75, 4.2, 33.2, 8.8, 'mob') + [5, 6.5, 8].map(y => C(33.6, y, .22, 'mob')).join('');
+    s += R(33.2, 11.2, 35, 12, 'mob') + R(35.6, 11.2, 37.4, 12, 'mob') + [33.7, 34.5, 36.1, 36.9].map(x => C(x, 10.8, .23, 'mob')).join('');
+    s += C(36.1, .55, .25, 'mob') + R(37.2, .3, 37.7, .8, 'mob');
+    s += T(40.75, 7.8, 'CONTROL LOGÍSTICO', 'tmin', -90) + T(40.4, 2.85, 'GERENCIA', 'tmin') + T(34.05, 6.5, 'GALERÍA', 'tmin', -90);
+    s += T(35.3, 10.2, 'ADMINISTRACIÓN', 'tmin') + T(34, 2.5, 'HALL', 'tmin') + T(36.8, 1.4, 'BAÑO', 'tmin') + T(36.3, 6.0, 'ATRIO', 'tmin') + T(36.3, 6.8, 'a carga', 'tmin');
+    s += `</g>`;
+
+    /* ---------- capa circulación ---------- */
+    s += `<g id="capa-circ" class="capa noint">`;
+    s += `<path d="${camino(RUTA_INGRESO, 1.6)}" class="ruta ri" marker-end="url(#m-ci)"/>`;
+    [0, 26].forEach(y => s += `<path d="M${u(61.75)} ${u(y + 2)}l-9 -14h18z" class="mk-ci"/>`);
+    M.portones.forEach(y => s += `<path d="M${u(52.3)} ${u(y - 4.6)}C${u(52.3)} ${u(y - 1)} ${u(51.2)} ${u(y)} ${u(49.1)} ${u(y)}" class="ruta rv" marker-end="url(#m-ci)"/>`);
+    s += `<path d="M${u(49.2)} ${u(9.3)}C${u(54)} ${u(9.3)} ${u(56.4)} ${u(7)} ${u(56.4)} ${u(2)}V${u(-15)}" class="ruta re" marker-end="url(#m-ce)"/>`;
+    s += T(61.75, -16.7, 'INGRESO', 'tz2') + T(56.4, -16.7, 'EGRESO', 'tz2') + T(60, -18.2, 'Boca al camino existente', 'tmin');
+    s += `</g>`;
+
+    /* ---------- capa visuales ---------- */
+    const ojo = (x, y, n) => `<g class="ojo"><circle cx="${u(x)}" cy="${u(y)}" r="14"/><text x="${u(x)}" y="${u(y)}" class="pasoT">${n}</text></g>`;
+    s += `<g id="capa-vis" class="capa noint">`;
+    s += `<polygon points="${poly([[42.5, 0], [48, -16], [66, -16], [66, 46], [47, 46], [41, 36], [42.5, 13]])}" class="cono v1"/>`;
+    s += `<polygon points="${poly([[32.5, 3.4], [32.5, 12.9], [32.4, 20], [0.1, 20], [0.1, .1], [23.5, .1]])}" class="cono v2"/>`;
+    s += R(32.6, .1, 39.9, 12.9, 'cono v3') + R(32.6, 13.1, 39.9, 20.1, 'cono v4');
+    s += ojo(41.7, 12.1, 'A') + ojo(33.5, 9.4, 'B') + ojo(36.3, 8.2, 'C') + ojo(33.5, 12.4, 'D');
+    s += T(56.5, 24, 'A  Frente, playón, calle y portón', 'tz2') + T(13.5, 16.6, 'B  Balanzas y puertas de cámaras', 'tz2') + T(36.3, 9.15, 'Portones 1 y 2', 'tmin') + T(36.3, 15.2, 'D  Portones 3 y 4', 'tz2');
+    s += `</g>`;
+
+    /* ---------- capa flujo ---------- */
+    s += `<g id="capa-flujo" class="capa noint">`;
+    FLUJOS.forEach(f => {
+      const d = camino(f.p, 1.2);
+      s += `<path d="${d}" class="flujo halo"/><path d="${d}" class="flujo ${f.t}" marker-end="url(#m-${f.t})"/>`;
+    });
+    const paso = (x, y, n, t) => `<g class="paso"><circle cx="${u(x)}" cy="${u(y)}" r="13" class="mk-${t}"/><text x="${u(x)}" y="${u(y)}" class="pasoT">${n}</text></g>`;
+    s += paso(9.3, 17.6, 1, 'f1') + paso(27.6, 18.3, 1, 'f1') + paso(28.6, 6.6, 2, 'f2') + paso(28.6, 12.6, 2, 'f2') + paso(36, 7.4, 3, 'f3') + paso(36, 14.9, 3, 'f3');
+    s += `</g>`;
+
+    /* ---------- capa cotas ---------- */
+    s += `<g id="capa-cotas" class="capa noint">`;
+    s += cadena(M.ejeX, -3.6, false) + cadena([0, 40, 47, 54], -5.2, false, -.45, ['40,00', 'Alero 7,00', '7,00']) + cadena([54, 58.75, 59.25, 64.25], -5.2, false, -.45, ['4,75', ' ', '5,00']);
+    s += cadena([0, 20.2, 26, 33], -5.6, true) + cadena([0, 26], -7.2, true);
+    s += cadena([-3, 4.5, 8.5, 12.5, 16.5, 20.2], 66.2, true, .75) + cadena([0, 13.5, 26], 67.8, true, .75, ['Ampliación 13,50', 'Fachada actual ≈ 12,50']);
+    s += cadena([4, 40], 35.2, false) + cadena([0, 19.5, 40], 36.4, false) + cadena([26.7, 33.3], 45.5, true, .75);
+    M.ejeX.forEach((x, i) => { s += L(x, -4.6, x, -6.9, 'eje') + `<circle cx="${u(x)}" cy="${u(-7.6)}" r="14" class="burb"/>` + T(x, -7.6, String(i + 1), 'tb'); });
+    [['A', 0], ['B', 20.2], ['C', 26]].forEach(([n, y]) => { s += L(-7.8, y, -8.6, y, 'eje') + `<circle cx="${u(-9.3)}" cy="${u(y)}" r="14" class="burb"/>` + T(-9.3, y, n, 'tb'); });
+    s += `<g class="nivel">` + [[30, 11, '+1,10'], [15.5, 22.5, '+1,10'], [50.6, 19.2, '±0,00'], [22.6, 28.3, '+0,15']].map(([x, y, t]) => `<path d="M${u(x)} ${u(y)}l-7 -9h14z" class="nvl"/>` + T(x + .55, y - .22, t, 'tnv')).join('') + `</g>`;
+    s += `</g><g id="capa-nivelpa" class="capa noint"><path d="M${u(37.5)} ${u(12.7)}l-7 -9h14z" class="nvl"/>${T(37.95, 12.45, '+5,60', 'tnv')}</g>`;
+
+    /* rótulo del plano: escala y orientación */
+    s += `<g id="escala" class="noint">`;
+    for (let i = 0; i < 4; i++) s += R(9 + i * 5, 39.2, 14 + i * 5, 39.55, i % 2 ? 'escB' : 'escA');
+    [0, 5, 10, 15, 20].forEach(n => s += T(9 + n, 38.75, String(n), 'tc')); s += T(29.5, 39.4, 'metros', 'ts ti');
+    s += `<g transform="translate(${u(33.6)} ${u(39.1)})"><circle r="26" class="burb"/><path d="M0 -24L9 14L0 7Z" class="escA"/><path d="M0 -24L-9 14L0 7Z" class="escB"/></g>` + T(35.3, 38.8, 'Norte de plano', 'ts ti') + T(35.3, 39.6, 'Orientación real a verificar', 'tmin ti');
+    s += `</g>`;
+    svg.innerHTML = s;
+    ['capa-pa', 'capa-vis', 'capa-cotas', 'capa-nivelpa', 'escala'].forEach(k => svg.appendChild(document.getElementById(k)));
+  }
+
+  /* ---------- zoom y desplazamiento ---------- */
+  const VISTAS = { planta: [-11, -10, 80, 49], predio: [-18, -21, 95, 84] };
+  let vb = [0, 0, 1, 1], anim = 0;
+  const aplicar = () => svg.setAttribute('viewBox', vb.map(n => n.toFixed(1)).join(' '));
+  function irA(v, inst) {
+    const dst = v.map(u); cancelAnimationFrame(anim);
+    if (inst || matchMedia('(prefers-reduced-motion: reduce)').matches) { vb = dst; aplicar(); return; }
+    const ini = vb.slice(), t0 = performance.now();
+    (function paso(t) {
+      const k = Math.min(1, (t - t0) / 450), e = 1 - Math.pow(1 - k, 3);
+      vb = ini.map((a, i) => a + (dst[i] - a) * e); aplicar();
+      if (k < 1) anim = requestAnimationFrame(paso);
+    })(t0);
+  }
+  function zoom(f, px, py) {
+    const b = svg.getBoundingClientRect();
+    const esc = Math.max(vb[2] / b.width, vb[3] / b.height);
+    const ox = vb[0] + vb[2] / 2, oy = vb[1] + vb[3] / 2;
+    const mx = px == null ? ox : ox + (px - b.left - b.width / 2) * esc;
+    const my = py == null ? oy : oy + (py - b.top - b.height / 2) * esc;
+    const nw = Math.min(Math.max(vb[2] * f, u(10)), u(130)), k = nw / vb[2];
+    vb = [mx - (mx - vb[0]) * k, my - (my - vb[1]) * k, vb[2] * k, vb[3] * k]; aplicar();
+  }
+  const pts = new Map(); let movido = false, dist0 = 0, zonaAbajo = null;
+  svg.addEventListener('wheel', e => { e.preventDefault(); cancelAnimationFrame(anim); zoom(e.deltaY > 0 ? 1.13 : 1 / 1.13, e.clientX, e.clientY); }, { passive: false });
+  svg.addEventListener('pointerdown', e => {
+    cancelAnimationFrame(anim); pts.set(e.pointerId, [e.clientX, e.clientY]); movido = false;
+    zonaAbajo = e.target.closest('.zona'); dist0 = 0;
+  });
+  window.addEventListener('pointermove', e => {
+    if (!pts.has(e.pointerId)) return;
+    const a = pts.get(e.pointerId), b = svg.getBoundingClientRect(), esc = Math.max(vb[2] / b.width, vb[3] / b.height);
+    if (pts.size === 1) {
+      const dx = e.clientX - a[0], dy = e.clientY - a[1];
+      if (!movido && Math.hypot(dx, dy) < 5) return;
+      movido = true; vb[0] -= dx * esc; vb[1] -= dy * esc; aplicar();
+    }
+    pts.set(e.pointerId, [e.clientX, e.clientY]);
+    if (pts.size === 2) {
+      const [p, q] = [...pts.values()], d = Math.hypot(p[0] - q[0], p[1] - q[1]);
+      if (dist0) zoom(dist0 / d, (p[0] + q[0]) / 2, (p[1] + q[1]) / 2);
+      dist0 = d; movido = true;
+    }
+  });
+  const soltar = e => {
+    if (!pts.has(e.pointerId)) return;
+    pts.delete(e.pointerId); dist0 = 0;
+    if (e.type === 'pointerup' && !movido && pts.size === 0) App.elegir(zonaAbajo ? zonaAbajo.dataset.id : null);
+  };
+  window.addEventListener('pointerup', soltar); window.addEventListener('pointercancel', soltar);
+  svg.addEventListener('keydown', e => {
+    const z = e.target.closest('.zona');
+    if (z && (e.key === 'Enter' || e.key === ' ')) { e.preventDefault(); App.elegir(z.dataset.id); }
+  });
+
+  construir();
+  irA(VISTAS.planta, true);
+  return {
+    vista: n => irA(VISTAS[n]), zoom,
+    marcar(id) { svg.querySelectorAll('.zona').forEach(z => z.classList.toggle('sel', z.dataset.id === id)); svg.classList.toggle('haySel', !!id); },
+    capa(id, on) {
+      const g = document.getElementById('capa-' + id); if (g) g.classList.toggle('off', !on);
+      if (id === 'pa') { svg.classList.toggle('conPA', on); document.getElementById('capa-nivelpa').classList.toggle('off', !on); }
+    }
+  };
+})();
+
+/* ============================================================
+   MODELO 3D (Three.js r147). Mundo: X = x−28, Z = y−14, Y = cota.
+   ============================================================ */
+const Modelo = (() => {
+  const OX = 28, OZ = 14, NPT = M.npt, CORTE = 4.3;
+  const cont = document.getElementById('gl'), capaLbl = document.getElementById('etiquetas'), aviso = document.getElementById('aviso3d');
+  const quieto = matchMedia('(prefers-reduced-motion: reduce)').matches;
+  let T3, escena, camara, rend, ctrl, G = {}, mat = {}, tex = {}, listo = false, activo = false, rafId = 0, pend = null;
+  let fovObj = 0, dentro = false, corte = false, kCorte = 0, verOfi = true, verFlujo = true, verCirc = false, verLbl = true, vuelo = null, movil = null, curva = null, largo = 0;
+  const etiquetas = [], zonasPick = [], cintas = [];
+  let azar = 7; const rnd = () => (azar = (azar * 16807) % 2147483647) / 2147483647;
+
+  /* ---------- texturas por canvas ---------- */
+  function lienzo(w, h, f, rep) {
+    const c = document.createElement('canvas'); c.width = w; c.height = h; f(c.getContext('2d'), w, h);
+    const t = new T3.CanvasTexture(c); t.encoding = T3.sRGBEncoding; t.anisotropy = 8;
+    if (rep) { t.wrapS = t.wrapT = T3.RepeatWrapping; t.repeat.set(rep, rep); }
+    return t;
+  }
+  function grano(base, vari, n, rep, lineas) {
+    return lienzo(512, 512, (g, w, h) => {
+      g.fillStyle = base; g.fillRect(0, 0, w, h);
+      for (let i = 0; i < n; i++) {
+        const k = rnd(); g.fillStyle = vari[(rnd() * vari.length) | 0]; g.globalAlpha = .12 + k * .3;
+        const r = 1 + rnd() * 3.2; g.fillRect(rnd() * w, rnd() * h, r, r);
+      }
+      for (let i = 0; i < 18; i++) { g.globalAlpha = .012; g.fillStyle = i % 2 ? '#000' : '#fff'; g.beginPath(); g.arc(rnd() * w, rnd() * h, 30 + rnd() * 90, 0, 7); g.fill(); }
+      g.globalAlpha = 1; if (lineas) lineas(g, w, h);
+    }, rep);
+  }
+  function materiales() {
+    const acanal = (c1, c2) => lienzo(256, 256, (g) => {
+      const gr = g.createLinearGradient(0, 0, 256, 0);
+      for (let i = 0; i < 4; i++) { const a = i / 4; gr.addColorStop(a, c1); gr.addColorStop(a + .17, c1); gr.addColorStop(a + .2, c2); gr.addColorStop(a + .235, c1); }
+      g.fillStyle = gr; g.fillRect(0, 0, 256, 256);
+    }, 1);
+    const S = (o) => new T3.MeshStandardMaterial(Object.assign({ roughness: .8, metalness: 0, envMapIntensity: .72 }, o));
+    const pan = acanal('#f7f6f3', '#cfccc7'), pano = acanal('#343332', '#1f1e1e'), cub = acanal('#dfe4e6', '#aeb7bb');
+    const bump = acanal('#ffffff', '#555555'); bump.encoding = T3.LinearEncoding;
+    mat = {
+      panel: S({ map: pan, bumpMap: bump, bumpScale: .02, roughness: .5, metalness: .12 }),
+      oscuro: S({ map: pano, bumpMap: bump, bumpScale: .02, roughness: .5, metalness: .2 }),
+      cubierta: S({ map: cub, bumpMap: bump, bumpScale: .03, roughness: .42, metalness: .35, side: T3.DoubleSide }),
+      pir: S({ color: '#f4f8fa', roughness: .4 }),
+      blanco: S({ color: '#f5f7f8', roughness: .45 }),
+      gris: S({ color: '#9aa4aa', roughness: .6 }),
+      acero: S({ color: '#c4cccf', roughness: .32, metalness: .75 }),
+      estr: S({ color: '#2b2a2a', roughness: .55, metalness: .4 }),
+      negro: S({ color: '#1a1e20', roughness: .9 }),
+      goma: S({ color: '#15181a', roughness: .95 }),
+      rojo: S({ color: '#b11e22', roughness: .42, envMapIntensity: .5 }),
+      nombre: S({ color: '#141414', roughness: .45, envMapIntensity: .5 }),
+      amar: S({ color: '#f2b705', roughness: .5 }),
+      azul: S({ color: '#2463a8', roughness: .6 }),
+      madera: S({ color: '#b98d5c', roughness: .9 }),
+      zocalo: S({ map: grano('#aeb3b3', ['#8f9595', '#c8cccb'], 1500, .25), roughness: .95 }),
+      horm: S({ map: grano('#a9adab', ['#929795', '#bcc0be'], 2600, .25, (g, w, h) => { g.strokeStyle = 'rgba(90,96,96,.55)'; g.lineWidth = 2; g.strokeRect(0, 0, w, h); }), roughness: .9 }),
+      asfalto: S({ map: grano('#4c5155', ['#3d4246', '#5f6569', '#34393c'], 5200, .22), roughness: .96 }),
+      pasto: S({ map: grano('#6f8550', ['#5c7342', '#83985f', '#979a6c', '#50683a'], 8500, .19), roughness: 1 }),
+      ripio: S({ map: grano('#b5a999', ['#978b7c', '#cbc1b2', '#857a6d', '#d8d0c4'], 7500, .3), roughness: 1 }),
+      epoxi: S({ map: grano('#bfc0b6', ['#b3b5ab', '#cacbc3'], 900, .2), roughness: .38, metalness: .02 }),
+      epoxiC: S({ map: grano('#a3b8a9', ['#97ad9e', '#b0c3b6'], 900, .2), roughness: .38 }),
+      pisoFrio: S({ map: grano('#98b4c7', ['#8ca9bd', '#a6c0d0'], 900, .2), roughness: .45 }),
+      linea: S({ color: '#f5f6f4', roughness: .8 }),
+      lineaA: S({ color: '#f2b705', roughness: .8 }),
+      vidrio: S({ color: '#8fb6c8', roughness: .06, metalness: .35, transparent: true, opacity: .42, envMapIntensity: 1.6 }),
+      vidrioC: S({ color: '#cfe4ee', roughness: .05, metalness: .1, transparent: true, opacity: .13, depthWrite: false, envMapIntensity: 1.1 }),
+      vidrioO: S({ color: '#16222a', roughness: .08, metalness: .5, envMapIntensity: 1.4 }),
+      luz: new T3.MeshBasicMaterial({ color: '#fff7df' }),
+      corteM: S({ color: '#1a1a1a', roughness: 1 }),
+      tronco: S({ color: '#8b8071', roughness: 1 }),
+      hoja: S({ color: '#ffffff', roughness: .95, flatShading: true }),
+      lona: S({ color: '#2a2f32', roughness: .95 }),
+      piel: S({ color: '#b98a68', roughness: .9 }), chaleco: S({ color: '#d7e021', roughness: .8 }), pant: S({ color: '#2a3138', roughness: .9 }),
+      madOf: S({ color: '#d8c3a0', roughness: .7 }), alfombra: S({ color: '#8b949a', roughness: 1 })
+    };
+    tex.peligro = lienzo(128, 128, g => { g.fillStyle = '#f2b705'; g.fillRect(0, 0, 128, 128); g.strokeStyle = '#191c1e'; g.lineWidth = 22; for (let i = -128; i < 256; i += 64) { g.beginPath(); g.moveTo(i, 140); g.lineTo(i + 152, -12); g.stroke(); } }, 2);
+    mat.peligro = S({ map: tex.peligro, roughness: .7 });
+  }
+
+  /* ---------- geometría auxiliar ---------- */
+  function caja(g, x0, y0, x1, y1, z0, z1, m, sombra = 3) {
+    const a = x1 - x0, b = z1 - z0, c = y1 - y0;
+    const geo = new T3.BoxGeometry(a, b, c), uv = geo.attributes.uv;
+    const dims = [[c, b], [c, b], [a, c], [a, c], [a, b], [a, b]];
+    for (let f = 0; f < 6; f++) for (let v = 0; v < 4; v++) { const i = f * 4 + v; uv.setXY(i, uv.getX(i) * dims[f][0], uv.getY(i) * dims[f][1]); }
+    const o = new T3.Mesh(geo, m);
+    o.position.set((x0 + x1) / 2 - OX, (z0 + z1) / 2, (y0 + y1) / 2 - OZ);
+    o.castShadow = !!(sombra & 1); o.receiveShadow = !!(sombra & 2);
+    g.add(o); return o;
+  }
+  function cil(g, x, y, z0, z1, r, m, r2) {
+    const o = new T3.Mesh(new T3.CylinderGeometry(r2 == null ? r : r2, r, z1 - z0, 14), m);
+    o.position.set(x - OX, (z0 + z1) / 2, y - OZ); o.castShadow = o.receiveShadow = true; g.add(o); return o;
+  }
+  function barra(g, a, b, r, m) { /* a,b = [x,y,z] de plano */
+    const A = new T3.Vector3(a[0] - OX, a[2], a[1] - OZ), B = new T3.Vector3(b[0] - OX, b[2], b[1] - OZ), d = B.clone().sub(A);
+    const o = new T3.Mesh(new T3.CylinderGeometry(r, r, d.length(), 8), m);
+    o.position.copy(A).addScaledVector(d, .5); o.quaternion.setFromUnitVectors(new T3.Vector3(0, 1, 0), d.normalize());
+    o.castShadow = true; g.add(o); return o;
+  }
+  /* plancha inclinada entre dos aristas paralelas */
+  function plancha(g, p, esp, m, uvX) {
+    /* p: 4 vértices [x,y,z] en sentido a,b,c,d */
+    const v = p.map(q => new T3.Vector3(q[0] - OX, q[2], q[1] - OZ));
+    const ab = v[1].distanceTo(v[0]), ad = v[3].distanceTo(v[0]);
+    const pos = [], uv = [], idx = [];
+    [0, -esp].forEach(d => v.forEach((q, i) => { pos.push(q.x, q.y + d, q.z); uv.push(i === 1 || i === 2 ? ab : 0, i > 1 ? ad : 0); }));
+    if (uvX) for (let i = 0; i < uv.length; i += 2) { const t = uv[i]; uv[i] = uv[i + 1]; uv[i + 1] = t; }
+    idx.push(0, 2, 1, 0, 3, 2, 4, 5, 6, 4, 6, 7);
+    for (let i = 0; i < 4; i++) { const j = (i + 1) % 4; idx.push(i, j, 4 + j, i, 4 + j, 4 + i); }
+    let geo = new T3.BufferGeometry();
+    geo.setAttribute('position', new T3.Float32BufferAttribute(pos, 3)); geo.setAttribute('uv', new T3.Float32BufferAttribute(uv, 2)); geo.setIndex(idx);
+    geo = geo.toNonIndexed(); geo.computeVertexNormals();
+    const mm = m.clone(); mm.side = T3.DoubleSide;
+    const o = new T3.Mesh(geo, mm); o.castShadow = o.receiveShadow = true; g.add(o); return o;
+  }
+  function prisma(g, perfil, prof, x, y, z, m, rotY) {
+    const s = new T3.Shape(perfil.map(p => new T3.Vector2(p[0], p[1])));
+    const geo = new T3.ExtrudeGeometry(s, { depth: prof, bevelEnabled: false });
+    const o = new T3.Mesh(geo, m); o.position.set(x - OX, z, y - OZ); if (rotY) o.rotation.y = rotY; o.castShadow = o.receiveShadow = true; g.add(o); return o;
+  }
+  function plano(g, pts, z, m) {
+    const s = new T3.Shape(pts.map(p => new T3.Vector2(p[0] - OX, p[1] - OZ)));
+    const geo = new T3.ShapeGeometry(s); geo.rotateX(Math.PI / 2);
+    const mm = m.side === T3.DoubleSide ? m : Object.assign(m.clone(), { side: T3.DoubleSide });
+    const o = new T3.Mesh(geo, mm); o.position.y = z; o.receiveShadow = true; g.add(o); return o;
+  }
+  function cartel(g, x, y, z, w, h, dib, rotY, px = 160, opts = {}) {
+    const t = lienzo(Math.round(w * px), Math.round(h * px), dib);
+    const o = new T3.Mesh(new T3.PlaneGeometry(w, h), new T3.MeshStandardMaterial(Object.assign({ map: t, roughness: .6, transparent: true }, opts)));
+    o.position.set(x - OX, z, y - OZ); o.rotation.y = rotY; g.add(o); return o;
+  }
+  const txt = (s, color, fondo, f = .62) => (g, w, h) => {
+    if (fondo) { g.fillStyle = fondo; g.fillRect(0, 0, w, h); }
+    g.fillStyle = color; g.textAlign = 'center'; g.textBaseline = 'middle'; g.font = `700 ${Math.round(h * f)}px "Source Sans 3","Segoe UI",Arial,sans-serif`; g.fillText(s, w / 2, h * .53, w * .94);
+  };
+
+  /* cajas instanciadas: cajones plásticos */
+  const lotes = {};
+  function cajon(x, y, z, color = 'b', rot = 0, e = [.6, .3, .4]) { (lotes[color] = lotes[color] || []).push([x, y, z, rot, e]); }
+  function volcarCajones() {
+    const col = { b: '#eceff0', o: '#b11e22', n: '#2b3033', g: '#2f7d4b', c: '#c9965b', y: '#f2b705', u: '#2463a8', f: '#eadfb9' };
+    const geo = new T3.BoxGeometry(1, 1, 1), M4 = new T3.Matrix4(), q = new T3.Quaternion(), up = new T3.Vector3(0, 1, 0);
+    for (const k in lotes) {
+      const im = new T3.InstancedMesh(geo, new T3.MeshStandardMaterial({ color: '#fff', roughness: .75 }), lotes[k].length);
+      const base = new T3.Color(col[k]), c = new T3.Color();
+      lotes[k].forEach(([x, y, z, r, e], i) => {
+        q.setFromAxisAngle(up, r); M4.compose(new T3.Vector3(x - OX, z + e[1] / 2, y - OZ), q, new T3.Vector3(e[0], e[1], e[2])); im.setMatrixAt(i, M4);
+        im.setColorAt(i, c.copy(base).multiplyScalar(.88 + rnd() * .16));
+      });
+      im.castShadow = im.receiveShadow = true; G.base.add(im);
+    }
+  }
+  function palletCarga(x, y, z, niveles, color, base = 'm') {
+    cajon(x, y, z, base === 'p' ? 'u' : 'c', 0, [1.0, .13, 1.2]);
+    for (let n = 0; n < niveles; n++) for (let i = 0; i < 2; i++) for (let j = 0; j < 2; j++)
+      cajon(x - .24 + i * .48, y - .29 + j * .58, z + .14 + n * .31, color, 0, [.455, .29, .56]);
+  }
+  function persona(g, x, y, z, rot = 0) {
+    const p = new T3.Group();
+    const add = (geo, m, px, py, pz) => { const o = new T3.Mesh(geo, m); o.position.set(px, py, pz); o.castShadow = true; p.add(o); };
+    add(new T3.CylinderGeometry(.085, .075, .82, 8), mat.pant, 0, .41, -.1); add(new T3.CylinderGeometry(.085, .075, .82, 8), mat.pant, 0, .41, .1);
+    add(new T3.CylinderGeometry(.2, .16, .62, 10), mat.blanco, 0, 1.12, 0); add(new T3.CylinderGeometry(.165, .165, .07, 10), mat.rojo, 0, .84, 0); add(new T3.CylinderGeometry(.1, .14, .06, 10), mat.rojo, 0, 1.45, 0);
+    add(new T3.CylinderGeometry(.055, .05, .6, 7), mat.blanco, .04, 1.1, -.25); add(new T3.CylinderGeometry(.055, .05, .6, 7), mat.blanco, .04, 1.1, .25);
+    add(new T3.SphereGeometry(.13, 12, 10), mat.piel, 0, 1.58, 0); add(new T3.SphereGeometry(.14, 12, 6, 0, 7, 0, 1.5), mat.rojo, 0, 1.6, 0);
+    p.position.set(x - OX, z, y - OZ); p.rotation.y = rot; g.add(p);
+  }
+
+  /* ---------- camión refrigerado ---------- */
+  let matLado = null, matLadoI = null, matGallo = null;
+  const imagen = (uri, f) => { const im = new Image(); im.onload = () => f(im); im.src = uri; };
+  function texturaLado() {
+    const hacer = (espejo) => {
+      const t = lienzo(1140, 456, () => { });
+      const dib = (img) => {
+        const g = t.image.getContext('2d'); g.clearRect(0, 0, 1140, 456); g.save(); if (espejo) { g.translate(1140, 0); g.scale(-1, 1); }
+        /* ondas de la flota: crema y rojo */
+        g.fillStyle = '#e9dcc3'; g.beginPath(); g.moveTo(0, 360); g.bezierCurveTo(260, 300, 420, 470, 700, 388); g.bezierCurveTo(880, 338, 1010, 270, 1140, 236); g.lineTo(1140, 456); g.lineTo(0, 456); g.fill();
+        g.fillStyle = '#b11e22'; g.beginPath(); g.moveTo(0, 392); g.bezierCurveTo(260, 330, 430, 490, 720, 412); g.bezierCurveTo(900, 362, 1020, 310, 1140, 268); g.lineTo(1140, 456); g.lineTo(0, 456); g.fill(); g.restore();
+        if (img) { const w = 720, h = w * img.height / img.width; g.drawImage(img, espejo ? 340 : 80, 44, w, h); }
+        t.needsUpdate = true;
+      };
+      dib(null); imagen(logoURI('h', '#af1e24', '#141414', '#9f1c1b', 964), dib);
+      return new T3.MeshStandardMaterial({ map: t, transparent: true, roughness: .5, envMapIntensity: .6, polygonOffset: true, polygonOffsetFactor: -1 });
+    };
+    matLado = hacer(false); matLadoI = hacer(true);
+    const ti = lienzo(256, 264, () => { }); imagen(logoURI('i', '#af1e24', 0, 0, 256), im => { ti.image.getContext('2d').drawImage(im, 0, 0, 256, 264); ti.needsUpdate = true; });
+    matGallo = new T3.MeshStandardMaterial({ map: ti, transparent: true, roughness: .5, polygonOffset: true, polygonOffsetFactor: -2 });
+  }
+  /* calco plano del gallo */
+  function calco(g, x, y, z, alto, color, rotY, op = 1) {
+    const ti = lienzo(512, 528, () => { }); imagen(logoURI('i', color, 0, 0, 512), im => { ti.image.getContext('2d').drawImage(im, 0, 0, 512, 528); ti.needsUpdate = true; });
+    const o = new T3.Mesh(new T3.PlaneGeometry(alto * .97, alto), new T3.MeshStandardMaterial({ map: ti, transparent: true, opacity: op, roughness: .6, envMapIntensity: .5, polygonOffset: true, polygonOffsetFactor: -2 }));
+    o.position.set(x - OX, z, y - OZ); o.rotation.y = rotY; g.add(o);
+  }
+  function camion3d() {
+    if (!matLado) texturaLado();
+    const g = new T3.Group();
+    const B = (x0, y0, z0, x1, y1, z1, m) => { const o = new T3.Mesh(new T3.BoxGeometry(x1 - x0, y1 - y0, z1 - z0), m); o.position.set((x0 + x1) / 2, (y0 + y1) / 2, (z0 + z1) / 2); o.castShadow = o.receiveShadow = true; g.add(o); return o; };
+    B(0, 1.06, -1.22, 5.9, 3.5, 1.22, mat.blanco);
+    B(-.01, 1.06, -1.23, .07, 3.51, -1.14, mat.acero); B(-.01, 1.06, 1.14, .07, 3.51, 1.23, mat.acero); B(-.01, 3.42, -1.23, .07, 3.51, 1.23, mat.acero); B(5.84, 1.06, -1.23, 5.91, 3.51, 1.23, mat.acero);
+    B(.1, 1.08, -1.226, 5.82, 1.16, 1.226, mat.rojo);
+    B(-.02, 1.15, -.02, 0, 3.4, .02, mat.gris);
+    B(0, .78, -.45, 7.9, 1.02, .45, mat.estr); B(1.9, .5, -1.12, 3.9, .95, -1.06, mat.gris); B(1.9, .5, 1.06, 3.9, .95, 1.12, mat.gris); B(4.1, .5, .65, 5.0, .95, 1.1, mat.acero);
+    B(-.02, .55, -1.1, .08, .72, 1.1, mat.estr); B(-.04, .8, -1.1, 0, .92, -.75, mat.rojo); B(-.04, .8, .75, 0, .92, 1.1, mat.rojo);
+    /* equipo de frío */
+    B(5.9, 2.78, -.85, 6.55, 3.46, .85, mat.blanco); B(6.55, 2.86, -.75, 6.58, 3.2, .75, mat.estr);
+    /* cabina */
+    const s = new T3.Shape([[6.1, .62], [8.2, .62], [8.24, 1.5], [8.02, 2.5], [7.8, 2.68], [6.1, 2.68]].map(p => new T3.Vector2(p[0], p[1])));
+    const cab = new T3.Mesh(new T3.ExtrudeGeometry(s, { depth: 2.16, bevelEnabled: true, bevelSize: .06, bevelThickness: .06, bevelSegments: 3 }), mat.blanco);
+    cab.position.z = -1.08; cab.castShadow = true; g.add(cab);
+    const pb = new T3.Mesh(new T3.PlaneGeometry(1.98, 1.0), mat.vidrioO); pb.position.set(8.205, 2.0, 0); pb.rotation.y = Math.PI / 2; pb.rotation.order = 'YXZ'; pb.rotation.x = -.215; g.add(pb);
+    [-1, 1].forEach(l => {
+      const v = new T3.Mesh(new T3.ShapeGeometry(new T3.Shape([[6.55, 1.62], [7.95, 1.62], [7.82, 2.42], [6.55, 2.42]].map(p => new T3.Vector2(p[0], p[1])))), Object.assign(mat.vidrioO.clone(), { side: T3.DoubleSide })); v.position.z = l * 1.146; g.add(v);
+      B(7.95, 1.6, l * 1.36 - .1, 8.05, 2.15, l * 1.36 + .1, mat.negro);
+      const lado = new T3.Mesh(new T3.PlaneGeometry(5.7, 2.28), l < 0 ? matLadoI : matLado); lado.position.set(2.95, 2.23, l * 1.232); const ic = new T3.Mesh(new T3.PlaneGeometry(.52, .54), matGallo); ic.position.set(7.2, 1.24, l * 1.15); if (l < 0) ic.rotation.y = Math.PI; g.add(ic); if (l < 0) lado.rotation.y = Math.PI; g.add(lado);
+      B(8.2, .86, l * .85 - .2, 8.3, 1.06, l * .85 + .2, mat.luz);
+      [[1.35, .3], [7.15, .28]].forEach(([x, w]) => {
+        const r = new T3.Mesh(new T3.CylinderGeometry(.48, .48, x < 2 ? .5 : w, 22), mat.goma); r.rotation.x = Math.PI / 2; r.position.set(x, .48, l * (x < 2 ? .92 : 1.03)); r.castShadow = true; g.add(r);
+        const ll = new T3.Mesh(new T3.CylinderGeometry(.25, .25, .02, 18), mat.acero); ll.rotation.x = Math.PI / 2; ll.position.set(x, .48, l * (x < 2 ? 1.175 : 1.175)); g.add(ll);
+      });
+    });
+    B(8.16, .5, -1.1, 8.3, .82, 1.1, mat.negro); B(8.2, 1.12, -.8, 8.27, 1.38, .8, mat.negro);
+    return g;
+  }
+
+  /* ---------- terreno y exterior ---------- */
+  function exterior() {
+    const b = G.base, p = M.playon;
+    const suelo = new T3.Mesh(new T3.PlaneGeometry(700, 700), mat.pasto); suelo.geometry.attributes.uv.array.forEach((v, i, a) => a[i] = v * 700); suelo.rotation.x = -Math.PI / 2; suelo.receiveShadow = true; b.add(suelo);
+    caja(b, -5, -5, 46.25, 37.6, -.2, .03, mat.ripio, 2);
+    caja(b, p.x0, p.y0, p.x1, p.y1, -.2, .07, mat.horm, 2);
+    const A = (x0, y0, x1, y1) => caja(b, x0, y0, x1, y1, -.2, .06, mat.asfalto, 2);
+    A(M.egreso.x0, -40, M.egreso.x1, 20.2); A(M.ingreso.x0, -40, M.ingreso.x1, 46); A(M.ramal.x0, 20.2, M.ramal.x1, 46); A(M.apron.x0, M.apron.y0, M.apron.x1, M.apron.y1);
+    caja(b, 30, -50, 140, -40, -.2, .055, mat.ripio, 2);
+    const lo = M.loop, pts = []; const r1 = lo.r + lo.w / 2, r0 = lo.r - lo.w / 2;
+    for (let i = 0; i <= 40; i++) { const a = Math.PI * i / 40; pts.push([lo.cx + r1 * Math.cos(a), lo.cy + r1 * Math.sin(a)]); }
+    for (let i = 40; i >= 0; i--) { const a = Math.PI * i / 40; pts.push([lo.cx + r0 * Math.cos(a), lo.cy + r0 * Math.sin(a)]); }
+    const an = plano(b, pts, .06, mat.asfalto);
+    /* cordones */
+    const cord = (x0, y0, x1, y1) => caja(b, x0, y0, x1, y1, 0, .16, mat.gris);
+    cord(58.75, -40, 59.25, 20.2); cord(64.25, -40, 64.45, 46); cord(53.8, -40, 54, -3); cord(59.05, 20.2, 59.25, 46); cord(51.25, 20.4, 51.45, 46); cord(46.05, 36, 46.25, 46); cord(51.25, 20.2, 59.25, 20.4);
+    const via = (x0, y0, x1, y1, m = mat.linea, z = .075) => caja(b, x0, y0, x1, y1, .05, z, m, 2);
+    via(64.0, -40, 64.1, 46); via(59.4, -40, 59.5, 46); via(58.5, -40, 58.6, 20); via(54.15, -40, 54.25, -3); via(51.0, 20.4, 51.1, 46); via(46.4, 36, 46.5, 46);
+    [2.5, 6.5, 10.5, 14.5, 18.5].forEach(y => via(41.2, y - .07, 50, y + .07, mat.linea, .085));
+    for (let i = 0; i < 5; i++) via(42.0 + i * .9, .5, 42.5 + i * .9, 1.9, mat.lineaA, .085);
+    /* flechas pintadas */
+    const fl = (x, y, dir) => { const k = dir; plano(b, [[x - .12, y - 1.6 * k], [x + .12, y - 1.6 * k], [x + .12, y + .2 * k], [x + .55, y + .2 * k], [x, y + 1.7 * k], [x - .55, y + .2 * k], [x - .12, y + .2 * k]], .082, mat.linea); };
+    fl(61.75, -8, 1); fl(61.75, 12, 1); fl(61.75, 34, 1); fl(48.75, 38, -1); fl(48.75, 26, -1); fl(56.4, 8, -1); fl(56.4, -8, -1);
+    /* guías de rueda */
+    M.portones.forEach(y => [-1.52, 1.52].forEach(d => {
+      barra(b, [41.4, y + d, .22], [44.2, y + d, .22], .09, mat.amar); barra(b, [44.2, y + d, .22], [44.7, y + d * 1.12, .22], .09, mat.amar);
+      [41.5, 43, 44.4].forEach(x => cil(b, x, y + d * (x > 44.2 ? 1.05 : 1), .05, .22, .07, mat.amar));
+    }));
+    /* alumbrado */
+    [-6, 12, 30, 44].forEach(y => { cil(b, 65.6, y, 0, 8, .09, mat.estr, .06); barra(b, [65.6, y, 7.9], [63.6, y, 8.1], .04, mat.estr); caja(b, 62.9, y - .14, 63.7, y + .14, 8.04, 8.14, mat.luz, 0); });
+    /* subestación existente */
+    [47.6, 51.8].forEach(x => [-13.6, -11].forEach(y => cil(b, x, y, 0, 8.6, .17, mat.gris, .12)));
+    [5.4, 8.4].forEach(z => [-13.6, -11].forEach(y => caja(b, 47.3, y - .1, 52.1, y + .1, z, z + .22, mat.gris)));
+    caja(b, 48.8, -13, 50.6, -11.6, 5.62, 6.9, mat.estr); caja(b, 48.9, -11, 50.2, -10.2, 0, 1.7, mat.blanco);
+    /* cerco del contrafrente */
+    for (let x = -4; x < 40; x += 4) cil(b, x, 37.4, 0, 1.7, .05, mat.gris);
+    [.5, 1.05, 1.6].forEach(z => barra(b, [-4, 37.4, z], [40, 37.4, z], .015, mat.gris));
+    /* autos a la sombra */
+    const auto = (x, y, c) => { const m = new T3.MeshStandardMaterial({ color: c, roughness: .35, metalness: .3 }); prisma(b, [[0, .3], [4.1, .3], [4.15, .75], [3.1, .9], [2.6, 1.4], [.9, 1.42], [.2, .95], [0, .85]], 1.65, x, y, 0, m); prisma(b, [[.75, .93], [2.95, .93], [2.5, 1.35], [1, 1.36]], 1.7, x, y - .025, 0, mat.vidrioO); [.8, 3.25].forEach(a => [.1, 1.55].forEach(d => { const r = new T3.Mesh(new T3.CylinderGeometry(.31, .31, .2, 16), mat.goma); r.rotation.x = Math.PI / 2; r.position.set(x + a - OX, .31, y + d - OZ); b.add(r); })); };
+    auto(66.2, 22, '#e9ecee'); auto(66.2, 25, '#4f6e64'); auto(66.2, 28, '#7c8790');
+  }
+  const mobil = () => Math.min(innerWidth, innerHeight) < 600;
+  function alamos() {
+    const pos = [];
+    for (let y = -38; y <= 58; y += 2.5) { pos.push([71.6, y]); pos.push([74.2, y + 1.2]); }
+    for (let x = -16; x <= 70; x += 2.5) { pos.push([x, 61]); pos.push([x + 1.2, 63.6]); }
+    for (let y = -22; y <= 60; y += 2.5) pos.push([-17, y]);
+    const tr = new T3.InstancedMesh(new T3.CylinderGeometry(.07, .13, 1, 6), mat.tronco, pos.length);
+    const geo = new T3.IcosahedronGeometry(1, 0), pa = geo.attributes.position;
+    const vis = {}; for (let i = 0; i < pa.count; i++) { const k = [pa.getX(i), pa.getY(i), pa.getZ(i)].map(v => v.toFixed(3)).join(); const f = vis[k] || (vis[k] = .78 + rnd() * .42); pa.setXYZ(i, pa.getX(i) * f, pa.getY(i) * f, pa.getZ(i) * f); }
+    geo.computeVertexNormals();
+    const N = mobil() ? 44 : 78, ho = new T3.InstancedMesh(geo, mat.hoja, pos.length * N + 900), M4 = new T3.Matrix4(), q = new T3.Quaternion(), e = new T3.Euler(), c = new T3.Color();
+    const verdes = ['#587f3a', '#678f42', '#4a7232', '#7a9c50', '#537b3e']; let n = 0;
+    pos.forEach(([x, y], i) => {
+      const h = 7.6 + rnd() * 2.4, ix = (rnd() - .5) * .5;
+      M4.makeScale(1, h * .8, 1).setPosition(x - OX, h * .4, y - OZ); tr.setMatrixAt(i, M4);
+      for (let k = 0; k < N; k++) {
+        const t = .2 + .8 * (k + .5) / N, r = 1.0 * Math.pow(Math.sin(Math.PI * Math.min(1, (t - .1) * .92 + .12)), .75) + .12, a = rnd() * 6.28, d = r * .92 * Math.sqrt(rnd());
+        e.set(rnd() * 6, rnd() * 6, rnd() * 6); q.setFromEuler(e); const s = .2 + r * (.12 + rnd() * .16);
+        M4.compose(new T3.Vector3(x - OX + Math.cos(a) * d + ix * t, t * h, y - OZ + Math.sin(a) * d), q, new T3.Vector3(s, s * 1.35, s)); ho.setMatrixAt(n, M4);
+        ho.setColorAt(n++, c.set(verdes[(rnd() * 5) | 0]).multiplyScalar(.8 + t * .35));
+      }
+    });
+    /* monte lejano y canteros */
+    for (let k = 0; k < 760; k++) {
+      const a = k / 760 * 6.283 * 2 + rnd() * .02, R = (k < 380 ? 168 : 215) + rnd() * 10, s = 1.5 + rnd() * .9, hh = 4.2 + rnd() * 2.6; e.set(0, rnd() * 6, 0); q.setFromEuler(e);
+      M4.compose(new T3.Vector3(Math.cos(a) * R + 10, hh * .8, Math.sin(a) * R), q, new T3.Vector3(s, hh, s)); ho.setMatrixAt(n, M4); ho.setColorAt(n++, c.set('#5c7a4c').multiplyScalar(.8 + rnd() * .3));
+    }
+    for (let k = 0; k < 90; k++) { const x = k < 60 ? 55.25 + (rnd() - .5) * 1.6 : 59, y = k < 60 ? 22.5 + k * .36 : -14 + (k - 60) * 1.1, s = k < 60 ? .24 + rnd() * .22 : .15; M4.makeScale(s, s * .9, s).setPosition(x - OX, s * .6 + .1, y - OZ); ho.setMatrixAt(n, M4); ho.setColorAt(n++, c.set('#4f7a35')); }
+    ho.count = n; ho.castShadow = true; ho.receiveShadow = true; tr.castShadow = true; G.base.add(tr, ho); ho.frustumCulled = tr.frustumCulled = false;
+  }
+
+  /* ---------- nave ---------- */
+  function muro(x0, y0, x1, y1, z0, z1, m) {
+    if (z0 < CORTE) { caja(G.base, x0, y0, x1, y1, z0, Math.min(z1, CORTE), m); if (z1 > CORTE) caja(G.caps, x0, y0, x1, y1, CORTE, CORTE + .03, mat.corteM, 0); }
+    if (z1 > CORTE) caja(G.sup, x0, y0, x1, y1, Math.max(z0, CORTE), z1, m);
+  }
+  function nave() {
+    const b = G.base, W = .3;
+    caja(b, -W, -W, 40 + W, 26 + W, 0, NPT, mat.zocalo);
+    caja(b, 0, 0, 32.5, 20.2, NPT, NPT + .02, mat.epoxi, 2); caja(b, 32.5, 0, 40, 20.2, NPT, NPT + .02, mat.epoxiC, 2); caja(b, 0, 20.2, 40, 26, NPT, NPT + .02, mat.pisoFrio, 2);
+    const z = NPT;
+    muro(-W, -W, 32.5, 0, z, 7, mat.panel); muro(32.5, -W, 40, 0, z, 5.3, mat.panel);
+    muro(-W, 26, 40, 26 + W, z, 7, mat.panel);
+    muro(-W, 0, 0, 3.6, z, 7, mat.panel); muro(-W, 5.8, 0, 13.8, z, 7, mat.panel); muro(-W, 16, 0, 26, z, 7, mat.panel);
+    [[3.6, 5.8], [13.8, 16]].forEach(([a, c]) => muro(-W, a, 0, c, 3.5, 7, mat.panel));
+    prisma(G.sup, [[-13, 0], [13, 0], [0, .95]], .3, 0, 13, 7, mat.panel, -Math.PI / 2).position.x = -OX;
+    /* fachada: banda oscura de muelles, panel claro arriba */
+    let y0 = -W; M.portones.forEach(y => { muro(40, y0, 40 + W, y - 1.3, z, 5.05, mat.oscuro); y0 = y + 1.3; muro(40, y - 1.3, 40 + W, y + 1.3, 4.1, 5.05, mat.oscuro); });
+    muro(40, y0, 40 + W, 26 + W, z, 5.05, mat.oscuro);
+    caja(G.sup, 40, 13, 40 + W, 26 + W, 5.05, 8.6, mat.panel); caja(G.sup, 39.9, 13, 40 + W + .06, 26 + W + .06, 8.6, 8.72, mat.estr);
+    caja(G.sup, 40 + W, 20.2, 40 + W + .05, 26 + W, 5.0, 5.12, mat.rojo);
+    caja(G.sup, 34, 26, 40, 26 + W, 7, 8.6, mat.panel); caja(G.sup, 33.9, 25.95, 40.36, 26 + W + .06, 8.6, 8.72, mat.estr);
+    caja(G.sup, 40, -W, 40 + W, 13, 5.05, 5.3, mat.oscuro);
+    /* cubierta */
+    const zr = 7.95;
+    plancha(G.techo, [[-.5, -.5, 6.98], [32.5, -.5, 6.98], [32.5, 13, zr], [-.5, 13, zr]], .12, mat.cubierta);
+    plancha(G.techo, [[-.5, 13, zr], [40, 13, zr], [40, 26.5, 6.98], [-.5, 26.5, 6.98]], .12, mat.cubierta);
+    for (let x = 3.2; x < 30; x += 6.5) { plancha(G.techo, [[x, 2.5, 7.22], [x + .9, 2.5, 7.22], [x + .9, 10.5, 7.8], [x, 10.5, 7.8]], .03, mat.vidrio); }
+    M.ejeX.slice(0, -1).forEach(x => {
+      if (x < 32) barra(G.techo, [x, 0, 6.65], [x, 13, 7.6], .13, mat.estr); barra(G.techo, [x, 13, 7.6], [x, 26, 6.65], .13, mat.estr);
+      caja(b, x - .15, 0, x + .15, .3, z, CORTE, mat.estr); caja(G.sup, x - .15, 0, x + .15, .3, CORTE, 6.8, mat.estr);
+    });
+    cil(G.techo, 33.5, 14, 7.9, 12.4, .04, mat.gris);
+    /* condensadores reubicados en plataforma técnica */
+    caja(G.techo, 24.5, 20.6, 36.5, 24.6, 7.42, 7.5, mat.estr);
+    for (let i = 0; i < 4; i++) { const x = 25.2 + i * 2.85; caja(G.techo, x, 21.3, x + 2.2, 23.9, 7.5, 8.5, mat.blanco); [.6, 1.6].forEach(d => cil(G.techo, x + d, 22.6, 8.5, 8.56, .42, mat.negro)); }
+    for (let i = 0; i < 5; i++) caja(G.techo, 24.4, 24.7, 36.6, 24.76, 7.5 + i * .23, 7.64 + i * .23, mat.estr);
+    /* muelles */
+    M.portones.forEach((y, i) => {
+      [-1, 1].forEach(l => { const a = y + l * 1.3, c = y + l * 1.72; caja(b, 40.3, Math.min(a, c), 40.95, Math.max(a, c), .95, 4.2, mat.lona); caja(b, 40.95, y + l * 1.5 - .05, 40.97, y + l * 1.5 + .05, 1.1, 4.1, mat.amar, 0); caja(b, 40.3, y + l * 1.0 - .13, 40.5, y + l * 1.0 + .13, .62, 1.02, mat.goma); });
+      caja(b, 40.3, y - 1.72, 40.95, y + 1.72, 4.1, 4.28, mat.lona); caja(G.sup, 40.3, y - 1.72, 40.95, y + 1.72, 4.28, 4.75, mat.lona);
+      caja(b, 37.95, y - 1, 40.42, y + 1, NPT + .02, NPT + .05, mat.acero); caja(b, 37.95, y - 1, 40.0, y - .86, NPT + .05, NPT + .06, mat.peligro, 0); caja(b, 37.95, y + .86, 40.0, y + 1, NPT + .05, NPT + .06, mat.peligro, 0);
+      caja(b, 39.75, y - 1.42, 40, y - 1.3, NPT, CORTE, mat.amar); caja(b, 39.75, y + 1.3, 40, y + 1.42, NPT, CORTE, mat.amar);
+      caja(G.sup, 39.7, y - 1.3, 39.78, y + 1.3, CORTE, 5.05, mat.blanco);
+      cartel(G.sup, 40.97, y, 4.46, .62, .5, txt(String(i + 1), '#16191b', '#f2b705', .86), Math.PI / 2);
+      const yy = y + 2.0 - .02; caja(b, 40.3, yy - .1, 40.42, yy + .1, 2.2, 2.75, mat.negro); cil(b, 40.43, yy, 2.5, 2.64, .06, mat.rojo); cil(b, 40.43, yy, 2.28, 2.42, .06, new T3.MeshBasicMaterial({ color: '#34d06a' }));
+    });
+    /* escalera y puerta peatonal */
+    for (let i = 0; i < 5; i++) caja(b, 40.3, .4, 40.3 + 1.4 - i * .28, 1.6, i * .22, (i + 1) * .22, mat.acero);
+    barra(b, [41.7, 1.65, 1], [40.4, 1.65, 2.05], .03, mat.amar); barra(b, [41.7, 1.65, .05], [41.7, 1.65, 1], .03, mat.amar);
+    caja(b, 40.28, .55, 40.36, 1.45, NPT, 3.2, mat.blanco);
+    /* líneas interiores */
+    const li = (x0, yy0, x1, yy1) => caja(b, x0, yy0, x1, yy1, NPT + .02, NPT + .028, mat.lineaA, 2);
+    li(32.45, 0, 32.55, 20.1); M.portones.forEach(y => { li(33, y - 1.68, 35.6, y - 1.6); li(33, y + 1.6, 35.6, y + 1.68); li(33, y - 1.6, 33.08, y + 1.6); });
+    li(7.6, 3.6, 7.7, 19); li(7.6, 18.9, 31.5, 19);
+    caja(b, 38.8, .6, 38.98, 19.8, NPT + .02, NPT + .027, mat.estr, 2); caja(b, 6, 19.4, 31.6, 19.55, NPT + .02, NPT + .027, mat.estr, 2);
+    /* cámaras */
+    let x0 = 0; M.puertasCam.forEach(x => { muro(x0, 20.1, x - 1.2, 20.25, z, 5.1, mat.pir); x0 = x + 1.2; caja(G.sup, x - 1.2, 20.1, x + 1.2, 20.25, CORTE, 5.1, mat.pir); caja(b, x - 1.2, 20.1, x + 1.2, 20.25, 3.9, CORTE, mat.pir); });
+    muro(x0, 20.1, 40, 20.25, z, 5.1, mat.pir); muro(19.42, 20.25, 19.58, 25.85, z, 5.1, mat.pir); muro(0, 20.25, .12, 26, z, 5.1, mat.pir); muro(39.88, 20.25, 40, 26, z, 5.1, mat.pir); muro(0, 25.86, 40, 26, z, 5.1, mat.pir);
+    caja(G.sup, 0, 20.1, 40, 26, 5.1, 5.22, mat.pir);
+    M.puertasCam.forEach((x, i) => {
+      caja(b, x + 1.0, 19.92, x + 3.6, 20.06, NPT + .03, 3.95, mat.acero); caja(b, x + 1.2, 19.88, x + 1.28, 19.92, 2.0, 2.6, mat.negro); caja(b, x - 1.4, 19.96, x + 3.8, 20.06, 3.97, 4.12, mat.estr);
+      [-1.3, 1.2].forEach(d => caja(b, x + d, 20.02, x + d + .1, 20.1, NPT, 3.95, mat.azul));
+      cartel(b, x - 2.75, 20.085, 3.25, 2.3, .62, txt('CÁMARA ' + (i ? 1 : 2), '#ffffff', '#b11e22', .66), Math.PI);
+      for (let k = 0; k < 7; k++) { const t = caja(b, x - 1.15 + k * .33, 20.16, x - .87 + k * .33, 20.18, NPT + .15, 3.9, mat.vidrio, 0); }
+    });
+    const rack = (x, y, prof) => {
+      [x, x + 1.16].forEach(a => [y, y + prof - .04].forEach(c => caja(b, a, c, a + .05, c + .05, NPT, NPT + 2.75, mat.azul)));
+      [.12, 1.0, 1.88].forEach((h, n) => { caja(b, x, y, x + 1.2, y + prof, NPT + h, NPT + h + .05, mat.amar); for (let i = 0; i < 2; i++) for (let k = 0; k < (n < 2 ? 2 : 1); k++) cajon(x + .32 + i * .57, y + prof / 2, NPT + h + .06 + k * .31, rnd() > .3 ? 'b' : 'o', 0, [.53, .29, prof * .8]); });
+    };
+    for (let x = .9; x < 18.4; x += 1.45) rack(x, 24.6, .95);
+    for (let x = 20.2; x < 38.9; x += 1.45) rack(x, 24.6, .95);
+    for (let x = 13.2; x < 18.6; x += 1.45) rack(x, 20.5, .95);
+    for (let x = 32.2; x < 38.9; x += 1.45) rack(x, 20.5, .95);
+    [4, 15, 25, 35].forEach(x => { caja(b, x, 25.2, x + 2, 25.85, 3.55, 4.2, mat.blanco); [.35, 1, 1.65].forEach(d => { const f = cil(b, x + d, 25.18, 0, .04, .22, mat.negro); f.position.y = 3.88; f.rotation.x = Math.PI / 2; }); });
+    palletCarga(3.2, 22.3, NPT + .02, 5, 'b'); palletCarga(23, 22.2, NPT + .02, 5, 'o');
+    /* balanzas */
+    M.balanzas.forEach(([x, y]) => {
+      const r = new T3.Mesh(new T3.PlaneGeometry(3.25, 3.25), mat.lineaA); r.rotation.set(-Math.PI / 2, 0, Math.PI / 4); r.position.set(x - OX, NPT + .03, y - OZ); r.receiveShadow = true; b.add(r);
+      const r2 = new T3.Mesh(new T3.PlaneGeometry(3.0, 3.0), mat.epoxi); r2.rotation.set(-Math.PI / 2, 0, Math.PI / 4); r2.position.set(x - OX, NPT + .036, y - OZ); r2.receiveShadow = true; b.add(r2);
+      caja(b, x - .85, y - .85, x + .85, y + .85, NPT + .02, NPT + .12, mat.acero); palletCarga(x, y, NPT + .12, 4, 'o', 'p');
+      cil(b, x - .75, y + 1.02, NPT, NPT + 1.5, .05, mat.acero); caja(b, x - 1.05, y + .95, x - .45, y + 1.1, NPT + 1.4, NPT + 1.8, mat.estr);
+      cartel(b, x - .75, y + 1.11, NPT + 1.6, .5, .26, txt('184.6 kg', '#59ff9a', '#0c1410', .62), 0, 400);
+      persona(b, x - 1.6, y + .7, NPT + .02, .5);
+    });
+    /* mesas, zorras, pulmones */
+    for (let x = 25.6; x < 30.5; x += 2.6) [8.5, 14.3].forEach(y => { caja(b, x, y, x + 2, y + 1, NPT + .84, NPT + .9, mat.acero); [[.06, .06], [1.88, .06], [.06, .88], [1.88, .88]].forEach(([a, c]) => caja(b, x + a, y + c, x + a + .06, y + c + .06, NPT, NPT + .84, mat.acero)); cajon(x + .5, y + .5, NPT + .9, 'b'); cajon(x + 1.3, y + .45, NPT + .9, 'o'); });
+    M.zorras.forEach(([x, y]) => { palletCarga(x, y, NPT + .08, 3, 'b'); caja(b, x + .5, y - .3, x + .8, y + .3, NPT + .05, NPT + .6, mat.amar); barra(b, [x + .75, y, NPT + .3], [x + 1.35, y - .15, NPT + 1.25], .035, mat.negro); barra(b, [x + 1.35, y - .35, NPT + 1.25], [x + 1.35, y + .05, NPT + 1.25], .03, mat.negro); persona(b, x + 1.8, y - .1, NPT + .02, Math.PI); });
+    for (let y = 7.8; y < 13.2; y += 1.35) { palletCarga(2.2, y, NPT + .02, 6, 'b', 'p'); palletCarga(3.5, y, NPT + .02, rnd() > .5 ? 5 : 4, 'o', 'p'); }
+    M.portones.forEach((y, i) => [[33.7, -.8], [33.7, .8], [34.9, -.8], [34.9, .8]].forEach(([x, d], k) => { if ((i + k) % 5 !== 4) palletCarga(x, y + d, NPT + .02, 4 + (k % 2), (i + k) % 3 ? 'o' : 'b'); }));
+    persona(b, 36.6, 10.6, NPT + .02, 2.2); persona(b, 36.9, 14.7, NPT + .02, 3.6); persona(b, 28.4, 11.2, NPT + .02, 1);
+    /* accesos del contrafrente */
+    [[3.5, 5.9], [13.7, 16.1]].forEach(([a, c], i) => {
+      caja(b, 0, a, 3.1, a + .08, NPT, 3.4, mat.vidrio, 0); caja(b, 0, c - .08, 3.1, c, NPT, 3.4, mat.vidrio, 0);
+      cartel(b, -.31, (a + c) / 2, 3.85, 1.9, .4, txt(i ? 'CAJONES LIMPIOS' : 'PERSONAL', '#fff', '#1a1a1a', .6), -Math.PI / 2);
+      caja(b, -.2, a + .1, -.12, (a + c) / 2 - .02, NPT, 3.45, mat.acero); caja(b, -.2, (a + c) / 2 + .02, -.12, c - .1, NPT, 3.45, mat.acero);
+    });
+    caja(b, 1.3, 5.2, 2.6, 5.75, NPT + .6, NPT + .95, mat.acero);
+    caja(b, -2.2, 3.2, -W, 6.2, .9, NPT, mat.horm); for (let i = 0; i < 4; i++) caja(b, -2.2 - .3 * (4 - i), 3.6, -2.2, 5.8, 0, .22 * (i + 1), mat.horm);
+    caja(b, -2.2, 3.2, -W, 6.2, 0, .9, mat.zocalo);
+    /* escalera a oficinas */
+    const es = M.escalera, np = 26;
+    for (let i = 0; i < np; i++) { const x = es.x0 + i * (es.x1 - es.x0) / np, h = NPT + (i + 1) * (5.6 - NPT) / np; caja(h > CORTE ? G.ofi : b, x, es.y0, x + .34, es.y1, h - .06, h, mat.acero); }
+    barra(b, [es.x0, es.y1, NPT + 1], [es.x0 + 6, es.y1, NPT + 1 + 6 * .529], .03, mat.amar); barra(b, [es.x0, es.y1, NPT + .05], [es.x0 + 6, es.y1, NPT + 6 * .529 - .05], .07, mat.estr);
+    for (let i = 0; i < 4; i++) { const x = es.x0 + .3 + i * 1.8; barra(b, [x, es.y1, NPT + (x - es.x0) * .529], [x, es.y1, NPT + 1 + (x - es.x0) * .529], .02, mat.amar); }
+  }
+
+  /* ---------- fachada: cartel corporativo ---------- */
+  function cartelFachada() {
+    const L = LOGO.h, ancho = 9.4, k = ancho / L.b[2], g = new T3.Group();
+    const datos = new T3.SVGLoader().parse(logoSVG('h', '#af1e24', '#141414', '#9f1c1b'));
+    datos.paths.forEach(p => {
+      const hex = p.userData.style.fill, m = hex === '#141414' ? mat.nombre : mat.rojo;
+      T3.SVGLoader.createShapes(p).forEach(s => {
+        const fy = c => c.getPoints(7).map(q => new T3.Vector2(q.x, -q.y)), sh = new T3.Shape(fy(s)); sh.holes = s.holes.map(h => new T3.Path(fy(h)));
+        const o = new T3.Mesh(new T3.ExtrudeGeometry(sh, { depth: .16 / k, bevelEnabled: false }), m);
+        o.castShadow = true; g.add(o);
+      });
+    });
+    /* centrado sobre el paño */
+    const inv = new T3.Group(); inv.add(g); g.position.set(-L.b[0] - L.b[2] / 2, L.b[1] + L.b[3] / 2, 0);
+    inv.scale.set(k, k, k); inv.rotation.y = Math.PI / 2; inv.position.set(40.31 - OX, 6.86, 19.65 - OZ);
+    G.sup.add(inv);
+    /* gallo sobre la hoja negra del portón y marca de agua en el muro sur */
+    calco(G.base, 40.36, 34.3, 1.85, 2.5, '#ffffff', Math.PI / 2);
+    calco(G.sup, -.32, 10.0, 5.55, 2.7, '#af1e24', -Math.PI / 2);
+    /* banda de iluminación del cartel */
+    [15, 18.2, 21.4, 24.6].forEach(y => { barra(G.sup, [40.3, y, 8.55], [40.95, y, 8.75], .03, mat.estr); caja(G.sup, 40.85, y - .25, 41.1, y + .25, 8.68, 8.78, mat.negro); });
+  }
+
+  /* ---------- oficinas ---------- */
+  function oficinas() {
+    const o = M.ofi, at = M.atrio, g = G.ofi, r = G.ofiT, z0 = 5.3, z1 = 5.6, zt = 8.75, zi = 8.5;
+    /* losa con hueco de atrio */
+    [[o.x0, -.3, o.x1, at.y0], [o.x0, at.y1, o.x1, 13], [o.x0, at.y0, at.x0, at.y1], [at.x1, at.y0, o.x1, at.y1]].forEach(q => { caja(g, q[0], q[1], q[2], q[3], z0, z1, mat.estr); caja(g, q[0] + .02, Math.max(0, q[1]), q[2] - .02, q[3], z1, z1 + .02, mat.alfombra, 2); });
+    /* envolvente: macizo solo donde está la escalera y el baño */
+    caja(g, o.x0, -.3, o.x0 + .2, 0, z1, zt, mat.oscuro); caja(g, o.x0, 1.9, o.x0 + .15, 3.4, z1, zt, mat.panel);
+    caja(g, o.x0, -.3, 38.2, -.1, z1, zt, mat.oscuro);
+    const pano = (x0, y0, x1, y1, n, zb, za) => { /* paño vidriado con montantes */
+      caja(g, x0, y0, x1, y1, zb, za, mat.vidrioC, 0); const h = x1 - x0 > y1 - y0;
+      for (let i = 0; i <= n; i++) { const a = i / n; const x = h ? x0 + (x1 - x0) * a : (x0 + x1) / 2, y = h ? (y0 + y1) / 2 : y0 + (y1 - y0) * a; caja(g, x - .035, y - .035, x + .035, y + .035, zb, za, mat.estr); }
+      caja(g, x0 - .03, y0 - .03, x1 + .03, y1 + .03, zb - .06, zb, mat.estr); caja(g, x0 - .03, y0 - .03, x1 + .03, y1 + .03, za, za + .06, mat.estr);
+    };
+    /* interior de la nave: balanzas (contrafrente del módulo) y Portones 3 y 4 */
+    pano(o.x0 + .05, 3.4, o.x0 + .09, 12.9, 7, z1 + .08, 7.3); caja(g, o.x0, 3.4, o.x0 + .15, 13, 7.36, zt, mat.panel);
+    pano(o.x0 + .1, 12.92, 39.95, 12.96, 5, z1 + .08, 7.7); caja(g, o.x0, 12.85, 40.3, 13.05, 7.76, zt, mat.oscuro);
+    /* frente y esquinas del voladizo */
+    const fr = (x0, y0, x1, y1) => { caja(g, x0, y0, x1, y1, z0 - .05, z1 + .12, mat.oscuro); caja(g, x0, y0, x1, y1, 8.4, zt, mat.oscuro); };
+    fr(o.x1 - .12, -.3, o.x1 + .05, 13.05); fr(38.2, -.3, o.x1, -.12); fr(40.3, 12.87, o.x1, 13.05);
+    pano(o.x1 - .06, -.2, o.x1 - .02, 12.95, 8, z1 + .18, 8.34); pano(38.3, -.22, o.x1 - .05, -.18, 3, z1 + .18, 8.34); pano(40.35, 12.94, o.x1 - .05, 12.98, 2, z1 + .18, 8.34);
+    caja(g, o.x1 + .05, -.3, o.x1 + .08, 13.05, 5.4, 5.5, mat.rojo, 0); caja(g, o.x1 + .05, -.2, o.x1 + .55, 12.95, 8.42, 8.48, mat.estr);
+    /* atrio vidriado de piso a techo */
+    const A = (x0, y0, x1, y1, n) => pano(x0, y0, x1, y1, n, z1 + .06, zi - .3);
+    A(at.x0 - .02, at.y0, at.x0 + .02, at.y1, 4); A(at.x1 - .02, at.y0, at.x1 + .02, at.y1, 4); A(at.x0, at.y0 - .02, at.x1, at.y0 + .02, 2); A(at.x0, at.y1 - .02, at.x1, at.y1 + .02, 2);
+    /* tabiques */
+    const tb = (a, b, c, d) => caja(g, a, b, c, d, z1, zi - .2, mat.blanco);
+    tb(37.95, 0, 38.05, 1.2); tb(37.95, 2.2, 38.05, 3.4); tb(35.5, 0, 35.6, 2.3); tb(35.6, 2.2, 36.2, 2.3); tb(37.1, 2.2, 38, 2.3);
+    pano(38, 3.33, 39.4, 3.37, 1, z1 + .06, 8); pano(40.4, 3.33, 42.4, 3.37, 2, z1 + .06, 8);
+    /* muebles */
+    const mesa = (x0, y0, x1, y1, h = .74) => { caja(g, x0, y0, x1, y1, z1 + h - .04, z1 + h, mat.madOf); [[x0 + .05, y0 + .05], [x1 - .1, y0 + .05], [x0 + .05, y1 - .1], [x1 - .1, y1 - .1]].forEach(([x, y]) => caja(g, x, y, x + .05, y + .05, z1, z1 + h - .04, mat.gris)); };
+    mesa(39.3, 4.2, 40.1, 7.2); mesa(39.3, 8.4, 40.1, 11.4); mesa(39.6, 1, 41.4, 1.9); mesa(32.72, 4.2, 33.1, 8.8, .95); mesa(33.2, 11.2, 35, 12); mesa(35.6, 11.2, 37.4, 12);
+    [[39.95, 4.9], [39.95, 6.4], [39.95, 9.1], [39.95, 10.7]].forEach(([x, y]) => caja(g, x, y - .28, x + .03, y + .28, z1 + .8, z1 + 1.1, mat.negro));
+    [[34.1, 11.85], [36.5, 11.85]].forEach(([x, y]) => caja(g, x - .28, y, x + .28, y + .03, z1 + .8, z1 + 1.1, mat.negro));
+    const silla = (x, y, dx, dy) => { cil(g, x, y, z1 + .42, z1 + .5, .24, mat.negro); cil(g, x, y, z1, z1 + .42, .04, mat.gris); caja(g, x + dx * .25 - (dx ? .03 : .22), y + dy * .25 - (dy ? .03 : .22), x + dx * .25 + (dx ? .03 : .22), y + dy * .25 + (dy ? .03 : .22), z1 + .5, z1 + .95, mat.negro); };
+    [4.9, 6.4, 9.1, 10.7].forEach(y => silla(38.85, y, -1, 0)); [33.7, 34.5, 36.1, 36.9].forEach(x => silla(x, 10.8, 0, -1)); [39.9, 40.5, 41.1].forEach(x => silla(x, 2.2, 0, 1)); silla(40.5, .65, 0, -1); [5, 8].forEach(y => silla(33.6, y, 1, 0));
+    persona(g, 41.5, 10.6, z1, 0); persona(g, 41.7, 3.0, z1, 0); persona(g, 33.6, 4.2, z1, Math.PI);
+    /* techo */
+    caja(r, o.x0, -.3, o.x1 + .05, 13.05, zt, zt + .18, mat.cubierta); caja(r, o.x1 - .1, -.3, o.x1 + .08, 13.08, zt, zt + .55, mat.oscuro); caja(r, o.x0, -.33, o.x1 + .08, -.15, zt, zt + .55, mat.oscuro); caja(r, o.x0, 12.9, o.x1 + .08, 13.08, zt, zt + .55, mat.oscuro); caja(r, o.x0, -.3, o.x0 + .15, 13, zt, zt + .55, mat.oscuro);
+    caja(r, o.x0 + .15, -.1, o.x1 - .12, 12.85, zi, zi + .05, mat.blanco, 0); [2, 6.5, 11].forEach(y => { caja(r, 39.2, y - .6, 39.4, y + .6, zi - .02, zi, mat.luz, 0); caja(r, 33.4, y - .6, 33.6, y + .6, zi - .02, zi, mat.luz, 0); });
+    [4, 6].forEach(y => caja(r, 34.2, y, 35.2, y + 1, zt + .18, zt + .95, mat.blanco));
+  }
+
+  /* ---------- alero ---------- */
+  function alero() {
+    const g = G.alero, a = M.alero;
+    const xc = M.ofi.x1, zc = 5.18 - (xc - 40.25) / (a.x1 - 40.25) * .23;
+    plancha(g, [[40.25, a.y0, 5.18], [xc, a.y0, zc], [xc, a.y1, zc], [40.25, a.y1, 5.18]], .08, mat.cubierta, true);
+    plancha(g, [[xc, a.y0, zc], [a.x1, a.y0, 4.95], [a.x1, a.y1, 4.95], [xc, a.y1, zc]], .03, mat.vidrioC, true).castShadow = false;
+    for (let y = a.y0; y <= a.y1; y += 1.96) barra(g, [xc, y, zc + .03], [a.x1, y, 4.98], .03, mat.estr);
+    caja(g, a.x1 - .05, a.y0 - .05, a.x1 + .05, a.y1 + .05, 4.88, 5.0, mat.estr); caja(g, 40.3, a.y0 - .08, a.x1, a.y0, 4.66, 5.16, mat.oscuro); caja(g, 40.3, a.y1, 42.5, a.y1 + .08, 4.86, 5.16, mat.oscuro); caja(g, 42.5, a.y1, a.x1, a.y1 + .05, 4.9, 5.0, mat.estr);
+    [2.5, 6.5, 10.5, 14.5, 18.5].forEach(y => {
+      barra(g, [40.3, y, 4.98], [46.8, y, 4.82], .07, mat.estr); barra(g, [40.3, y, 4.62], [46.8, y, 4.62], .05, mat.estr);
+      for (let x = 40.6; x < 46.4; x += 1.2) { barra(g, [x, y, 4.62], [x + .6, y, 4.95], .025, mat.estr); barra(g, [x + .6, y, 4.95], [x + 1.2, y, 4.62], .025, mat.estr); }
+      cil(G.base, 46.7, y, 0, 4.62, .11, mat.estr); cil(G.base, 46.7, y, 0, .95, .17, mat.amar); caja(G.base, 46.45, y - .25, 46.95, y + .25, 0, .12, mat.horm);
+    });
+    M.portones.forEach(y => caja(g, 41.5, y - .06, 45.8, y + .06, 4.56, 4.6, mat.luz, 0));
+  }
+
+  /* ---------- tinglado, lavado, portón general ---------- */
+  function tinglado() {
+    const b = G.base, t = M.tinglado;
+    caja(b, -2.2, 26.3, 40, 33.2, 0, .15, mat.horm, 2);
+    plancha(G.ting, [[4, 26.2, 5.05], [40.35, 26.2, 5.05], [40.35, 33.6, 4.25], [4, 33.6, 4.25]], .08, mat.cubierta);
+    [4.3, 10.2, 16.1, 22, 27.9, 33.8, 39.6].forEach(x => {
+      cil(b, x, 32.8, .15, 4.2, .14, mat.gris); barra(G.ting, [x, 26.3, 4.9], [x, 33.4, 4.15], .07, mat.estr); barra(G.ting, [x, 26.3, 4.45], [x, 33.0, 3.95], .05, mat.estr);
+      for (let k = 0; k < 6; k++) barra(G.ting, [x, 26.4 + k * 1.1, 4.45 - k * .082], [x, 26.95 + k * 1.1, 4.83 - k * .116], .025, mat.estr);
+    });
+    caja(G.ting, 4, 33.5, 40.35, 33.62, 3.95, 4.28, mat.oscuro); caja(G.ting, 40.3, 26.3, 40.4, 33.6, 4.05, 5.1, mat.oscuro);
+    /* túnel de lavado */
+    caja(b, 26, 29.2, 29.4, 31.4, .6, 2.1, mat.acero); caja(b, 26.6, 29.7, 28.8, 30.9, 2.1, 2.45, mat.acero); caja(b, 24, 29.7, 31.4, 30.9, .85, .95, mat.acero);
+    [24.2, 25.6, 29.9, 31.2].forEach(x => [29.75, 30.8].forEach(y => caja(b, x, y, x + .07, y + .07, .15, .85, mat.acero))); [26.1, 29.2].forEach(x => [29.3, 31.2].forEach(y => caja(b, x, y, x + .1, y + .1, .15, .6, mat.acero)));
+    cajon(24.6, 30.3, .95, 'b'); cajon(25.4, 30.3, .95, 'b'); cajon(30, 30.3, .95, 'o'); cajon(30.9, 30.3, .95, 'o');
+    cil(b, 22.6, 27.2, .15, 1.9, .55, mat.blanco); cil(b, 22.6, 27.2, 1.9, 2.3, .55, mat.amar, .25); cil(b, 24, 27.1, .15, 1.05, .33, mat.azul); cil(b, 24.8, 27.1, .15, 1.05, .33, mat.azul);
+    for (let x = 8; x < 21.5; x += 1.35) palletCarga(x, 27.2, .15, 5 + ((x * 7 | 0) % 3), 'b', 'p');
+    for (let x = 33.6; x < 38.8; x += 1.35) palletCarga(x, 27.2, .15, 4, x % 2 > 1 ? 'n' : 'g', 'p');
+    for (let x = 8.3; x < 20; x += 1.35) palletCarga(x, 31.7, .15, 5, 'o', 'p');
+    caja(b, 5, 32.1, 33, 32.28, .15, .158, mat.estr, 2); persona(b, 25, 31.6, .15, -1.5); persona(b, 31.2, 29.2, .15, 1.7);
+    /* rampa de cajones limpios */
+    prisma(b, [[0, 0], [9.8, 0], [9.8, .15], [0, NPT]], 2.2, 0, 16.2, 0, mat.horm, -Math.PI / 2);
+    caja(b, -2.2, 13.4, -.3, 16.2, 0, NPT, mat.zocalo); barra(b, [-2.15, 13.5, 2.1], [-2.15, 16.2, 2.1], .03, mat.amar); barra(b, [-2.15, 16.2, 2.1], [-2.15, 26, 1.15], .03, mat.amar); [13.5, 16.2, 19.5, 22.8, 26].forEach(y => { const h = y <= 16.2 ? NPT : NPT - (y - 16.2) / 9.8 * .95; barra(b, [-2.15, y, h], [-2.15, y, h + 1], .03, mat.amar); });
+    /* portón general */
+    caja(b, 39.85, 26.3, 40.2, 26.7, 0, 4.05, mat.zocalo); caja(b, 39.85, 33.3, 40.2, 33.7, 0, 4.05, mat.zocalo); caja(b, 39.9, 33.7, 40.15, 37.4, 0, 2.6, mat.panel);
+    caja(b, 40.24, 31.4, 40.34, 37.2, .1, 3.5, mat.oscuro); caja(b, 40.2, 26.3, 40.38, 37.4, 0, .06, mat.estr); caja(G.ting, 40.22, 26.3, 40.4, 33.7, 3.6, 4.05, mat.estr);
+    cartel(G.ting, 40.43, 30, 3.83, 3.4, .42, txt('PORTÓN GENERAL', '#fff', '#b11e22', .66), Math.PI / 2);
+  }
+
+  /* ---------- flujo en 3D ---------- */
+  function cota(x, y) {
+    if (x > -2.3 && x < 0 && y > 16.2 && y < 26) return NPT - (y - 16.2) / 9.8 * .95;
+    if (x > -2.3 && x < 40.4 && y > -1 && y <= 26 && !(x < -.3 && y < 13)) return NPT + .02;
+    if (x > 40 && x < 42 && y > 0 && y < 20) return NPT + .06;
+    if (x < 40 && y > 26 && y < 33.3) return .15;
+    return .08;
+  }
+  function redondear(p, r) {
+    const out = [p[0]];
+    for (let i = 1; i < p.length - 1; i++) {
+      const a = p[i - 1], b = p[i], c = p[i + 1], la = Math.hypot(b[0] - a[0], b[1] - a[1]), lc = Math.hypot(c[0] - b[0], c[1] - b[1]), k = Math.min(r, la / 2, lc / 2);
+      const s = [b[0] + (a[0] - b[0]) / la * k, b[1] + (a[1] - b[1]) / la * k], e = [b[0] + (c[0] - b[0]) / lc * k, b[1] + (c[1] - b[1]) / lc * k];
+      for (let t = 0; t <= 8; t++) { const q = t / 8; out.push([(1 - q) * (1 - q) * s[0] + 2 * q * (1 - q) * b[0] + q * q * e[0], (1 - q) * (1 - q) * s[1] + 2 * q * (1 - q) * b[1] + q * q * e[1]]); }
+    }
+    out.push(p[p.length - 1]); return out;
+  }
+  function cinta(g, puntos, color, ancho, radio, alza) {
+    let p = redondear(puntos, radio); const q = [];
+    for (let i = 0; i < p.length - 1; i++) { const n = Math.max(1, Math.ceil(Math.hypot(p[i + 1][0] - p[i][0], p[i + 1][1] - p[i][1]) / .4)); for (let k = 0; k < n; k++) q.push([p[i][0] + (p[i + 1][0] - p[i][0]) * k / n, p[i][1] + (p[i + 1][1] - p[i][1]) * k / n]); }
+    q.push(p[p.length - 1]);
+    const pos = [], uv = [], idx = []; let L = 0;
+    q.forEach((a, i) => {
+      const b = q[Math.min(i + 1, q.length - 1)], c = q[Math.max(i - 1, 0)]; let dx = b[0] - c[0], dy = b[1] - c[1]; const d = Math.hypot(dx, dy) || 1; dx /= d; dy /= d;
+      if (i) L += Math.hypot(a[0] - q[i - 1][0], a[1] - q[i - 1][1]);
+      const h = cota(a[0], a[1]) + alza;
+      [-1, 1].forEach(s => { pos.push(a[0] - dy * ancho / 2 * s - OX, h, a[1] + dx * ancho / 2 * s - OZ); uv.push(s < 0 ? 0 : 1, L / (ancho * 1.5)); });
+      if (i) { const n = i * 2; idx.push(n - 2, n - 1, n, n - 1, n + 1, n); }
+    });
+    const geo = new T3.BufferGeometry(); geo.setAttribute('position', new T3.Float32BufferAttribute(pos, 3)); geo.setAttribute('uv', new T3.Float32BufferAttribute(uv, 2)); geo.setIndex(idx);
+    const t = lienzo(64, 96, (c) => { c.fillStyle = color; c.globalAlpha = .55; c.fillRect(0, 0, 64, 96); c.globalAlpha = 1; c.beginPath(); c.moveTo(0, 70); c.lineTo(32, 26); c.lineTo(64, 70); c.lineTo(64, 96); c.lineTo(32, 52); c.lineTo(0, 96); c.fill(); });
+    t.wrapT = T3.RepeatWrapping;
+    const m = new T3.Mesh(geo, new T3.MeshBasicMaterial({ map: t, transparent: true, side: T3.DoubleSide, depthWrite: false, toneMapped: false })); m.renderOrder = 3; g.add(m); cintas.push(t);
+    /* punta */
+    const n = q.length - 1, a = q[n], b = q[n - 1]; let dx = a[0] - b[0], dy = a[1] - b[1]; const d = Math.hypot(dx, dy); dx /= d; dy /= d; const h = cota(a[0], a[1]) + alza + .01, w = ancho;
+    const gp = new T3.BufferGeometry(); gp.setAttribute('position', new T3.Float32BufferAttribute([a[0] - dy * w - OX, h, a[1] + dx * w - OZ, a[0] + dy * w - OX, h, a[1] - dx * w - OZ, a[0] + dx * w * 1.5 - OX, h, a[1] + dy * w * 1.5 - OZ], 3));
+    const pm = new T3.Mesh(gp, new T3.MeshBasicMaterial({ color, side: T3.DoubleSide, toneMapped: false, transparent: true, depthWrite: false })); pm.renderOrder = 4; g.add(pm);
+  }
+  function flujos() {
+    const col = { f1: '#1683e0', f2: '#f0a000', f3: '#12a85c', f4: '#0aa5b5' };
+    FLUJOS.forEach(f => cinta(G.flujo, f.p, col[f.t], .62, 1.2, f.t === 'f4' ? .06 : .09));
+    cinta(G.circ, RUTA_INGRESO, '#ff7a1a', 1.1, 2.5, .05); cinta(G.circ, RUTA_EGRESO, '#8a5cf0', 1.1, 2.5, .06);
+  }
+  function zonas() {
+    SECTORES.forEach(s => {
+      const color = getComputedStyle(document.documentElement).getPropertyValue(s.color).trim() || '#d8061f';
+      const z = s.id === 'ofi' ? 5.68 : s.planta === 'EXT' ? .11 : s.id === 'lavado' || s.id === 'porton' ? .2 : s.id === 'muelles' ? NPT + .1 : NPT + .05;
+      [s.poli, s.poli2].forEach(p => {
+        if (!p) return;
+        const o = plano(G.pick, p, z, new T3.MeshBasicMaterial({ color, transparent: true, opacity: 0, depthWrite: false, side: T3.DoubleSide, toneMapped: false })); o.userData.id = s.id; o.renderOrder = 2; o.receiveShadow = false; zonasPick.push(o);
+      });
+      const b = document.createElement('button'); b.className = 'lbl'; b.textContent = s.nombre; b.onclick = () => App.elegir(s.id); capaLbl.appendChild(b);
+      etiquetas.push({ id: s.id, el: b, v: new T3.Vector3(s.centro[0] - OX, s.alto + (s.id === 'ofi' ? 1.2 : 0), s.centro[1] - OZ) });
+    });
+  }
+
+  /* ---------- cámaras ---------- */
+  const VISTAS = {
+    iso:     { n: 'Vista Isométrica General', p: [88, 66, 44], t: [34, 15, 1], corte: false },
+    fachada: { n: 'Fachada Principal', p: [60.3, 43, 5.6], t: [43.4, 11, 4.6], corte: false },
+    interior:{ n: 'Interior Operativo', p: [46, 50, 33], t: [22.5, 12.5, 0], corte: true },
+    aerea:   { n: 'Vista Aérea', p: [30, 23.5, 98], t: [30, 19, 0], corte: null },
+    ofA: { n: 'Oficina: Frente', p: [41.9, 7.6, 7.3], t: [51, 8.4, .4], corte: false, fov: 78 },
+    ofE: { n: 'Oficina: Portón General', p: [41.85, 12.25, 7.35], t: [44.4, 25, .3], corte: false, fov: 70 },
+    ofB: { n: 'Oficina: Balanzas', p: [33.4, 9.0, 7.15], t: [18, 11, 1.1], corte: false, fov: 66 },
+    ofC: { n: 'Oficina: Portones 1–2', p: [34.3, 6.5, 7.1], t: [38.6, 6.5, 1.6], corte: false, fov: 78 },
+    ofD: { n: 'Oficina: Portones 3–4', p: [36.2, 12.6, 7.1], t: [37.4, 18.4, 1.2], corte: false, fov: 74 }
+  };
+  function irVista(k, inst) {
+    const v = VISTAS[k]; marcarVista(k); fovObj = v.fov || 0; dentro = !!v.fov; if (dentro) { verOfi = true; } 
+    ctrl.minDistance = dentro ? .5 : 5;
+    if (v.corte !== null && v.corte !== corte) ponerCorte(v.corte);
+    const est = camara.aspect < 1 ? 1.75 - camara.aspect * .75 : 1;
+    const t = new T3.Vector3(v.t[0] - OX, v.t[2], v.t[1] - OZ), p = new T3.Vector3(v.p[0] - OX, v.p[2], v.p[1] - OZ);
+    if (k !== 'fachada' && !v.fov) p.sub(t).multiplyScalar(est).add(t);
+    if (inst || quieto) { camara.position.copy(p); ctrl.target.copy(t); ctrl.update(); return; }
+    vuelo = { p0: camara.position.clone(), t0: ctrl.target.clone(), p, t, ini: performance.now(), dur: 1500 };
+  }
+  function marcarVista(k) { document.querySelectorAll('#vistas3d button').forEach(b => b.setAttribute('aria-pressed', b.dataset.v === k)); }
+  function ponerCorte(on) {
+    corte = on; verOfi = !on; G.caps.visible = on; sinc();
+    if (quieto) kCorte = on ? 1 : 0;
+  }
+  function sinc() {
+    const set = (id, on) => { const b = document.getElementById(id); if (b) b.setAttribute('aria-pressed', on); };
+    set('c3-corte', corte); set('c3-ofi', verOfi); set('c3-flujo', verFlujo && corte); set('c3-circ', verCirc); set('c3-lbl', verLbl);
+    G.flujo.visible = verFlujo && corte; G.circ.visible = verCirc;
+  }
+  function controles() {
+    const bt = [['c3-corte', 'Corte / Sin Techo', () => { ponerCorte(!corte); }], ['c3-ofi', 'Oficinas', () => { verOfi = !verOfi; sinc(); }], ['c3-flujo', 'Flujo Logístico', () => { if (!corte) { verFlujo = true; irVista('interior'); } else verFlujo = !verFlujo; sinc(); }], ['c3-circ', 'Circulación de Camiones', () => { verCirc = !verCirc; sinc(); }], ['c3-lbl', 'Rótulos', () => { verLbl = !verLbl; sinc(); }]];
+    document.getElementById('capas3d').innerHTML = bt.map((b, i) => `<button id="${b[0]}" class="${i ? '' : 'fuerte'}" aria-pressed="false">${b[1]}</button>`).join('');
+    bt.forEach(b => document.getElementById(b[0]).onclick = b[2]);
+    document.getElementById('vistas3d').innerHTML = Object.entries(VISTAS).map(([k, v]) => `<button id="v3-${k}" data-v="${k}" aria-pressed="false">${v.n}</button>`).join('');
+    document.querySelectorAll('#vistas3d button').forEach(b => b.onclick = () => irVista(b.dataset.v));
+  }
+
+  /* ---------- montaje ---------- */
+  function construir() {
+    T3 = window.THREE;
+    T3.ColorManagement.legacyMode = false;
+    const mob = Math.min(innerWidth, innerHeight) < 600;
+    rend = new T3.WebGLRenderer({ antialias: true, powerPreference: 'high-performance' });
+    rend.setPixelRatio(Math.min(devicePixelRatio || 1, mob ? 1.5 : 2));
+    rend.outputEncoding = T3.sRGBEncoding; rend.toneMapping = T3.ACESFilmicToneMapping; rend.toneMappingExposure = .66;
+    rend.shadowMap.enabled = true; rend.shadowMap.type = T3.PCFSoftShadowMap;
+    cont.appendChild(rend.domElement);
+    escena = new T3.Scene(); escena.fog = new T3.Fog('#cfe0ea', 150, 420);
+    camara = new T3.PerspectiveCamera(42, 1, .5, 900);
+    ctrl = new T3.OrbitControls(camara, rend.domElement);
+    Object.assign(ctrl, { enableDamping: true, dampingFactor: .08, maxPolarAngle: 1.545, minDistance: 5, maxDistance: 190, screenSpacePanning: false, zoomSpeed: .9 });
+    ctrl.addEventListener('start', () => { vuelo = null; marcarVista(''); });
+    materiales();
+    ['base', 'caps', 'sup', 'techo', 'ofi', 'ofiT', 'alero', 'ting', 'flujo', 'circ', 'pick'].forEach(k => { G[k] = new T3.Group(); escena.add(G[k]); }); G.caps.visible = false;
+
+    /* cielo y ambiente */
+    const cielo = new T3.Mesh(new T3.SphereGeometry(600, 32, 20), new T3.ShaderMaterial({ side: T3.BackSide, depthWrite: false, fog: false, toneMapped: false,
+      vertexShader: 'varying vec3 d;void main(){d=normalize(position);gl_Position=projectionMatrix*modelViewMatrix*vec4(position,1.);}',
+      fragmentShader: 'varying vec3 d;void main(){float h=clamp(normalize(d).y,0.,1.);vec3 a=vec3(.83,.905,.945),b=vec3(.49,.71,.88),c=vec3(.20,.45,.72);vec3 k=mix(mix(a,b,smoothstep(0.,.22,h)),c,smoothstep(.18,.85,h));float s=pow(max(dot(normalize(d),normalize(vec3(.62,.62,.48))),0.),220.);gl_FragColor=vec4(k+s*.5,1.);}' }));
+    escena.add(cielo);
+    const amb = new T3.Scene(); const ds = new T3.Mesh(new T3.SphereGeometry(50, 24, 16), new T3.ShaderMaterial({ side: T3.BackSide, vertexShader: 'varying vec3 d;void main(){d=normalize(position);gl_Position=projectionMatrix*modelViewMatrix*vec4(position,1.);}', fragmentShader: 'varying vec3 d;void main(){float h=normalize(d).y;vec3 k=h>0.?mix(vec3(.85,.9,.95),vec3(.35,.58,.85),pow(h,.6)):vec3(.34,.34,.29);gl_FragColor=vec4(k,1.);}' })); amb.add(ds);
+    const pm = new T3.PMREMGenerator(rend); escena.environment = pm.fromScene(amb, .03).texture;
+    escena.add(new T3.HemisphereLight('#dcebf7', '#7d7a64', .16));
+    const sol = new T3.DirectionalLight('#fff0d4', 2.75); sol.position.set(58, 62, 46); sol.target.position.set(6, 0, 4); sol.castShadow = true;
+    sol.shadow.mapSize.setScalar(mob ? 2048 : 4096); Object.assign(sol.shadow.camera, { left: -62, right: 62, top: 58, bottom: -58, near: 5, far: 200 }); sol.shadow.bias = -.0003; sol.shadow.normalBias = .05; sol.shadow.radius = 3;
+    escena.add(sol, sol.target);
+    [[10, 9, 6], [23, 10, 6], [36.3, 9, 4.9]].forEach(p => { const l = new T3.PointLight('#fff4e0', .42, 24, 1.6); l.position.set(p[0] - OX, p[2], p[1] - OZ); escena.add(l); });
+
+    exterior(); nave(); cartelFachada(); oficinas(); alero(); tinglado(); alamos();
+    M.portones.forEach(y => { const c = camion3d(); c.position.set(40.5 - OX, .06, y - OZ); G.base.add(c); });
+    fusionar(); volcarCajones(); flujos(); zonas(); controles();
+
+    /* camión en recorrido */
+    movil = camion3d(); G.base.add(movil);
+    const ruta = [...redondear([[61.75, -60], ...RUTA_INGRESO.slice(1, -1), [51.4, 10], [52.2, 4], [56.4, -4], [56.4, -60]], 3)];
+    curva = new T3.CatmullRomCurve3(ruta.map(p => new T3.Vector3(p[0] - OX, .06, p[1] - OZ)), false, 'centripetal'); curva.arcLengthDivisions = 600; largo = curva.getLength();
+
+    /* selección con clic */
+    const ray = new T3.Raycaster(), m2 = new T3.Vector2(); let px = 0, py = 0, cnt = 0;
+    rend.domElement.addEventListener('pointerdown', e => { px = e.clientX; py = e.clientY; });
+    rend.domElement.addEventListener('pointerup', e => {
+      if (Math.hypot(e.clientX - px, e.clientY - py) > 5) return;
+      const r = rend.domElement.getBoundingClientRect(); m2.set((e.clientX - r.left) / r.width * 2 - 1, -(e.clientY - r.top) / r.height * 2 + 1); ray.setFromCamera(m2, camara);
+      const ext = ['ofi', 'lavado', 'porton', 'playon', 'calle', 'muelles'];
+      const cand = zonasPick.filter(o => (corte || ext.includes(o.userData.id)) && (o.userData.id !== 'ofi' || verOfi));
+      const h = ray.intersectObjects(cand); App.elegir(h.length ? h[0].object.userData.id : null);
+    });
+    new ResizeObserver(medir).observe(cont); medir();
+    irVista('iso', true); sinc();
+    if (document.fonts && document.fonts.load) document.fonts.load('700 40px "Source Sans 3"').catch(() => { });
+    listo = true;
+  }
+  /* une mallas del mismo material para bajar las llamadas de dibujo */
+  function fusionar() {
+    escena.updateMatrixWorld(true);
+    ['base', 'caps', 'sup', 'techo', 'ofi', 'ofiT', 'alero', 'ting'].forEach(k => {
+      const grupos = new Map(), fuera = [];
+      G[k].traverse(o => {
+        if (!o.isMesh || o.isInstancedMesh || Array.isArray(o.material) || !o.geometry.attributes.uv) return;
+        const id = o.material.uuid + o.castShadow + o.receiveShadow;
+        if (!grupos.has(id)) grupos.set(id, []); grupos.get(id).push(o);
+      });
+      grupos.forEach(L => {
+        if (L.length < 2) return;
+        const P = [], N = [], U = [], v = new T3.Vector3(), n3 = new T3.Matrix3();
+        L.forEach(o => {
+          const g = o.geometry.index ? o.geometry.toNonIndexed() : o.geometry, p = g.attributes.position, n = g.attributes.normal, t = g.attributes.uv;
+          n3.getNormalMatrix(o.matrixWorld);
+          for (let i = 0; i < p.count; i++) { v.fromBufferAttribute(p, i).applyMatrix4(o.matrixWorld); P.push(v.x, v.y, v.z); v.fromBufferAttribute(n, i).applyMatrix3(n3).normalize(); N.push(v.x, v.y, v.z); U.push(t.getX(i), t.getY(i)); }
+          fuera.push(o);
+        });
+        const g = new T3.BufferGeometry(); g.setAttribute('position', new T3.Float32BufferAttribute(P, 3)); g.setAttribute('normal', new T3.Float32BufferAttribute(N, 3)); g.setAttribute('uv', new T3.Float32BufferAttribute(U, 2));
+        const m = new T3.Mesh(g, L[0].material); m.castShadow = L[0].castShadow; m.receiveShadow = L[0].receiveShadow; G[k].add(m);
+      });
+      fuera.forEach(o => o.parent.remove(o));
+    });
+  }
+  function medir() {
+    const w = cont.clientWidth, h = cont.clientHeight; if (!w || !h || !rend) return;
+    rend.setSize(w, h); camara.aspect = w / h; fovBase = w / h < 1 ? 52 : 42; camara.fov = fovObj || fovBase; camara.updateProjectionMatrix();
+  }
+  const suave = k => k < .5 ? 4 * k * k * k : 1 - Math.pow(-2 * k + 2, 3) / 2;
+  let fovBase = 42, ult = 0; const v3 = { a: null };
+  function cuadro(t) {
+    rafId = requestAnimationFrame(cuadro);
+    const dt = Math.min(.05, (t - ult) / 1000 || 0); ult = t;
+    const fq = fovObj || fovBase; if (Math.abs(camara.fov - fq) > .05) { camara.fov += (fq - camara.fov) * (quieto ? 1 : Math.min(1, dt * 3.2)); camara.updateProjectionMatrix(); }
+    if (vuelo) { const k = Math.min(1, (t - vuelo.ini) / vuelo.dur), e = suave(Math.max(0, k)); camara.position.lerpVectors(vuelo.p0, vuelo.p, e); ctrl.target.lerpVectors(vuelo.t0, vuelo.t, e); if (k >= 1) vuelo = null; }
+    const obj = corte ? 1 : 0; if (kCorte !== obj) kCorte = Math.abs(obj - kCorte) < .02 ? obj : kCorte + Math.sign(obj - kCorte) * dt * 1.15;
+    const kk = Math.min(1, Math.max(0, kCorte)), alto = suave(kk) * 26;
+    ['sup', 'techo', 'alero', 'ting', 'ofiT'].forEach(n => { G[n].position.y = alto; G[n].visible = kk < 1; });
+    G.ofi.visible = verOfi; if (!verOfi) G.ofiT.visible = G.ofiT.visible && corte && kk < 1 && kk > 0;
+    if (!quieto) {
+      cintas.forEach(c => c.offset.y -= dt * 1.1);
+      const s = ((t / 1000 * 4.2) % (largo + 30)) / largo;
+      if (s < 1) { const p = curva.getPointAt(s), q = curva.getPointAt(Math.min(1, s + 5.2 / largo)); movil.visible = true; movil.position.copy(p); const d = q.sub(p); if (d.lengthSq() > .01) movil.rotation.y = Math.atan2(-d.z, d.x); movil.translateX(-4); movil.visible = s < .985 && s > .005; }
+      else movil.visible = false;
+    } else if (!movil.userData.fijo) { movil.userData.fijo = 1; movil.position.set(61.75 - OX, .06, 20 - OZ); movil.rotation.y = -Math.PI / 2; }
+    ctrl.update(); rend.render(escena, camara); rotulos();
+  }
+  function rotulos() {
+    const w = cont.clientWidth, h = cont.clientHeight, v = v3.a || (v3.a = new T3.Vector3());
+    const ext = dentro ? ['cam1', 'cam2', 'bal', 'carga', 'playon', 'calle', 'porton'] : ['ofi', 'playon', 'calle', 'porton', 'lavado', 'muelles'], usados = [];
+    etiquetas.forEach(e => {
+      let on = verLbl && (corte ? (e.id !== 'ofi' || verOfi) : ext.includes(e.id));
+      if (on) { v.copy(e.v); if (!corte && e.id === 'muelles') v.set(47 - OX, 5.3, 1.6 - OZ); v.project(camara); on = v.z < 1 && Math.abs(v.x) < 1.02 && v.y < .9 && v.y > -.93; }
+      if (!on) { e.el.style.display = 'none'; return; }
+      e.el.style.display = '';
+      if (!e.w) { e.w = e.el.offsetWidth; e.h = e.el.offsetHeight; }
+      const x = (v.x + 1) / 2 * w; let y = (1 - v.y) / 2 * h - 14;
+      for (let k = 0; k < 4; k++) { const c = usados.find(u => Math.abs(u.x - x) < (u.w + e.w) / 2 + 4 && Math.abs(u.y - y) < e.h + 3); if (!c) break; y = c.y - e.h - 5; }
+      usados.push({ x, y, w: e.w });
+      e.el.style.transform = `translate(${(x - e.w / 2).toFixed(1)}px,${(y - e.h).toFixed(1)}px)`;
+    });
+  }
+  function pintar(id) {
+    zonasPick.forEach(o => { o.material.opacity = o.userData.id === id ? .38 : 0; });
+    etiquetas.forEach(e => e.el.classList.toggle('sel', e.id === id));
+  }
+  return {
+    mostrar() {
+      if (!listo && !pend) {
+        if (!window.THREE || !THREE.OrbitControls || !THREE.SVGLoader) { aviso.textContent = 'No se pudo cargar Three.js. Revisá la conexión y recargá la página.'; return; }
+        pend = true;
+        try { construir(); aviso.hidden = true; }
+        catch (err) { console.error(err); aviso.hidden = false; aviso.textContent = 'Este navegador no pudo iniciar la vista 3D (WebGL). Probá con Chrome o Edge actualizados.'; return; }
+      }
+      if (listo && !activo) { activo = true; medir(); ult = performance.now(); rafId = requestAnimationFrame(cuadro); }
+    },
+    ocultar() { activo = false; cancelAnimationFrame(rafId); },
+    marcar(id) { if (listo) pintar(id); },
+    get info() { return listo ? rend.info.render : null; }
+  };
+})();
+
+/* ============================================================
+   INTERFAZ: pestañas, capas y ficha de sector
+   ============================================================ */
+const App = (() => {
+  const $ = id => document.getElementById(id);
+  const panel = $('panel');
+  const num = n => n.toLocaleString('es-AR', { maximumFractionDigits: 1 });
+  const sup = s => s.area ? num(s.area) + ' m²' : '';
+  let actual = null;
+  const estado = {};
+  const agua = `<div class="galloAgua" aria-hidden="true">${logoSVG('i', '#000')}</div>`;
+  $('logo').innerHTML = logoSVG('h', '#d3262b', '#ffffff', '#e23a3f');
+
+  function resumen() {
+    const li = SECTORES.map(s => `<li><button data-id="${s.id}" style="--c:var(${s.color})"><i></i><span>${s.nombre}</span><small>${sup(s)}</small></button></li>`).join('');
+    panel.innerHTML = `<h2>Sectores de la planta</h2>
+      <p class="entrada">Elegí un sector acá, en el plano o en el modelo para ver su ficha constructiva.</p>
+      <h3>Zonas y superficies</h3><ul class="lista">${li}</ul>
+      <dl class="datos"><dt>Nave</dt><dd>40,00 × 26,00 m, 1.040 m²</dd></dl>
+      <h3>De dónde salen las medidas</h3>
+      <p class="nota">Las proporciones son las del Excalidraw, a 3,65 cm por unidad, que da portones cada 4,00 m. La fachada actual mide unos 12,50 m según las fotos, usando a las personas como escala. No alcanza para cuatro muelles más la cámara, así que el proyecto la extiende 13,50 m hacia el lado opuesto al tinglado. Hay que relevar el predio antes de avanzar.</p>` + agua;
+  }
+  function ficha(s) {
+    const pl = { PB: 'Planta baja', PA: 'Planta alta', EXT: 'Exterior' }[s.planta];
+    panel.innerHTML = `<div class="ficha" style="--c:var(${s.color})">
+      <button class="volver" id="volver">Ver todos los sectores</button>
+      <p class="tag"><i></i>${pl}</p><h2>${s.nombre}</h2><p>${s.resumen}</p>
+      <dl class="datos"><dt>Medidas</dt><dd>${s.medidas}</dd>${s.area ? `<dt>Superficie</dt><dd>${s.id === 'calle' ? '≈ ' : ''}${sup(s)}</dd>` : ''}<dt>Estado</dt><dd>${s.estado}</dd></dl>
+      <h3>Detalles constructivos</h3><ul>${s.obra.map(x => `<li>${x}</li>`).join('')}</ul>
+      <h3>Recomendaciones operativas</h3><ul>${s.uso.map(x => `<li>${x}</li>`).join('')}</ul></div>` + agua;
+    $('volver').onclick = () => elegir(null);
+  }
+  function elegir(id) {
+    actual = id || null;
+    const s = SECTORES.find(x => x.id === id);
+    s ? ficha(s) : resumen();
+    panel.scrollTop = 0;
+    if (s && s.id === 'ofi' && !estado.pa && !$('vista-plano').hidden) ponerCapa('pa', true);
+    Plano.marcar(actual);
+    Modelo.marcar(actual);
+  }
+  panel.addEventListener('click', e => { const b = e.target.closest('[data-id]'); if (b) elegir(b.dataset.id); });
+
+  function ponerCapa(id, on) {
+    estado[id] = on;
+    const b = $('capa-btn-' + id); if (b) b.setAttribute('aria-pressed', on);
+    Plano.capa(id, on);
+  }
+  function iniciar() {
+    $('capas').innerHTML = CAPAS.map(c => `<button id="capa-btn-${c.id}" aria-pressed="${c.on}">${c.nombre}</button>`).join('');
+    CAPAS.forEach(c => { $('capa-btn-' + c.id).onclick = () => ponerCapa(c.id, !estado[c.id]); ponerCapa(c.id, c.on); });
+    $('refs').innerHTML = Object.entries(TIPOS_FLUJO).map(([k, v]) => `<li style="--c:var(--${k})"><i></i>${v}</li>`).join('') +
+      `<li style="--c:var(--ci)"><i></i>Ingreso de camiones</li><li style="--c:var(--ci)"><i class="d"></i>Retroceso al muelle</li><li style="--c:var(--ce)"><i></i>Egreso de camiones</li>`;
+    $('z-mas').onclick = () => Plano.zoom(1 / 1.3); $('z-menos').onclick = () => Plano.zoom(1.3);
+    $('z-planta').onclick = () => Plano.vista('planta'); $('z-predio').onclick = () => Plano.vista('predio');
+    const tabs = [$('tab-plano'), $('tab-modelo')];
+    function ver(n) {
+      const m = n === 'modelo';
+      tabs[0].setAttribute('aria-selected', !m); tabs[1].setAttribute('aria-selected', m);
+      tabs[0].tabIndex = m ? -1 : 0; tabs[1].tabIndex = m ? 0 : -1;
+      $('vista-plano').hidden = m; $('vista-modelo').hidden = !m;
+      if (m) setTimeout(() => { Modelo.mostrar(); Modelo.marcar(actual); }, 40);
+      else Modelo.ocultar();
+    }
+    const deHash = () => ver(location.hash === '#modelo' ? 'modelo' : 'plano');
+    const ir = n => { try { history.replaceState(null, '', '#' + n); } catch (e) { /* sin historial */ } ver(n); };
+    tabs[0].onclick = () => ir('plano'); tabs[1].onclick = () => ir('modelo');
+    tabs.forEach((t, i) => t.addEventListener('keydown', e => {
+      if (e.key === 'ArrowRight' || e.key === 'ArrowLeft') { const o = tabs[1 - i]; o.focus(); o.click(); }
+    }));
+    window.addEventListener('hashchange', deHash);
+    resumen(); deHash();
+  }
+  return { elegir, iniciar };
+})();
+App.iniciar();
+
+</script>
+
+</body></html>
