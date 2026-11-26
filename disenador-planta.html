@@ -1299,7 +1299,10 @@ $('#b-exportar').onclick = () => {
 };
 async function descargar(nombre, blob, alternativa) {
   let dl = null; try { dl = await (window.claude && claude.use ? claude.use('downloads') : null); } catch (e) { }
-  if (!dl) { alternativa(); return; }
+  if (!dl) {
+    if (!window.claude) { try { const u = URL.createObjectURL(blob), el = document.createElement('a'); el.href = u; el.download = nombre; document.body.appendChild(el); el.click(); el.remove(); setTimeout(() => URL.revokeObjectURL(u), 4000); aviso('Archivo descargado'); return; } catch (e) { } }
+    alternativa(); return;
+  }
   try { await dl.save({ filename: nombre, data: blob }); aviso('Archivo listo'); }
   catch (err) { if (err && err.code === 'declined') aviso('Descarga cancelada'); else alternativa(); }
 }
